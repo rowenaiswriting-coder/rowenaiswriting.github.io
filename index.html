@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rowenaswriting | Doksan Sekiz</title>
-    <!-- Tailwind CSS for styling -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display for headings, Inter for body, Special Elite for typewriter effect -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -22,12 +20,12 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f4f1ea', // Eski kağıt rengi
+                            50: '#f4f1ea',
                             100: '#e8e2d5',
-                            500: '#5a6b7c', // Mavi/Gri boğaz tonu
+                            500: '#5a6b7c',
                             800: '#2c353e',
-                            900: '#1a1f24', // Koyu mürekkep
-                            accent: '#8b5a50' // Solmuş çiçek kızılı
+                            900: '#1a1f24',
+                            accent: '#8b5a50'
                         }
                     },
                     backgroundImage: {
@@ -37,28 +35,18 @@
             }
         }
     </script>
+    
     <style>
-        /* Custom scrollbar matching theme */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f4f1ea;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #5a6b7c;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2c353e;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f4f1ea; }
+        ::-webkit-scrollbar-thumb { background: #5a6b7c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2c353e; }
         
         body {
             background-color: #f4f1ea;
             background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
         }
 
-        /* Smooth fade-in animation for elements */
         .fade-in {
             animation: fadeIn 1s ease-in forwards;
             opacity: 0;
@@ -68,7 +56,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Book cover style */
         .book-cover {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
@@ -78,7 +65,6 @@
             box-shadow: 8px 10px 25px rgba(0,0,0,0.4);
         }
 
-        /* Chapter item hover effect */
         .chapter-item {
             transition: all 0.2s ease;
             border-left: 3px solid transparent;
@@ -92,26 +78,21 @@
 </head>
 <body class="text-gray-800 font-sans antialiased">
 
-    <!-- Navigation Bar -->
     <nav class="fixed w-full z-50 bg-brand-50/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-brand-100" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo / Author Name -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="font-typewriter text-2xl font-bold text-brand-900 tracking-widest lowercase">
                         rowenaswriting
                     </a>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Ana Sayfa</a>
                     <a href="#book" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Doksan Sekiz</a>
                     <a href="#chapters" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Bölümler</a>
-                    <a href="#about" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Hakkımda</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-900 focus:outline-none p-2">
                         <i class="fas fa-bars text-2xl"></i>
@@ -120,18 +101,15 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Hidden by default) -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-50 border-t border-brand-100">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg font-typewriter">
                 <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Ana Sayfa</a>
                 <a href="#book" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Doksan Sekiz</a>
                 <a href="#chapters" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Bölümler</a>
-                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Hakkımda</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="pt-32 pb-16 lg:pt-48 lg:pb-24 overflow-hidden relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col items-center text-center fade-in">
@@ -140,17 +118,9 @@
                     DOKSAN SEKİZ
                 </h1>
                 
-                <!-- 
-                ==================================================================
-                KİTAP KAPAĞI FOTOĞRAFI DEĞİŞTİRME ALANI
-                Aşağıdaki <img> etiketinde yer alan src="image_2.png" kısmını 
-                kendi fotoğrafınızın adıyla veya bir resim linkiyle (URL) değiştirebilirsiniz. 
-                ================================================================== 
-                -->
                 <div class="my-8 mx-auto w-56 md:w-72 book-cover rounded overflow-hidden shadow-2xl relative z-20 border-2 border-brand-800/10">
-                    <img src="image_2.png" alt="Doksan Sekiz Kitap Kapağı" class="w-full h-auto object-cover rounded block">
+                    <img src="image_2.png" alt="Doksan Sekiz Kitap Kapağı" class="w-full h-auto object-cover rounded block" onerror="this.src='https://placehold.co/400x600/2c353e/f4f1ea?text=DOKSAN+SEKIZ'">
                 </div>
-                <!-- ================================================================== -->
 
                 <p class="font-typewriter text-lg text-gray-700 mb-8 max-w-2xl mx-auto italic leading-relaxed">
                     "Bir öğretmen öğrencisinin geleceği için ne kadar ileriye gidebilir?"<br><br>
@@ -170,18 +140,15 @@
                 </div>
             </div>
         </div>
-        <!-- Decorative subtle background element -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20rem] font-serif font-bold text-brand-900 opacity-5 select-none pointer-events-none z-0">
             98
         </div>
     </section>
 
-    <!-- Book Details Section -->
     <section id="book" class="py-20 border-t border-brand-100 bg-brand-50/50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col items-center fade-in">
                 
-                <!-- Book Synopsis & Stats -->
                 <div class="w-full text-center">
                     <div class="flex justify-center items-center gap-4 mb-8 text-sm font-typewriter text-brand-500">
                         <span class="bg-brand-100 px-3 py-1 rounded border border-brand-200">Devam Ediyor</span>
@@ -224,202 +191,122 @@
                             Bu kadardıı, acemi bir yazar olarak yorumlarınıza, fikirlerinize ve eleştirilerinize ihtiyacım var. Oylarınızı ve yorumlarınızı esirgemezseniz sevinirim, şimdiden iyi okumalarr🌸
                         </p>
                     </div>
-                    
-                    <div class="mt-8">
-                        <a href="https://www.wattpad.com/story/409064475-doksan-seki%CC%87z" target="_blank" class="inline-flex items-center gap-2 bg-[#ff500a] hover:bg-[#e64809] text-white font-bold py-2 px-6 rounded transition duration-300">
-                            <i class="fas fa-book"></i> Wattpad'de İncele
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Chapters Section -->
-    <section id="chapters" class="py-20 border-t border-brand-100">
+    <section id="chapters" class="py-20 border-t border-brand-100 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 fade-in">
                 <h2 class="font-serif text-3xl font-bold text-brand-900 mb-2">Bölüm Listesi</h2>
                 <div class="w-16 h-1 bg-brand-accent mx-auto mb-4"></div>
-                <p class="font-typewriter text-gray-600">Şu ana kadar yayınlanmış 14 bölüm.</p>
+                <p class="font-typewriter text-gray-600" id="chapter-count-text">Yükleniyor...</p>
             </div>
 
-            <!-- Chapters Container - easy to copy/paste new ones -->
-            <div class="bg-white/50 rounded shadow-sm border border-brand-100 p-2 sm:p-4 fade-in font-serif" id="chapter-list">
-                <!-- 
-                =================================================
-                BÖLÜM EKLEME ALANI
-                Yeni bir bölüm eklemek için aşağıdaki bir bloğu kopyalayıp
-                en üste yapıştırın ve adını/numarasını değiştirin.
-                onclick="openReader(Bölüm Numarası)" kısmına dikkat edin.
-                =================================================
-                -->
+            <!-- SADECE YAZARA GÖRÜNECEK YENİ BÖLÜM EKLEME BUTONU -->
+            <div id="admin-add-btn-container" class="hidden text-center mb-8">
+                <button onclick="openAddChapterModal()" class="bg-[#8b5a50] hover:bg-[#6c453d] text-white font-typewriter py-3 px-8 rounded shadow-lg transition duration-300">
+                    <i class="fas fa-plus mr-2"></i> Yeni Bölüm Ekle
+                </button>
+            </div>
 
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(14, 'Ondördüncü Bölüm')">
-                    <div>
-                        <h4 class="font-bold text-brand-900 text-lg">Bölüm 14</h4>
-                        <span class="text-xs font-typewriter text-gray-500">Son Güncelleme</span>
-                    </div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(13, 'Onüçüncü Bölüm')">
-                    <div>
-                        <h4 class="font-bold text-brand-900 text-lg">Bölüm 13</h4>
-                    </div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-                
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(12, 'Onikinci Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 12</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(11, 'Onbirinci Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 11</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(10, 'Onuncu Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 10</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(9, 'Dokuzuncu Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 9</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(8, 'Sekizinci Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 8</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(7, 'Yedinci Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 7</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(6, 'Altıncı Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 6</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(5, 'Beşinci Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 5</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(4, 'Dördüncü Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 4</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(3, 'Üçüncü Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 3</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(2, 'İkinci Bölüm')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 2</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <div class="chapter-item flex justify-between items-center p-4 cursor-pointer" onclick="openReader(1, 'Giriş / BİRİNCİ BÖLÜM • VELİ')">
-                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 1 • Veli</h4></div>
-                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
-                </div>
-
-                <!-- ================= BİTİŞ ================= -->
+            <!-- BÖLÜMLERİN OTOMATİK DİZİLECEĞİ ALAN -->
+            <div class="bg-white/50 rounded shadow-sm border border-brand-100 p-2 sm:p-4 fade-in font-serif flex flex-col gap-2" id="chapter-list">
+                <p class="text-center text-gray-500 py-4">Bölümler yükleniyor...</p>
             </div>
         </div>
     </section>
 
-    <!-- About Author Section -->
-    <section id="about" class="py-20 border-t border-brand-100 bg-brand-800 text-brand-50">
+    <section id="about" class="py-20 border-t border-brand-100 bg-brand-800 text-brand-50 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="font-typewriter text-2xl font-bold mb-4 tracking-widest lowercase">rowenaswriting</h2>
             <div class="w-12 h-[2px] bg-brand-accent mx-auto mb-8"></div>
 
-            <div class="flex justify-center gap-6">
+            <div class="flex justify-center gap-6 items-center">
                 <a href="https://www.wattpad.com/user/rowenaswriting" target="_blank" class="text-brand-100 hover:text-white transition duration-300 text-2xl" title="Wattpad">
                     <i class="fas fa-book"></i>
                 </a>
                 <a href="https://www.tiktok.com/@rowenastt" target="_blank" class="text-brand-100 hover:text-white transition duration-300 text-2xl" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                 </a>
+                <!-- GİZLİ YAZAR GİRİŞ BUTONU -->
+                <button onclick="openLoginModal()" class="text-brand-800 hover:text-brand-500 transition duration-300 text-sm ml-8 absolute right-8 bottom-8 opacity-30 hover:opacity-100" title="Yazar Girişi">
+                    <i class="fas fa-key"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Reading Modal (Simulates reading a chapter) -->
     <div id="reader-modal" class="fixed inset-0 z-[100] bg-brand-900/80 backdrop-blur-sm hidden flex items-center justify-center opacity-0 transition-opacity duration-300 p-2 sm:p-6">
         <div class="bg-[#f4f1ea] w-full max-w-3xl h-[95vh] sm:h-[90vh] rounded shadow-2xl flex flex-col transform scale-95 transition-transform duration-300" id="reader-content">
             
-            <!-- Modal Header -->
             <div class="flex justify-between items-center p-4 border-b border-brand-200/50 bg-white/30">
                 <div>
                     <h3 id="modal-chapter-title" class="font-serif text-xl sm:text-2xl font-bold text-brand-900">Bölüm Adı</h3>
                     <p class="text-xs text-brand-500 font-typewriter tracking-widest">DOKSAN SEKİZ</p>
                 </div>
                 <div class="flex gap-2">
-                    <!-- Text Size Controls -->
-                    <button onclick="changeFontSize(-1)" class="p-2 text-brand-500 hover:text-brand-900 transition" title="Yazı tipini küçült"><i class="fas fa-font text-sm"></i></button>
-                    <button onclick="changeFontSize(1)" class="p-2 text-brand-500 hover:text-brand-900 transition" title="Yazı tipini büyüt"><i class="fas fa-font text-lg"></i></button>
-                    <!-- Close button -->
-                    <button onclick="closeReader()" class="ml-2 p-2 text-brand-800 hover:text-brand-accent transition rounded">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
+                    <button onclick="changeFontSize(-1)" class="p-2 text-brand-500 hover:text-brand-900 transition"><i class="fas fa-font text-sm"></i></button>
+                    <button onclick="changeFontSize(1)" class="p-2 text-brand-500 hover:text-brand-900 transition"><i class="fas fa-font text-lg"></i></button>
+                    <button onclick="closeReader()" class="ml-2 p-2 text-brand-800 hover:text-brand-accent transition rounded"><i class="fas fa-times text-xl"></i></button>
                 </div>
             </div>
             
-            <!-- Modal Body (The Text Content & Comments) -->
             <div class="overflow-y-auto flex-1 custom-scrollbar p-6 sm:p-8" id="reader-scroll-area">
-                <!-- BÖLÜM METİNLERİ BURAYA YÜKLENECEK -->
-                <div id="reader-text" class="text-brand-900 font-serif text-lg leading-loose min-h-[50vh]">
-                    <!-- Javascript will inject chapter content here -->
-                </div>
-                
-                <!-- Divider for Comments -->
-                <div class="w-24 h-[1px] bg-brand-200 mx-auto my-12"></div>
-                
-                <!-- Comments Section -->
-                <div id="comments-container" class="max-w-2xl mx-auto pb-8">
-                    <h4 class="font-serif text-2xl font-bold text-brand-900 mb-6">Okur Yorumları</h4>
-                    
-                    <!-- Comment Input -->
-                    <div class="bg-brand-50/80 p-4 sm:p-6 rounded-lg border border-brand-100 mb-8 shadow-sm">
-                        <input type="text" id="comment-name" placeholder="İsminiz (İsteğe bağlı)" class="w-full mb-3 p-3 border border-brand-200 rounded font-sans text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 bg-white transition">
-                        <textarea id="comment-text" rows="3" placeholder="Bu bölüm hakkında ne düşünüyorsunuz?" class="w-full mb-3 p-3 border border-brand-200 rounded font-sans text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 bg-white transition resize-none"></textarea>
-                        <div class="flex justify-between items-center">
-                            <span id="comment-error" class="text-[#8b5a50] text-xs font-typewriter hidden">Lütfen bir yorum yazın.</span>
-                            <button id="submit-comment-btn" onclick="submitComment()" class="bg-brand-800 hover:bg-brand-900 text-brand-50 px-6 py-2 rounded text-sm font-typewriter transition ml-auto shadow-sm">Gönder</button>
-                        </div>
-                    </div>
-
-                    <!-- Comments List -->
-                    <div id="comment-list" class="space-y-4">
-                        <p class="text-sm text-gray-500 italic font-sans text-center">Yorumlar yükleniyor...</p>
-                    </div>
+                <div id="reader-text" class="text-brand-900 font-serif text-lg leading-loose min-h-[50vh] whitespace-pre-wrap">
+                    <!-- Metin buraya gelecek -->
                 </div>
             </div>
-            
         </div>
     </div>
 
-    <!-- Scripts -->
+    <div id="login-modal" class="fixed inset-0 z-[110] bg-brand-900/90 backdrop-blur-sm hidden flex items-center justify-center">
+        <div class="bg-brand-50 p-8 rounded-lg shadow-2xl max-w-md w-full mx-4 border-2 border-brand-100">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-serif text-2xl font-bold text-brand-900">Yazar Paneli Girişi</h3>
+                <button onclick="closeLoginModal()" class="text-gray-500 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <input type="email" id="admin-email" placeholder="E-posta adresin" class="w-full mb-4 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+            <input type="password" id="admin-password" placeholder="Şifren" class="w-full mb-6 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+            <p id="login-error" class="text-red-500 text-sm mb-4 hidden font-typewriter">Hatalı giriş!</p>
+            <button onclick="loginAdmin()" id="login-btn" class="w-full bg-brand-800 hover:bg-brand-900 text-white font-bold py-3 rounded transition">Giriş Yap</button>
+        </div>
+    </div>
+
+    <div id="add-chapter-modal" class="fixed inset-0 z-[110] bg-brand-900/90 backdrop-blur-sm hidden flex items-center justify-center">
+        <div class="bg-brand-50 p-6 sm:p-8 rounded-lg shadow-2xl max-w-4xl w-full mx-4 h-[90vh] flex flex-col border-2 border-brand-100">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-serif text-2xl font-bold text-brand-900" id="editor-title">Yeni Bölüm Ekle</h3>
+                <button onclick="closeAddChapterModal()" class="text-gray-500 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            
+            <input type="hidden" id="edit-chapter-id" value="">
+            
+            <div class="flex gap-4 mb-4">
+                <input type="number" id="chapter-number" placeholder="Bölüm No (Örn: 15)" class="w-1/3 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+                <input type="text" id="chapter-title" placeholder="Bölüm Adı (Örn: Onbeşinci Bölüm)" class="w-2/3 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+            </div>
+            
+            <!-- Yazı Editörü Alanı -->
+            <textarea id="chapter-content" placeholder="Wattpad'deki yazını buraya yapıştır..." class="w-full flex-1 p-4 border border-brand-200 rounded font-serif text-lg leading-loose focus:outline-none focus:border-brand-500 resize-none custom-scrollbar mb-4"></textarea>
+            
+            <p id="save-error" class="text-red-500 text-sm mb-4 hidden font-typewriter">Lütfen tüm alanları doldur!</p>
+            
+            <div class="flex justify-end gap-4">
+                <button onclick="closeAddChapterModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded transition">İptal</button>
+                <button onclick="saveChapter()" id="save-btn" class="bg-[#8b5a50] hover:bg-[#6c453d] text-white font-bold py-2 px-8 rounded transition shadow-md">Yayınla!</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                navbar.classList.add('shadow-md');
-            } else {
-                navbar.classList.remove('shadow-md');
-            }
+            if (window.scrollY > 10) navbar.classList.add('shadow-md');
+            else navbar.classList.remove('shadow-md');
         });
 
-        // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => menu.classList.toggle('hidden'));
@@ -427,7 +314,6 @@
             link.addEventListener('click', () => menu.classList.add('hidden'));
         });
 
-        // Intersection Observer for fade-in animations
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -438,2143 +324,242 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // ==========================================
-        // BÖLÜM İÇERİKLERİ (KOPYALA YAPIŞTIR ALANI)
-        // ==========================================
-        // Burası sizin metinlerinizi yapıştıracağınız alan.
-        // Her bölüm için chaptersData objesine bir numara ekleyin.
-        // Yazılarınızı <p> etiketleri içine veya `<br><br>` ile ayırarak yazabilirsiniz.
-        
-        const chaptersData = {
-            1: `
-                <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-brand-900 first-letter:mr-1 first-letter:float-left first-letter:font-serif">
-               21 Şubat 1998, Cuma
-
-
-
-
-
-
-Öğle güneşi soğuk kış havasına rağmen sınıfları aydınlatıyor, insanın içini aydınlatan o sahte sıcaklık ve aydınlık öğrencilerin rehavetine ve dersten kopup gitmesine sebep oluyordu. Bazısı pencereden dışarıya bakıyordu, rüzgarla hışırdayan ağaç yapraklarının sesiyle dalıp gitmişti. Bazısı duvar kenarındaki askılığa asılı olan montuna dayanmış her ne kadar beni dinliyor gibi görünse de uyumak üzereydi, bazısıysa masaya yaslanmış vaziyette anlattıklarıma dikkat vermişti.
-
-
-
-
-Bir an lafımı yarıda böldüm, sınıfta hızlıca göz gezdirdim yeniden. Duraksadığımı dahi fark etmeyen öğrencilerimin dersten koptuğunu anlayınca sesimi yükselterek: "E ben kendi kendime konuşuyorum resmen!" dedim.
-
-
-Duvar kenarında uyumak üzere olanlar sesimi yükseltmemle irkildi ve oturuşlarını düzelttiler, pencere kenarında oturup dışarıyı gözleyerek dalıp gidenlerse kafalarını bana çevirdiler zihinlerini daldıkları düşünce çukurundan çıkarıp.
-
-
-Normalde olsa kıyameti kopartır, uzun bir azar çeker ve sonra yerime oturup dersin son dakikasına kadar trip atardım. Bugün iyi günümde olduğumdan olacak, azarlamadım bu sefer; uzun uzun of çekerek yerime oturdum ve saatime baktım, 15 dakika falan vardı dersin bitmesine. Neticede Cuma günüydü bugün, bütün haftanın yorgunluğu yük olmuş binmişti herkesin sırtına, ben de dahil.
-
-
-Sınıfta çıt çıkmıyordu, herkes benim sessizliğimi fırtına öncesi sessizlik sanmış, buradan sonra ne olacağını bilir gibi o küçük çaplı kıyametin kopmasını bekliyordu. Fakat ben bu sefer büyük bir tepki göstermeden "Tamam serbestsiniz, bir dahaki derste de böyle olursanız bozuşuruz ama'' dedim sadece.
-
-Zil çalana kadar oyalanırken sınıf defterini önüme çektim, bugünün sayfasını açıp imzamı kontrol ettim, imzaladığımı görünce defteri kapatıp az önce olduğu yere geri ittirdim. Dirseğimi masaya dayadım, çenemi de elime koyarak öbür elimle pilot kalemimi masaya çarpmak suretiyle salladım can sıkıntısıyla.
-
-Serbest bırakmama rağmen mahcubiyetle beni izleyen öğrencilerime baktım ve "Ee daha daha nasılsınız?" diye sordum. Önce şaşkınlığa benzer bir tepkiyle birbirlerine baktılar, sonra hep bir ağızdan, tembihlenmişler gibi "İyiyiz!" dediler.
-
-
-Gülümsedim. "N'oldu, şaşırdınız mı kızmayınca?" diye şakayla karışık sordum. En arkada, orta sırada oturan Yiğit saçını karıştırırken "Valla ne yalan söyleyelim, şaşırdık hocam" dedi boşboğazlıkla. Patavatsızlıktan hoşlanmazdım, hele erkek öğrencilerin patavatsızlıklarından hiç hoşlanmazdım.
-
-
-"Niye ben kötü bir öğretmen miyim, sizi hep azarlıyor muyum?" dedim tek kaşımı kaldırarak.
-
-
-En ön sırada, tam karşımda oturan Aybüke gözlerini devirerek Yiğit'ten önce konuştu: "Hocam siz bakmayın ona, boşboğazın teki işte."
-
-
-Gülümsedim, gözüm Aybüke'de takılı kaldı. Bu yaşında olmasına rağmen bir bebek kadar şirin, çiçek gibi narin ve güzel bir kızdı. "Biz sizden gayet memnunuz hocam, Yiğit'in ne düşündüğünün bir önemi yok" diye ekledi. Ben teşekkür etmek için ağzımı açmışken Yiğit sözümü, sesini duyurmak için bağırarak kesti: "Yok hocam benim sizinle ne sıkıntım olacak, siz diğer hocaların yanında melek kalırsınız."
-
-
-"Kimin yanında mesela?"
-
-
-"Mehmet Hoca'nın yanında tabii. Hocam geçen gün bu koridorda nöbetçiydi, sınıfa geç girdim diye bir azarladı suratım sırılsıklam oldu, adam ağzından yağmur yağdırıyor ya resmen."
-
-
-Bütün sınıftan bir kahkaha yükseldi, ben de kendimi tutamamıştım ve gülüşümü gizlemek için dudaklarımı bastırdım. Gözlerimi belertip kızar gibi yaptım.
-
-
-"Çok ayıp Yiğit, Mehmet Hoca'na söyleyeceğim seni."
-
-
-Bütün sınıf kıkırdamaya başladı Yiğit'e bakarak. Yiğit abartılı bir rolle boynunu büktü. "Öyle olsun hocam." Bu mazlum rolü komiğime gitti, istemsizce gülümsedim yine.
-
-
-Bu huzurlu anımızı aniden okul bahçesinden gelen sesler bozmuştu. Herkes birden tüm dikkatini o yana verdi, ben de yanımdaki pencereden kafamı uzatıp baktım neler olup bitiyor diye. Bahçenin ortasında iki erkek öğrenci vardı, biri öbürünün üstüne çullanmış, yumruklarını gelişi güzel suratına savuruyordu. Sonra bir an diğeri zayıf anında yakaladı onu, sertçe yere ittirdi ve başını çarpmasını sağladı, acısından faydalanıp ayağıyla tekmeler savurdu vücuduna.
-
-
-
-
-Korkuyla iç çektim, sınıfa dönüp: "Siz sınıftan dışarı çıkmıyorsunuz" dedim ve koşar adım sınıftan çıktım. Sınıfın kapısını açtığımda yan sınıftan Kenan ve karşı sınıftan Halide Hoca sınıflarından çıkmış, neler olduğunu öğrenmeye çalışıyorlardı.
-
-
-"Hocam kavga çıkmış aşağıda," dedi Halide Hoca beni görünce.
-
-
-"Gördüm Hocam, ben inip bakayım, siz benim sınıfa da göz kulak olun çıkmasınlar dışarı" deyip aceleyle aşağıya indim.
-
-
-Bahçeye indiğimde çoktan iki öğrenciyi ayırmışlardı, Mehmet Hoca çocukları kulaklarından tutmuş, onları sertçe azarlıyordu. Her cümlesinde yanındaki çocuklardan birine bakıyor, en ufak ses çıkarmalarında rastgele vuruyordu vücutlarına. Ağzından tükürükler saçmak suretiyle, sinirden kızarmış suratıyla aralarından birine döndü: "Burası babanın çiftliği değil, anladın mı? Burası devletin okulu, burada böyle eşeklik yapacaksanız, adam akıllı durmayacaksanız defolur gidersiniz! Siz okuyun da adam olun diye çalışıp didinen babalarınıza yazık, sabah sizden önce uyanıp önünüze aş koyan ananıza yazık, önünüzdeki masayı altınızdaki sandalyeyi veren devlete yazık! Terbiyesizler, ahlaksızlar, had bilmezler!" diye soluğu kesilene kadar bağırdı.
-
-
-Bütün öğretmenler suspustu, beden dersi için bahçeye inen öğrencilerse uzaktan izliyor, aralarında fısır fısır konuşmak dışında pek ses çıkarmıyorlardı. Çocukların utançtan kızarmış suratlarına baktım, oysa ikisi de tertemiz, akıllı, edepli çocuklardı, daha önce hiç böyle bir vukuatlarını görmemiştim.
-
-Niye böyle olmuştu anlam veremiyordum, ne olmuştu da bu çocuklar etle tırnak gibiyken birden bu hâle gelmişlerdi? Kavga etmek, küsmek normaldi, lakin okulun ortasında hem eğitim hayatlarını hem canlarını tehlikeye atarak birbirlerine böylesine kudurmuş şekilde saldırmalarının sebebini ne kadar düşünsem de bulamıyordum.
-
-
-Mehmet Hoca'nın soluksuz azarını dinlerken başlarını utançtan yere eğmişlerdi, ne kendilerini savunuyorlardı ne de karşılık veriyorlardı. Bu işin içinde bir iş vardı, belki siyaset kavgasıydı, belki sadece bir gençlik hırsı, belki arkadaş belki de kız meselesiydi ve verilecek cezaya değil, aralarındaki meseleye odaklanmıştım. Ceza vermek kolaya kaçmaktı. Kolaya kaçmak istemiyordum, sorunu kökten çözmek istiyordum çünkü okuldan uzaklaştırmak bu iki çocuğu ıslah etmenin yolu değildi.
-
-
-Kötü dersleri yoktu, özellikle Ali zehir gibiydi. Sayısala kafası basıyordu öğretmenler odasında duyduğum kadarıyla, ayrıca muzip de olsa efendi, nerede ne söyleneceğini bilen bir çocuktu. Önce annesi sonra babası o küçükken vefat etmişti. Hem öğrencim olduğundan hem aynı mahallede oturduğumuzdan hakkında biraz bir şey biliyordum. Üvey annesi ve kardeşiyle yaşıyordu, kıt kanaat geçinen bir evde, okumak büyük lükstü. Biz ne kadar maddi destek sağlayacağımızı garanti etsek de zor ikna etmiştik kadını Ali'nin okumasına, o da haklıydı gerçi.
-
-Şimdi Ali'nin alacağı en ufak ceza bile başına kakılacaktı o evde, az çok tahmin edebiliyordum. İç çektim, en hafif cezayı almasını ve üvey annesinin bunu hiç öğrenmemesini diledim içimden.
-
-
-Müdür Fuat Bey okulun içinden neredeyse koşarak çıktı ve çocukları öfkeli adamın elinden kurtarmak için sakin bir şekilde yanlarına yaklaştı. "Mehmet hocam, ben gerisiyle ilgileneceğim. Siz şimdi dersinize dönün" dedi ve elini orta yaşlı öğretmenin omzuna koyup pat-patladı. Mehmet Hoca burnundan soluyarak gözlerini hızlı hızlı kırptı küçük bedenine sığdıramadığı öfkeyle, kafasını sallayıp Müdür Bey'i onayladıktan sonra okulun içine girdi hızlı adımlarla.
-
-Ben kaldım, zaten Müdür Bey de bana "git" dememişti. "Yürüyün odama" diye sert bir tonda emretti iki çocuğa, sonra bana dönüp "Sen de gel Güliz Hocam" dedi sesinin tonunu yumuşatmaya çalışarak.
-
-
-Biz ne kadar teneffüsten önce çocukları odaya götürmek ve meraklı gözleri uzak tutmak istesek de odaya girmemizin hemen ardından zilin çalmasıyla herkes müdürün odasına toplanmıştı, öğretmenler bile. Herkes bu dövüşün sebebini ölesiye merak ediyordu, odanın önü insan kaynıyordu.
-
-Müdür Fuat Bey kapıya doğru yürüdü, kapıyı eliyle kapatır gibi tutarken "Gidin buradan, bu koridorda tek bir öğrenci görürsem kötü olur!" diye bağırdı. Öğrencilere seslenir gibi yapıyordu ama öğretmenler de üstüne alınmıştı, kendi aralarında konuşarak aheste adımlarla dağıldı onlar da.
-
-
-Müdür Bey kapıyı kapattıktan sonra masanın önünde ayakta dikilen iki öğrenciye döndü öfkeyle. "Ne lan bu rezillik?"
-
-
-Cevap yoktu. "Ne duruyorsunuz mal gibi, konuşsanıza ne bu rezillik?" Yine başlarını kaldırmadılar, sessiz kaldılar. "Siz burayı dingonun ahırı mı sandınız lan, it herifler? Hem ders vakti sınıfta değilsiniz hem bahçenin ortasında it gibi dalaşıyorsunuz!"
-
-
-O sırada kendisine çay getiren hademenin kapıyı çalmasıyla Müdür Bey konuşmasını bölmek zorunda kaldı. Hademe içeri girmeye tereddüt etse de müdürün sessiz onayıyla çayı masaya bıraktı ve hızla odadan çıktı.
-
-
-"Şunlara bak, nankörler! Ben ikinizin velisi de sizi okuldan almasın diye ne kadar uğraştım lan! Suratıma bakın suratıma!"
-
-
-Bakmadılar. Müdür Fuat Bey'in kulaklarından ateş çıkıyordu adeta, bağırırken zaten oldukça gür olan sesi sinirle iyice gürleşmişti. Hışımla ceketini çıkarıp koltuğun üzerine bıraktı, odanın içinde voltalar atmaya başladı.
-
-
-"Derdiniz ne oğlum sizin? Manyak mısınız okulun ortasında dövüşüyorsunuz, zorunuz ne? Söyleyin biz de bilelim madem!" Burnundan soluyordu Fuat Bey, kravatını gevşetti.
-
-
-"Güliz Hocam hemen velilerini ara, gelsinler. Kayıt defterinde vardır numaraları."
-
-
-"Tamam," dedim kısık bir sesle, masanın hemen yanındaki dolaba yöneldim ve defterlerin arasında kayıt defterini aradım. Nihayet bulduğumda defteri çıkarıp masanın üzerine koydum, bir yandan gözüm kulağım hâlâ öğrencileri azarlayan Fuat Hoca'daydı. Sinirden kıpkırmızı olmuştu adam, bu iki asalak okusun diye ne kadar uğraştığını en iyi ben bilirdim. Adamın bir yalvarmadığı kalmıştı ailelerine, kim yapardı ki böyle bir şeyi?
-
-
-Defteri karıştırdım, sırayla dizilen isimleri gözümle takip ederek buldum birinin numarasını. Nihat'ın babasının numarasıydı, Ali'nin sırası daha önceydi ama onu sonraya bırakmıştım sanki erteleyince hiç aramayacakmışız gibi. Ben numarayı tuşlarken Nihat başını kaldırmadan mırıldandı: "Benim babama söyleseniz de umursamaz, Allah'tan arıyor zaten okuldan almak için."
-
-
-Fuat Bey çocuğun dediklerini duyduktan sonra olduğu yerde kaldı, çocuğa baktı, eğdiği başında yüzünü seçmeye çalıştı ve sıkıntıyla arkasını dönüp voltalarına devam etti. Aynı şekilde benim de içim burkulmuştu ama kendi hatalarının cezasını çekmek zorunda oldukları için elimiz kolumuz bağlıydı. Telefon biraz çaldıktan sonra açıldı, "Alo?" diye bir kadın sesi gelmişti. Bir nebze olsun rahatlamıştım, muhtemelen annesiydi bu açan. "Alo iyi günler, Nihat Kaya'nın velisiyle mi görüşüyorum?"
-
-
-Kadının sesinde bir endişe belirdi hemen. "Evet benim, niçin aramıştınız? Bir şey mi oldu?"
-
-
-"Nihat okulda bir kavgaya karıştı, okula gelmeniz gerekiyor."
-
-
-Odadaki herkes pür dikkat beni dinliyordu. Kadın cevap vermedi, telefonda kısa bir sessizlik oldu. Gözlerim Ali'ye takıldı, başı eğikti, parmaklarıyla oynayarak düşünüyordu kara kara. Mümkün olsa hiç aramazdım, çağırmazdım velisini. Onu bu hâlde görünce ciğerim sızlıyordu neredeyse.
-
-
-"Hemen şimdi mi?" diye ses geldi telefondan, düşüncelerim dağıldı. "Mümkünse evet" dedim kısaca.
-
-
-"Peki iyi günler, ben geliyorum hemen." Ve telefon kapandı. Ben de ahizeyi yerine koydum.
-
-
-Fuat Hoca kravatını gevşeterek masanın karşısındaki deri koltuğa oturdu.
-
-
-"Tam da zamanında kavga edeceğiniz tuttu!"
-
-
-Bugünkü toplantıyı kastetmişti, gerçekten de kötü denk gelmişti bu kavga olayı. "Güliz Hocam gerisiyle sen ilgilen, velileriyle görüş. Benim toplantıya gitmem gerek, önemsiz olsa gitmezdim ama İlçe Milli Eğitim toplantısı bu."
-
-
-"Tamam Hocam siz merak etmeyin, hallederim ben," dedim güven vermeye çalışır gibi.
-
-
-Biraz zaman sonra eşyalarını toparladı, koltuğun üzerine koyduğu ceketini ve masanın üzerindeki el çantasını aldıktan sonra bana "Kolay gelsin" diyerek çıktı odadan.
-
-
-O çıktıktan sonra, karşımda dikilmeye devam eden iki gence baktım uzun uzun. Onlar da farkındaydı baktığımın, ne kadar kızgın olduğumun da farkındalardı. Ajitasyon yapmayacaktım, söyleyeceğim her şeyi Müdür Bey söylemişti zaten. Böyle bir süre kaldık. Ali'nin üvey annesini aramaya elim gitmiyordu hâlâ. Ben böyle tereddüt içinde kalmışken nihayet konuştu Ali: "Hocam ben başka birini arasam, onu çağırsam?"
-
-
-"Kimi arayacaksın?" dedim merakla, içten içe mutlu da olmuştum, arayabileceği başka biri vardı demek.
-
-
-"Bir ağabeyim, o görüşse olmaz mı? Yakın akrabam değil ama sadece o ilgilenir."
-
-
-Tereddüt ettim başta, olur muydu ki öyle? Dedesi, nenesi falan olsaydı tamamdı ama...
-
-
-"Tamam," dedim birden. "Gel yaz numarasını, arayayım."
-
-
-Çekinerek geldi yanıma, masanın üzerindeki bloknot kağıtlardan bir tane alıp önüne koydum ve kalemlikteki kurşun kalemlerden birini uzattım. Hatırlamakta zorlandı biraz, düşündü bir süre. Sonra hatırladı galiba, hızlıca numarayı yazıp bana uzattı.
-
-
-Kâğıdı kendime çevirdim, üstünde yazan numaraya baktım. Ahizeyi tekrar kaldırıp kulağıma götürdüm, numarayı tuşladım çokça kontrol ederek. Biraz çaldı telefon, genç bir erkek sesi karşıladı beni: "Alo?"
-
-
-"Alo iyi günler, ben Ali Gündoğan'ın öğretmeniyim. Kendisi bugün bir olaya karıştı, yakını olarak sizi aramamızı söyledi. Gelebilir misiniz?"
-
-
-"Olur gelirim de n'apmış Ali?" dedi rahat bir şekilde, sanki çok olağan bir şeymiş gibi. Sesi bir an için tanıdık gelmişti ama çok üstünde durmadım.
-
-
-"Kavga etmiş, geldiğinizde detayını konuşuruz."
-
-
-"Davutpaşa Lisesi miydi?"
-
-
-"Evet."
-
-
-"Tamam geliyorum," dedikten sonra telefonu yüzüme kapattı. Ahizeyi yerine koydum. Ali'yle Nihat'a baktım, el pençe divan durmuş dikiliyorlardı ayakta. Elimle arkalarındaki deri koltuğu işaret ettim, "Oturun," dedim. Çekinerek, yavaşça oturdular. Ben de karşılarındaki, masanın önünde karşılıklı duran deri koltuklardan birine oturdum koltuğu onlara doğru çevirip. Arkama yaslanıp bacak bacak üstüne attım,
-
-
-"Anlatmayacak mısınız ne olduğunu?"
-
-
-"Anlatacak bir şey yok hocam. Eşeklik ettik dövüştük işte," dedi Ali.
-
-
-"Niye dövüştünüz onu anlatın."
-
-
-"Önemli bir mesele değil."
-
-
-"Önemli değilse niye dövüştünüz?"
-
-
-"Küfrettik birbirimize, sonra sinirlendik yumruklaşmaya başladık. O kadar, başka bir şey yok," dedi Nihat gözümün içine bakmadan, bir çırpıda.
-
-
-"Yalan söylüyorsun."
-
-
-"Niye yalan söyleyeyim hocam? Dediğim gibi, celallendik birden."
-
-
-"Nihat oradan bakınca salağa mı benziyorum oğlum?" dedim kaşlarımı çatarak. "Ben dedikodu olsun diye sormuyorum niye kavga ettiğinizi. Varsa bir sorununuz çözelim diye soruyorum."
-
-
-"Nihat sorun çözmekten anlamaz hocam. O ancak dayaktan anlar, boşverin o yüzden," dedi Ali açıksözlülükle. Belli ki açık etmek istiyordu meseleyi. Ama barışçıl bir hisle değil, hırsla, haklı olduğunu kabul ettirme çabasıyla.
-
-
-"Kes lan sesini!" dedi Nihat sesini yükseltmeden.
-
-
-"Nihat sus," dedim nerede olduğunu hatırlatmak için. "Ne sorununuz vardı da çözemediniz?"
-
-
-Ali önce derin bir nefes aldı, bu iç çekiş bir düşünme ve karar verme süreciydi.
-
-
-"Hocam Çağan'ı biliyorsunuz, arkadaşım. Onunla siyasi meselelerden dolayı kavga etti Nihat. Ben aralarına girmedim, sonuçta ikisi de arkadaşım. Nihat muhabbetin ortasında bana laf çarpmaya çalışınca kavga çıktı o kadar."
-
-
-"Yalan yanlış anlatma lan, sen küfretmesen kavgalık bir şey yoktu."
-
-
-"Şş! Susun be, başlamayın yine," dedikten sonra Ali'ye döndüm. "Sizin yaşınız kaç başınız kaç siyaset tartışıyorsunuz, hem de okulun ortasında? Ayrıca sizin ne işiniz vardı ders saatinde bahçede?"
-
-
-"Dersimiz boştu."
-
-
-"Dersinizin boş olması bahçeye çıkabileceğiniz anlamına mı geliyor, kimden izin aldınız?"
-
-
-Sesleri çıkmadı. Demek kimseden izin almamışlardı.
-
-
-Kapı tık-tıklandı, cevap beklemeden kapı açıldı. Ali'nin velisi olarak gelen genç adam kafasını sokup: "Girebilir miyim?" diye sordu. Yüzünü görünce aklımda parçalar yerine oturmuştu sanki, Erdem'di bu. Mahalleden tanıyordum, babamla sürekli görüşüyorlardı. Biz çok samimi değildik, zaten yıllardır Almanya'da olduğu için uzun süredir babamla da görüşmüyordu ama hatırlamıştım yine de. Oturuşumu düzelttim, başımı aşağı yukarı hafifçe sallayarak "Gir tabii," dedim ve elimle içeri buyur ettim, yüzümde istemsiz bir tebessüm oluşmuştu. O da beni tanımıştı belli ki ama ikimiz de bahsini etmedik. Karşımdaki deri ziyaretçi koltuğunu işaret ederek "Buyur," dedim, oturdu.
-
-
-Aradan bir dakika geçti ya da geçmedi, kapı tık-tıklanıp açıldı yine. Bu sefer Tuana'ydı, belli ki bugün bahçede nöbetçi olduğu için onun da ifadesini almam gerekecekti. Uzun sürmezdi zaten, olay ders saatinde olmuştu ve Tuana şahit olmamıştı bile.
-
-
-Ayaklandım, müdürün koltuğuna yöneldim. Tuana'ya da kalktığım koltuğu gösterdim oturması için. Erdem'in karşısına oturdu, yüzüne minik bir tebessüm yerleştirdi. Erdem'i süzdü bir süre, oysa Erdem hiç oralı değildi. Yüzünü çevirmiş odayı inceliyordu. "Tuana ben, müzik öğretmeniyim" deyip elini uzattı tokalaşmak için. Halbuki tanışmasına da gerek yoktu, onun işi değildi çünkü öğrencilerin velileriyle görüşmek. Belli ki tamamen kendi isteğiyle, bilerek uzatmıştı elini.
-
-
-Erdem Tuana'nın elini gördü, yüzüne bile bakmadan bakışlarını kaçırdı yine. "Erdem, memnun oldum," deyip elini göğsüne götürdü. Tuana'nın eli havada kalmıştı.
-
-
-Çok komiğime gitmişti Tuana'nın öylece kalışı, dudaklarımı ısırdım gülmemek için. Arkada oturan Ali'yle göz göze geldik, onun da dudakları kıvrılmıştı ve kendini zor tutuyordu gülmemek için. Nihat da aynı şekilde elini dudaklarına götürmüş, kimseyle göz göze gelmemeye çalışıyordu.
-
-
-Bu gülünç sessizliği bozmak için Erdem'e dönüp "Biz benim odamda görüşelim," dedim. "Tuana sen bunların başında durur musun? Dışarı çıkmasınlar."
-
-Tuana sadece başını sallayarak onayladı.
-
-
-
-
-Erdem'le odadan çıkıp koridorda odama kadar yürüdük, kapının önüne geldik. Bu esnada hiç konuşmadık, birbirimizi tanıdığımızı bile belli etmedik. O klasik "Nasıl gidiyor?" sorusunu bile ortaya atmadık muhabbet açmak için, merak etsem de ilk adımı ben atmak istemiyordum. Kapının kolunu bir-iki defa zorladım, açılmadı. O da yanı başımda sırtını duvara dayamış bekliyordu. Gözlerini koridorda, panolarda, sınıfların kapılarında gezdirdi. O da bu lisede okumuştu, öğrencilik yıllarını geçirdiği okula şimdi bir veli olarak gelmişti.
-
-
-Karşıdaki nöbetçi masasında oturup önündeki deftere yazı yazan nöbetçi öğrenciye seslendim, kız koşarak yanımıza geldi. "Canım hademe abladan anahtarları ister misin?" Sadece başını salladı ve koşarak aşağıya indi. Arkasından "Koşma düşersin!" diye bağırdım, merdiven inerken ayakları birbirine dolanınca telaş yapmıştım. Erdem burnundan nefes vererek kısaca güldü bu anaç tavrıma, bir an bana çevirdi yüzünü, sonra yine gözlerini koridora çevirdi. Bu sefer koridoru incelemek için değil göz göze gelmemek için çevirmişti.
-
-
-Biraz sonra nöbetçi kız elinde anahtarları şıngırdatarak geri geldi, nefes nefese elime tutuşturdu. Gülümseyip teşekkür ettikten sonra kapıyı açıp içeriye girdim, Erdem de peşimden girdi odaya. Masanın arkasındaki siyah deri koltuğa otururken ona da masanın öbür yanındaki koltuğa oturması için elimle koltuğu işaret ettim.
-
-
-"Evet, mesele ne?" dedi sabırsızlıkla. Benim kim olduğumu, yetkimi bile sormamıştı, benimle değil de konuyla ilgilendiğini belirtmeye çalışır gibiydi.
-
-
-"Mesele Ali ve Nihat'ın ders saatinde bahçede olması ve yumruklaşması, söyledim zaten."
-
-
-"Tamam onu anladım, ne ceza alacaklar?"
-
-
-"Bilmiyorum, uzaklaştırma alırlar herhalde."
-
-
-Önüne dönüp dirseğini masaya dayadığı sağ eliyle çenesindeki belli belirsiz kirli sakalını sıvazladı ve düşündü bir süre.
-
-
-"Valla duygu sömürüsü yapmayacağım, yapmışlar bir eşeklik. Ama Ali'nin durumunu biliyorsundur az çok. Nihat'ın babası, Fırat Ağabey de zor ikna oldu okumasına, ilk fırsatta alır okuldan."
-
-
-"Evet biliyorum, o yüzden Ali'nin üvey annesini değil de seni aradık zaten. Belki okumasını istemez, eve ekmek getirmesini ister diye," dedim ama son lafımı şaşkınlıkla böldü.
-
-
-"Ne evi ne ekmek getirmesi? Ali artık o kadınla yaşamıyor ki."
-
-
-"Ne?" dedim şaşkınlıkla, gözlerim açıldı, başım merakla öne eğildi.
-
-
-"Sen bilmiyorsun herhalde, Ali bayadır o kadınla yaşamıyor. Sadece birkaç ay kaldı o evde."
-
-
-"E nerede kalıyor o zaman?" dedim hayretle. "Birkaç ay kaldı" dediğine göre Ali daha 9.sınıftayken o evden ayrılmıştı, 14 yaşında nereye giderdi, nerede kalırdı ki?
-
-
-"O uzun hikâye, boşver şimdi. Nihat'ın ailesiyle görüştünüz mü?"
-
-
-"Yok görüşmedim, gelmediler daha," diye cevap verdim, Ali'nin özelini karıştırmak istemiyordum ama çok merak etmiştim, demek çocuk bunca zaman evinde bile kalmamış, belki sokakta kaldığı zamanlar olmuştu ve hiçbirimizin bundan haberi olmamıştı.
-
-
-"Güzel, önce ben konuşayım Fırat Ağabey'le."
-
-
-"Senin lafını önemsiyor herhalde."
-
-
-"Ben üniversite mezunuyum diye mevzu bahis okumak olunca benim fikrim kıymete biniyor. Bakalım, belki dinler beni."
-
-
-"E ben okumadım mı üniversite?" dedim tek kaşımı kaldırarak.
-
-
-Dudakları kıvrıldı hafifçe, burnundan nefes vererek güldü.
-
-
-"Estağfirullah, seni de dinlerler tabii ama sen öğretmenisin sonuçta, ne olursa olsun öğrencinin okumasını istersin. Bir de en başta ben ikna etmiştim Nihat'ı okutmaya, belki yine ederim."
-
-
-"Şaka yapıyorum canım," dedim gerdiğim ortamı yumuşatmak için, o da zoraki bir şekilde gülümsedi.
-
-
-Sessiz kaldık bir süre, sanki hayatımızda ilk defa bir insanla iletişim kuruyormuşuz gibi ne söyleyeceğimizi bilemiyorduk. Aramızdaki resmiyet perdesini kaldırmalı mıydık, ya da bunu ilk kim yapacaktı, onu da bilememiştik. Hâl hatır sormasam ayıp olur muydu? O sormamıştı, bence ben de sormamalıydım.
-
-
-"Müdür Bey birazdan gelir ama bence onu beklemene gerek yok, gelmen gerekirse daha sonra çağırırız zaten. Yalnız niye tartıştıklarını söylemediler hâlâ, Nuh diyor peygamber demiyor ikisi de. Onun için de senin yardım etmen gerekecek."
-
-
-"Ben tahmin ediyorum az çok," dedi, eli çenesindeydi yine. Parmaklarıyla çenesinin ucunu kaşırken konuşmaya devam etti, gözü dalmış gibi karşıya bakıyordu ve yine yüzüme bakmıyordu. "Siyaset kavgası, ondan söylemeye utanıyorlardır."
-
-
-"Sen bence olayın iç yüzünü de biliyorsun" dedim açık sözlülükle.
-
-
-"Bilmiyorum, tahmin yürütüyorum. Şu Çağan denen çocuk, onun yüzünden kavga ediyorlardı zaten sürekli."
-
-
-Sustum devam etsin diye, etmedi. "Ee?" diye dile geldim heyecanla konuşmasını beklerken.
-
-
-
-
-"Ali'nin solcu fikirlerinden az çok haberin vardır. Bir şey demiyorum çocuğa, çocuğun babası hapiste vefat etti. Uzun zamandır siyaset kavgasına karışmıyordu ama, eskisi gibi sert çıkışları yoktu. O Çağan mıdır nedir, onunla tanıştığından beri eskisi gibi asi, fevri davranıyor."
-
-
-"Çağan'dan bana da bahsettiler, çocuğu da tanıyorum ama alaka kuramıyorum."
-
-
-"Neyle alaka kuramıyorsun?"
-
-
-"Siyasetle, Nihat'la. Ali hiç öyle bir çocuk değil."
-
-
-"Sen burada yenisin herhalde, Ali babası öldüğü vakit az sorun yaşamadı okulda."
-
-
-"Tamam biliyorum ama duruldu sonra, hem Ali efendi çocuktur."
-
-
-"Damarına basıldıysa coşmuştur yine."
-
-
-"Nihat mı damarına bastı diyorsun?"
-
-
-"Muhtemelen öyle, sana ne dediler?"
-
-
-"Ali Nihat'a küfretmiş, Nihat da ona saldırmış falan, bir şeyler... Kavganın sebebinden çok bahsetmediler, Çağan'la Nihat kavga etmiş Ali de aralarında kalmış."
-
-
-"Anladım," dedi hiç uzatmadan. Yeniden bir suskunluk oldu. Genç adam arkadaki tabloları incelemeye başlayınca ben de koltuğumu çevirip o tarafa baktım.
-
-
-"La Belle Dame Sans Merci" dedi Erdem aniden. "Tablonun adı buydu herhalde."
-
-
-Dudağımı büktüm.
-
-
-"Bilmiyorum ki, güzel durduğu için aldım sadece."
-
-
-"Nası yani, hikâyesini bilmiyor musun?"
-
-
-"Yok, bilmiyorum."
-
-
-"Adam çayırda çok güzel bir peri kızı görüyor, büyüleniyor. Kadın da güzel ama merhametsiz, işte güya adamı kendine âşık ettikten sonra adamı kendinden geçmiş hâlde bırakıp gidiyor. Saçma sapan bi' aşk hikâyesi, ben de bir şiirde görmüştüm, ondan merak edip araştırmıştım."
-
-
-Gülümseyerek neyi kastettiğini belirtir gibi bu sözleri tamamladım: "İsmet Özel, Savaş Bitti."
-
-
-Gülümseyerek onayladı. "Evet, edebiyatçı mısın?"
-
-
-Şaşırdım bir an, bilmiyor muydu mezun olduğum bölümü? Olabilirdi, zaten aradan uzun zaman geçmişti, okuduğum bölümü aklında tutacak hâli yoktu. Başımı sallayıp gözlerimi sıkıca kapatarak onayladım.
-
-
-"Sen?"
-
-
-Biliyordum aslında, mühendisti. Ne babam ne Çağdaş Eniştem bu çocuğun mesleğini ve Almanya'ya gidişini hiç unutturmuyorlardı, hem yüzüne hem arkasından sürekli bunu konuşuyorlardı.
-
-
-"Mühendisim."
-
-
-"Vay be" der gibi dudağımı büzerek başımı salladım yalandan.
-
-
-"Ne mühendisi?"
-
-
-"Makine."
-
-
-"Demek Ali'nin ilham kaynağı sensin."
-
-
-"Estağfurullah, daha küçük her gördüğüne heves ediyor işte," dedi başını eğip gülümserken.
-
-
-
-
-Birden kapı tık-tıklandı, bir kadın başını içeriye doğru eğerek sordu: "Girebilir miyiz hocam?"
-
-
-
-
-Başımla onaylayarak içeri buyur ettim.
-
-
-
-
-
-
-
-
-
-
-
-
-✦
-
-
-
-
-
-
-
-
-
-
-Okuldan çıktıktan sonra Kenan'la eve kadar yürüdük. Kenan meslektaşım, coğrafya öğretmeniydi. Bir süredir her akşam benimle mahalleye kadar eşlik ettikten sonra Arnavutköy'deki evine gidiyordu. Bana karşı olan hislerinin farkındaydım, yeterince soğuk davrandığımı ve ümit vermediğimi düşünüyordum ama belli ki hâlâ olmadık hisler besliyordu bana. Kalbini kırmak istemediğimden farkında olsam da açık açık söylemiyordum yüzüne, ''Umutlanma'' diye. Yine mahallenin başına gelince ''Sen git artık,'' dedim, ''Yanlış anlaşılmayalım.''
-
-
-''İyi tamam, iyi akşamlar sana.''
-
-
-''Sana da,'' deyip kaçar gibi döndüm arkamı. Arkadaş olarak çok iyi bir insandı, sempatikti, eğlenceliydi ama ben ona karşı içimde onunki gibi hisler beslemiyordum. Reddedersem arkadaşlığımız bozulur diye korktuğumdan konusunu da açamıyor, onun cesaret edip içindekileri açık açık söylemesini bekliyordum uzun zamandır.
-
-
-Karşı kaldırımda kuzenim Turgut'u görünce ismini seslenip beni görsün diye elimi kaldırdım. Beni görünce yanıma geldi, kolunu omzuma atıp ''N'aber?'' diye sordu. "İyi, senden?" dedim, mahallenin eğimli yolunda yürümeye devam ettik konuşurken.
-
-
-''İyi şükür, ben de size geliyordum tam.''
-
-
-''Geç kalmıştın, gelmiyordun bayadır,'' diyerek iğneledim daha dün akşam geldiğini hatırlatarak.
-
-
-''Aşk olsun, istemiyor musun gelmemi?''
-
-
-''Şaka yaptım ya!'' diyip omzuna vurdum hafifçe.
-
-
-"Bugün misafiriniz var, onu görmeye geliyorum bu sefer. Hayret ki Ertuğrul Ağabey bu sefer kendi evine çağırıyor, önceden sizde toplanmazdık çok."
-
-
-"Nasıl yani, kimmiş o misafir?"
-
-
-"Gelince görürsün, sürprizi kaçmasın," dedi Turgut bıyık altından gülerek.
-
-
-"Ne sürprizi be? Babamın misafirinin bana ne sürprizi olacakmış," dedim omuz silkerek. Altından bir planın çıkmamasını umuyordum, hele bir ihtimal vardı ki aklıma getirmeye dahi çekiniyordum.
-
-
-"Merak etme görücü gelmeyecekler sana," diye aklımdaki o kuytu köşeye attığım ihtimali pat diye söyleyiverdi.
-
-
-"Sanki bana zorla görücü getirseniz kabul edeceğim de!"
-
-
-"Tamam canım tamam, kızma. Dedim ya yok görücü falan, zaten Ertuğrul Ağabey seni evlendirmek istemiyor gibi hiç."
-
-
-"İyi ne güzel işte, ben de istemiyorum zaten evlenmek."
-
-
-"Allah Allah, niyeymiş o?"
-
-
-"Çocuklarla yeterince uğraştım bence, çocuk yapmak için evlenip de başımı yakmaya hiç gerek yok."
-
-
-"İnsanın kendi çocuğu gibisi olur mu? Hem insan illa çocuk için evlenmez ki."
-
-
-"Ya başka ne için evlenir?"
-
-
-"Ne için evlenecek, sevdiği kişiyle hayatını birleştirmek için evlenir."
-
-
-"Beni evliliğe sürükleyebilecek adam daha anasının karnından doğmadı," dedim gülerek.
-
-
-"Büyük konuşuyorsun, âşık olursan görürüm ben seni."
-
-
-"Aşk diye bir şey olmadığı için muhtemelen görmezsin."
-
-
-"Nah yok, göreceğim kızım ben seni."
-
-
-"Terbiyesiz," diyip kaşlarımı çattım şakayla karışık.
-
-
-Kapının önünde durduk, hava o kadar soğuktu ki ağzımızdan buhar çıkıyordu. Binaya girdik, sessizce merdivenleri çıktık.
-
-
-Kapıyı annem açtı, elleri pis olduğu için kapıyı açık bıraktı ve "Hoşgeldiniz" dedikten sonra mutfağa döndü. Montlarımızı astıktan sonra salona girdik, babam pür dikkat maç izliyordu. Turgut haftada en az 4 akşam bizde olduğu için artık evden biri gibi karşılanıyordu.
-
-
-Turgut hemen koltuğa kuruldu. Şekerspor-Trabzonspor maçı vardı bugün, maç faslı bitince ancak başlardı muhabbetleri. İkisi de televizyona dalmış, maçı izliyorlardı. Babam koyu bir Trabzonspor taraftarıydı, zaten Trabzonlu olunca otomatik yükleniyordu bu özellik. Karşılarındaki kanepeye bıraktım kendimi, bugün iki kat daha fazla yorulmuştum. Müdür yardımcısının yokluğunda bütün yük bana kalmıştı, öyle ki normalden geç çıkmıştım okuldan.
-
-
-Maçın ilk yarısı bitmişti, babam ancak devre arasında eve geldiğimizin farkına varmıştı sanki. "Ee, n'aptınız bugün?" Diye sordu babam muhabbeti başlatmak için.
-
-
-"Valla ben bugün hiçbir şey yapmadım enişte, akşama kadar dükkânda oturdum boş boş," dedi Turgut arkasına yaslanarak. Babam Turgut'un dediğine güldükten sonra bana döndü, çenesini bana doğru hafifçe kaldırıp beni işaret ederek "Sen?" Diye sordu. "Hiç sorma," dedim. "Tüm gün öğrencilere ve velilerine laf anlatmaktan dilimde tüy bitti. İki tane öğrenci bugün bahçede kavga etmiş yumruk yumruğa. Onların ağzından laf almaya çalış, velilerini çağır onlarla görüş derken mecalim kalmadı bugün."
-
-
-"Sen niye kabul ettin ki bu müdür yardımcılığı işini, başka adam mı yoktu," dedi Turgut kravatını gevşetip arkasına yaslanırken.
-
-
-"Kimse kabul etmedi bana kaldı, ben de zaten 4 ay vekaleten yapacağım diye kabul ettim."
-
-
-"Ee yapacak bir şey yok, kendin kaşınmışsın."
-
-
-Dudaklarımı birbirine bastırıp kaşlarımı kaldırdım, cevap vermedim. Annem başındaki tülbentin uçlarını tepesine atarak salona geldi.
-
-
-"Hoş geldin oğlum," dedi Turgut'a dönüp, "Annenler nasıl?"
-
-
-"Nasıl olsunlar teyze, selamları var."
-
-
-"Aleyküm selam," dedi, oturmadan yine koridora yönelerek "Keke bi' bakayım da öyle oturayım," diye mırıldandı.
-
-
-"Baba senin misafirin gelecekmiş, kim bu misafir?" diyerek araya girdim merakla, bu soruyu sormak için doğru anı bekliyordum uzun zamandır.
-
-
-"Boşver ya hatırlamazsın sen," diye geçiştirdi babam. Turgut babamın böyle geçiştirmesine şaşırmış gibiydi. "Enişte bu hatırlamıyor mu Erdem'i?"
-
-
-Hatırlıyorum, sizden bile önce görüştük, diyemedim tabii. Aptal rolü yaparak bir babama bir Turgut'a baktım.
-
-
-"Ne bileyim, hatırlıyor musun sen Erdem'i?" dedi babam bana dönerek. Hatırlarsam çok hoşnut olmazdı, çok kıskançtı babam. Yalandan hatırlamıyormuş gibi yaptım.
-
-"Yok, hatırlamıyorum. Kim ki?"
-
-
-"Kızım hiç benim yanımda da mı görmedin? Götle don gibiydik," dedi Turgut.
-
-
-"Hee tamam hatırladım, hani şu dilinizden düşürmediğiniz mühendis çocuk, o mu?" dedim yalancı bir aydınlanmayla.
-
-
-"Heh ya, nasıl hatırlamazsın Erdem'i hayret ediyorum!" dedi Turgut, hakikaten de Erdem'i unutmak çok zordu bizim evde.
-
-
-"Yav hatırlamamış işte, abartma sen de. Sanki sürekli görüşüyorlardı," dedi babam huysuzlanarak.
-
-
-"Tamam da enişte ondan önce ne kadar yakındık biz, Erdem gelip gidiyordu sürekli. Gerçi sen eve benim dışımda erkek sokmuyordun ondandır. Süt kardeş olmasak ben bile göremezdim Güliz'i herhalde."
-
-
-Babam Turgut'un bu dediğine uzun uzun güldü.
-
-"Abartma lan, kuzenin o senin."
-
-
-"Allah'tan kuzenim. Utanmasan kapıya x-ray cihazı koyacaksın."
-
-
-Sahi, babam normal şartlarda akranım olan yabancı bir erkeği eve sokmazdı. Yoksa bu, Turgut ne kadar yalanlasa da görücü gibi bir şey miydi? Bekleyip görecektik.
-
-
-"Dalga geçme eşek sıpası, kız babası olursan görürüz seni de."
-
-
-"Ay inşallah," dedi Turgut ellerini birleştirerek, çocuk gibi.
-
-
-Babam Turgut'un bu hâline yine bir kahkaha patlattı. Şaklabanın önde gideniydi Turgut, babamın sert mizacına rağmen onu güldürebilen belki tek kişiydi. Bir yanlış yapsa ya da babamdan bir isteği olsa, ağzından girip burnundan çıkar gönlünü alırdı.
-
-
-O sırada kapı çaldı. Annem koridora yürürken babama seslendi: "Misafirin mi vardı Ertuğrul?"
-
-
-"Nevin dedim ya Erdem gelecek diye."
-
-
-"Aman ne bileyim akıl mı kaldı bende!"
-
-
-Kapı açıldı. Babama baktım, bana "Sen odana git," diyecek mi diye. Demedi, hatta bu bakışımdan bir anlam bile çıkarmadı. Korkmaya başlamıştım, aklıma gelen başıma mı geliyordu yoksa? Koridordan annemle Erdem'in sesi geliyordu: "Hoş geldin oğlum."
-
-
-"Hoş bulduk Nevin Abla."
-
-
-"Ver ceketini bana, sen geç içeri," dedi annem samimi bir şekilde. Ne yapacağımı bilemedim yine, ayaklanıp salona gelmesini beklesem olmazdı. Aslında o en başında beni tanımasına rağmen hiç tanımamış gibi davranmasaydı böyle olmayacaktı, samimiyetin dozunu ayarlamaya çalışırken stres oluyordum. Elimi kolumu nereye koyacağımı bilemedim bir an. Salona girdi, babamla Turgut ayaklandı, bense oturduğum yerde kaldım kollarımı bağlamış şekilde.
-
-
-"Selamın aleyküm," diyerek selam verip içeri girdi. Annem yanıma oturdu, yüzünde tebessüme benzer bir ifadeyle babamları izledi. Erdem önce babamla, sonra Turgut'la kafa tokuşturduktan sonra tekli koltuğa oturdu. Benim bu çekingenliğimi fark etmiş gibi benimle göz teması bile kurmamıştı. İlk andan aramıza bir duvar örülmüştü, konuşmamız, birbirimize bakmamız yasakmış gibi kaçıyorduk birbirimizden. Belki de babamı en az benim kadar iyi tanıdığı için temkinli davranıyordu.
-
-
-Maçın ikinci yarısının başlamasıyla herkes maça dönmüştü. Ortamın sessizliği sıkılmama sebep olmuştu, başımı eğip dizlerimin üzerindeki ellerimle, tırnaklarımla oynamaya başladım.
-
-
-Sıkıldım, kafamı kaldırıp etrafa bakındım. Sıkılmak bahaneydi aslında, Erdem'i kontrol ediyordum. O da sıkılmıştı, maça dalmamıştı babamlar gibi. Elindeki anahtarlıkla oynuyordu, siyah beyaz renklerde saç örgüsü gibi örülmüş el yapımı bir anahtarlıktı. Uzun uzun baktı anahtarlığa, bense nereden geldiğini merak ettim. Belki de sevgilisindendi, ondan bu kadar uzun süre bakmıştı. Siyah beyaz olduğuna göre tuttuğu takımın renklerine göre yapılmıştı, demek ki bunu bilecek kadar yakın biriydi bu anahtarlığı yapan. İçimde neredeyse sevgilisi olduğuna karar kıldım, gözüm uzun süre takılı kaldı onda.
-
-
-Anahtarlıktan sıkılıp iç çekerek kafasını kaldırdı, televizyona baktı. Ona baktığımı fark eder diye kafamı çevirdim hemen. Babam sıkıldığımızı hissetmiş gibi bize bakındı, "Neyse kapatalım artık, kazandık zaten," deyip kumandaya uzandı. Aslında maç izlediği zaman sonuna kadar, 90 dakika izlerdi ama Erdem'in sıkıldığını görünce kapatmıştı. Odak tamamen Erdem'deydi artık, Almanya'dan yeni döndüğü için o anlatacak biz dinleyecektik çünkü burada ondan daha merak uyandırıcı bir hayatı olan kimse yoktu. Özellikle benim için.
-
-
-"Ee Erdem oğlum, n'oldu bitti herhalde Almanya işi?" diye muhabbeti başlattı babam.
-
-
-"Bitti ağabey çok şükür, bir aksilik çıkmazsa gitmeyeceğim daha."
-
-
-Bir babama bir Erdem'e bakarak takip ediyordum sohbeti.
-
-
-"E Alamancı olsaydın sen de kalsaydın orada. Bize çikolata getirirdin bayramlarda," dedi babam, gülüştüler.
-
-
-İçeriden annemin ismimi seslendiğini duydum, duymamazlıktan geldim önce ama Turgut da annemin seslendiğini söyleyince kalktım mecburen. Mutfağa gittim, içeri girer girmez annem elime bir çay tepsisi tutuşturdu.
-
-
-"Şunu dağıtsana salona, sonra da mutfağa gel oturma erkeklerle."
-
-
-Sıkıntıyla burnumdan nefes verip göz devirdim, bu uyarının geleceğini biliyordum. Tepsiyi alıp içeri gittim. Önce babama uzattım çayı, sohbet ben yokken hemen koyulaşmıştı, babam fark etmedi tepsiyi uzattığımı. "Baba," dedim kendimi fark ettirmek için. "He," dedi önce, suratıma baktı, gözümle elimdeki tepsiyi işaret ettim. Tepsiden bir çay bardağını tabağıyla birlikte alırken muhabbetine devam etti. Hemen yanında oturan Turgut'a uzattım, o almak için hazırda bekliyordu, bardağını aldıktan sonra "Sağ ol" diyip babama döndü. Nihayet tepsiyi Erdem'e uzattım, son kalan bardağa uzandı. Suratına baktım istemeden, merakımı gizleyemiyordum. Ne kadar da büyümüştü, olgunlaşmış, büyük adam olmuştu. Yavaşça aldı bardağı tabağından tutarak, ona baktığımı fark etmiş olacak; o da bana baktı, belki o da benim düşündüklerimi düşünmüştü. Utandım, böyle suratına dik dik bakmamı yanlış anlayacağından çekindim. Yutkundum gerginlikle. Ne o bakışını çekiyordu ne ben, sanki ikimiz de birbirimize meydan okumuş gibiydik.
-
-
-Eli titredi bir an, ağzına kadar dolu çay bardağından birkaç damla eline damladı. Acıyla keskin bir nefes çekti dişlerinin arasından, refleksle çekti elini, çayı diğer eline aldı. Hiçbir şey demedim, ortam samimi ama bir o kadar gergin olduğu için en ufak iletişim kursak yanlış anlaşılırdık.
-
-
-"Çaya bak çaya," dedi Turgut birden, ikimiz de ona döndük. Dudakları kıvrılmıştı munzurca, dirseğini koltuğun başına dayadığı eliyle, gülmemek için zor tuttuğu dudaklarını kapatıyordu. Bizim burada konuşmamak için verdiğimiz mücadeleyi oyun etmişti kendine, dalga geçiyordu resmen. Erdem gittikten sonra bunun hesabını soracaktım, hemen tepsiyi alıp mutfağa, annemin yanına gittim. Mutfağa sinirle girdim, tepsiyi masaya çarparak koydum ve sandalyeye oturdum. Annem kaşlarını çatıp bana baktı.
-
-
-"N'oldu?"
-
-
-"Yok bir şey."
-
-
-Annem bize iki bardak daha çay koyarken masanın üzerindeki tabakları işaret ederek "Şu kekleri de götürsene," dedi. İçeri gitmek istemiyordum ama itiraz edersem annem şüphelenirdi, iki tabak alıp götürdüm. Kimsenin suratına bakmadan hızla orta sehpaya, Turgut'un ve babamın önüne koydum iki tanesini. Yeniden çabucak mutfağa döndüm, kalan tabağı da alıp salona götürdüm. Hemen koyup mutfağa kaçmak istiyordum, az önce yaşanan saçmalık yüzünden utanmıştım.
-
-
-
-
-"Var mı görüştüğün, düşündüğün biri? Gerçi benimki de soru mu canım, İstanbul'a başka ne için geleceksin ta Almanyalardan," diye art arda sordu babam.
-
-
-Bu soru tüylerimi ürpertmişti, babama neydi ki konuştuğu, görüştüğünden? Öylesine mi soruyordu, altında bir sebep mi vardı diye düşünürken gerilmiştim iyice.
-
-
-"Yok ağabey, ondan gelmedim..."
-
-
-
-
-Şiddetini ayarlayamayıp elimdeki tabağı sehpanın üzerine pat diye bırakmamla bir kırılma sesi yankılandı salonda. Bütün gözler üzerime çevrildi, gözlerimi açıp alt dudağımı ısırdım telaşla. Tabak üç parçaya bölünmüştü, cam detaylı orta sehpaysa çatlamıştı.
-
-
-Kafamı kaldırdım, Turgut dudaklarını bastırmış gülüşünü saklamaya çalışıyordu, burnundan nefes vererek güldü ama kahkahayı patlatmamak için zor duruyordu. Erdem'e baktım gözümün ucuyla, o da aynı şekilde dudaklarını bastırıyordu. Babam bana baktı, kısa bir gülüşten sonra "Tamam bir şey olmaz, bir şey olmaz..." dedi beni rahatlatmak için. Annem mutfaktan koşarak gelmişti, bir anneme, bir sehpaya, bir yerdeki tabağın parçasına baktım ve en son Erdem'e döndüm.
-
-
-"Bir yerine geldi mi?"
-
-
-"Yok yok gelmedi bir yerime, telaş etme."
-
-
-Nezaketen sormuştum zaten, telaş ettiğimden sormamıştım. Annem yanıma geldi, manzaraya iyice bakıp "Heeh bir sehpa kalmıştı kızım, canın sağ olsun onu da kır," diye dalga geçtikten sonra masanın üzerindeki tabağın parçalarını eliyle aldı ve mutfağa götürdü. Ben de eğilip yerdeki parçayı aldım, Erdem koltuğunu geriye doğru itmişti beni izlerken. "Çok yardımın dokundu sağ ol" diye geçirdim içimden, iç çekerek mutfağa gittim.
-
-
-Annem iki bardak çayı masanın üzerine koydu, sandalyesine oturdu. Tabağın parçasını tezgâhın üzerindeki çöp kutusuna attıktan sonra ben de annemin karşısına oturdum, kollarımı bağlayıp sesli bir şekilde iç çektim.
-
-
-"Hayırdır kız, bana mı alındın? Şaka yaptım ben, nazarlık çıktı boşver."
-
-
-"Yok alındığımdan değil."
-
-
-"Niye suratın düştü o zaman?"
-
-
-Rezil olduğumdan, diyemedim tabii.
-
-
-"Turgut'un dalga konusu olacağım da ondan."
-
-
-Annem kıkırdadı, çayını yudumladı.
-
-
-Birden aklımdaki soruyu soruverdim anneme, sanki şimdi sormazsam bir daha soramam gibi hissetmiştim. Fısıldayarak "Anne ne alaka geldi bu Erdem?" dedim.
-
-
-"Kızım baban çok seviyor Erdem'i ya, özlemiş çağırmış işte. Çocuk yıllardır gurbette, hem neredeyse babanın elinde büyüdü."
-
-
-Başta gerçekten babam özledi diye çağırdı zannetmiştim ama çayı tepsiden alırken avel avel suratıma bakışı içime şüphe düşürmüştü. Bir de üstüne babam evlilik konusunu açınca içime bir kurt düşmüştü. 25 yaşına gelmiştim, annemler şakayla karışık da olsa sürekli evlilik konusunu açıyorlardı artık. Beni evlendirmeye yönelik bir girişim gerçekleştirmiş olmaları ihtimali cinlerimi tepeme getiriyordu, hele görücü usülü bir evliliğe asla katlanamazdım. Turgut'un dediği gibi, babamın yıllar sonra ilk defa akranım bir erkeği eve çağırması garip geliyordu.
-
-
-
-
-Neredeyse 1 saat geçmişti, salondaki konuşmaları duymaya çalışıyordum ama çoğu zaman çok anlaşılmıyordu. Sadece Turgut'un komşuların korkulu rüyası gür sesi ve kahkahaları duyuluyordu, babamın Erdem'le olan muhabbetlerinden hiçbir şey anlamıyordum. Annemin rahatlığı beni bir nebze de olsa rahatlatıyordu çünkü gerçekten görücü olsa telaş eder, her şeyin en iyisini yapıp güzel görünmeye gayret gösterirdi. Oysa şimdi hiçbir telaş yoktu. Hoş, öyle bir şey olsa annem benden saklamazdı da zaten. Fakat babamın kendi kafasında annemden gizli planlar kurması ihtimali hala aklımı karıştırıyordu.
-
-
-"Yarın Havva Teyzenler gelecek çaya, tatlı yapalım akşamdan," dedi annem çayını tabağa şıngırtıyla koyarken.
-
-
-"Turgut yatılı kalsın o zaman, her gün bizde zaten."
-
-
-"Uğraşma kız yeğenimle, kalır n'olacak? Teyzesinin evi değil mi," dedi annem gülerek.
-
-
-"Teyzem göbeğini bizim eve gömmüş."
-
-Gülüştük. Babam annemin adını seslendi, çay istiyordu belli ki. Annem kalkacak gibi oldu, "Otur otur ben doldururum," diyip ayaklandım. Belki biraz oyalanıp ne konuştuklarını duyarım umuduyla her şeye ben koşuyordum. Çaydanlığı götürmek için ocağa yöneldim ama annem durdurdu: "Öyle götürme, bu sefer de birini yakarsın, günü hastanede bitirmeyelim."
-
-
-
-
-Şakayla karışık göz devirdim. "Anne sen de beni iyice sakar belledin."
-
-
-"E sakarsın kızım, ben önlemimi alayım da baştan."
-
-
-
-
-Çaydanlığı bıraktım, tepsi alıp gittim salona. Babamlar gülüşüyordu, sehpanın üzerindeki boş çay bardaklarını topladım ama babamınki hâlâ elindeydi. Yarısı duruyordu, tazeleyeyim desem kabul etmezdi. Mecburen başında çayını bitirmesini bekledim elimde tepsiyle, gözüm yine tam karşımda oturan genç adama kaydı. Bu sefer kontrollü bir şekilde çevirdim bakışlarımı fakat onun gözleri zaten üzerimdeydi. Yine göz göze geldik, böyle bana bakıp durdukça içimdeki şüphe çığ gibi büyümeye devam ediyordu ve köpürüyordum. Kafamı sallayıp gözümü kırptım "Ne var?" der gibi. O da bana aynı hareketi yaptı babamı dinliyormuş gibi yaparken, komiğime gitmişti. Kafamı başka yere çevirdim, gülümsersem yanlış anlardı. Zaten Turgut'un da gözü üstümüzdeydi, bir şey olsun da eğlence çıksın diye bekliyordu.
-
-
-Babam çayını dikleyip elimdeki tepsiye koydu konuşurken. Hiç de önemli bir şey konuşmuyordu, o yüzden oyalanmadan çayları doldurup çatlattığım sehpaya bıraktım tepsiyi. Bu sefer kimsenin suratına bakmadan mutfağa gittim. Belli ki sandığım gibi bir şey yoktu, yanlış anlamıştım. Annemin karşısına oturdum yine.
-
-
-"Ay ne anlatıyor bu baban sabahtan beri? Ne bitmez muhabbetleri varmış daraldım vallahi burada."
-
-
-"Hiç sorma, dört yıllık biriktirdiğini anlatıyor şu an."
-
-
-"Hayır çocuğun evde bekleyeni var belki, çocuğu da tutuyor."
-
-
-"Kim bekleyecek anne bekar adamı?"
-
-
-"Ne alaka canım bekar olmasıyla, anası bekler. Sen bekarsın, biz seni beklemiyor muyuz?"
-
-
-Doğru demişti, zaten konuşmuş olmak için konuşmuştum. Dudağımı büzüp omuz silktim, çayımı dudaklarıma götürdüm.
-
-
-Yaklaşık beş dakika geçmişti, salonda bir hareketlilik oldu, belli ki gidiyordu. Babam da kalkmıştı kapıya kadar eşlik etmek için, koridora geldiler. Annem onları koridorda görünce ayağa kalktı hemen, "Gidiyor musun oğlum?" diye seslendi koridora yürürken. Ben yine ayağa kalkmaya bile tenezzül etmemiştim, kafamı uzatıp baktım sadece koridora doğru.
-
-
-"Yine gel, Ertuğrul Ağabey'in çok sıkılıyor evde, emeklilik başına vurdu," diye babamla dalga geçti annem. Gülüştüler, babam ellerini arkasında birleştirerek başını eğdi, orada olmasam da az çok görebiliyordum.
-
-
-"Hep ben geliyorum Abla, siz gelin bir gün de."
-
-Annem sadece güldü, söz vermedi. Erdem'in annesi Münevver Abla'yı sevmezdi pek.
-
-Sonunda vedalaştılar ve demir kapı kapandı, annemle babam salona geçti, ben de arkalarından gittim. Turgut her akşam daldığı tetrisi yine eline almış, hipnoz olmuş gibi oynuyordu. Uğraşacaktım onunla, yeminliydim. Tetrisi elinden hızla çekip aldım, şaşkınlıkla suratıma baktı. "Sen bi gelsene benimle," dedim dişlerimi sıkarak.
-
-
-"Hayırdır ya?"
-
-
-"Sen gel gel."
-
-
-Şaşkınlıkla annemle babama baktı önce, destek bulamayınca peşimden geldi. Annemse bu halimize kıkır kıkır gülüyordu. Mutfağa girdik, ışığı açıp kapıyı kıyarak çıkıştım hemen.
-
-
-"Hayırdır oğlum sen, misafirin yanında dalga geçiyorsun benimle?"
-
-
-"Erdem misafir değil ki."
-
-
-"Bana göre misafir, ben tanımam etmem." Tanıyordum ama Turgut'un yanında bu yalanı devam ettiriyordum.
-
-
-"Tanışırsınız canım bir şey olmaz. Erdem sorun etmez yani."
-
-
-Tekrar vurdum omzuna.
-
-
-"Ben senin o ucuz çöpçatanlık numaralarını yemem bak."
-
-
-"Ne çöpçatanlığı? Ben bir şey yapmadım."
-
-
-"Laf ebeliği yapma sinirimi bozma benim!"
-
-
-"Hadi bi bozulsun sinirin ya, n'olur çok merak ettim."
-
-
-Beni uyuz etmek için hiçbir fırsatı kaçırmıyordu yine. Çocuk gibi fısıldayarak kavga ediyorduk.
-
-
-"Geri zekalı çocuk, bak annemlerin aklında bir şey yok sen de sakın sokma!"
-
-
-"Neyi sokmayayım," dedi salağa yatarak.
-
-
-"Sen çok iyi biliyorsun neyi olduğunu."
-
-
-"Yok valla bilmiyorum."
-
-
-Ayak bileğine ayağımın burnuyla vurdum, çok da sert vurmamıştım ama her zamanki gibi aşırı tepki verdi ve bacağını tutarak "Ah! Manyak bacağımdan ne istedin?" diye bağırdı. O bağırınca annemle babam kafalarını eğip bize bakmıştı.
-
-
-
-
-"Bir şey yok, abartıyor yine," diyerek salona döndüm. Annemin yanına, kanepeye oturdum. Turgut hiç oturmadan salonun ortasında durdu ve "Ben de gideyim artık geç oldu, size hayırlı geceler," dedi.
-
-
-"E kalsaydın oğlum burada," dedi annem.
-
-"Olur mu teyze? Sözlü adamım artık ben."
-
-Annem bir kahkaha patlattı.
-
-"N'oluyormuş sözlü olunca?"
-
-"E çocuk gibi teyzemde mi kalayım?"
-
-"Eşoğuleşeğe bak, büyümüş de adam olmuş!"
-
-
-Annem Turgut'u yolcu etmek için ayaklandı. Salonun ortasındaki eserime baktım ben de, çatlak orta sehpaya.
-
-
-                </p>
-                <p>Metin paragraflarını bu şekilde p etiketleri içine alarak kopyalayabilirsiniz.</p>
-                <br>
-                <p class="text-center italic text-brand-500">Bölüm sonu.</p>
-            `,
-            2: `<p>23 Mayıs 1988 Pazartesi
-
-
-Okul sonrası top koşturmuş olmanın yorgunluğuyla, terli ve kirlenmiş hâlde eve döndü Erdem. Zile bastı, kapı açılana kadar annesinin çekeceği azarı düşündü, söyleyeceklerini tahmin etmeye çalışıp gülümsedi.
-
-
-"Bu üstünün başının hâli ne!" mi yoksa "Geç geleceksen niye haber vermiyorsun sabah?" mı diyecekti diye kendi kendine iddiaya girdi. Bekledi, kapı açılmamıştı. İçerden ses geliyor mu diye kulak verdi, gelmiyordu ama tekrar bastı zile. Bekledi, yine ses gelmemişti.
-
-
-Sıkıntıyla iç çekerek elini çantasına attı anahtarını bulmak için, nihâyet bulduktan sonra anahtarı çevirip açtı kapıyı. Babası evdeydi, içeriden sesi geliyordu, annesiyle kardeşini bulamamıştı. Babası salonda telefonla konuşuyordu, belli ki ne kapıyı duymuş ne Erdem'in geldiğini fark etmişti. Erdem sessizce içeri girip kapıyı kapattı, "Belki önemli bir şeydir." diye rahatsız etmeden üstünü başını çıkardı. Elini yüzünü yıkamak için lavaboya yöneldi, her yeri pislik içindeydi, çamura bulanmıştı. Kollarını dirseklerine kadar sabunlayarak yıkadı iyice, yüzüne su çarpıp ovuşturdu birkaç kere. Aynaya baktı, ıslak ellerini önce terlemiş alnına sürdü, sonra saçlarına sürüp havaya dikti. Aynaya karşı saçma surat ifadeleri yaptıktan sonra kendi kendine gülüp lavabodan çıktı.
-
-
-Tuvaletten çıktıktan sonra babasına baktı, hâlâ geldiğini fark etmemişti ve gülümseyerek telefonla konuşuyordu. Salonun kapısı kıyıktı, kapının önündeki takoz kaydırılmıştı ve kapı bilerek kıyılmıştı sanki. Babasının sesine kulak verdi, ses tonu değişmişti konuşurken. Duydukları arasından "Saçmalama canım, sana niye önem vermeyeyim?" diye bir cümle seçti, tedirgin olmuştu, olduğu yerde kaldı. Üstünde durmadı önce, sonra gözü holdeki dresuarın üstündeki telefona ilişti.
-
-
-Bir salon kapısına baktı, bir dresuarın üstündeki telefona. Sessizce yanına gitti, tereddütle ahizeyi kaldırdı ve kulağına tuttu. Aklından binbir türlü düşünce geçiyordu, bir yandan babasına yakıştırdığı şeyler yüzünden kendine kızıyor bir yandansa babasının aklına geleni yapmıyor olması için dua ediyordu.
-
-
-Babasının konuşması duyuluyordu kesik kesik: "Canım bugün işim var dedim ya..."
-
-
-"Aman Levent, ne zaman işin olmayacak? Dün gece hazırlandım seni bekledim, gelmedin. Karını benden çok seviyorsun herhalde..."
-
-
-Erdem duyduğu kadın sesiyle donup kalmıştı, elleri titreyerek ahizeyi yerine koydu, eline mukayyet olamayıp gürültü çıkarmıştı biraz.
-
-
-Babasının telefonu kapatışını, salondan çıkıp yanına gelişini duymuştu ancak tepkisiz kalmıştı, yüzünü dahi dönmemişti.
-
-
-"Oğlum, sen ne zaman döndün?"
-
-
-Erdem ona bakamadı, başını kaldıramadı, babasının yaşaması gereken utancı o yaşıyordu sanki.
-
-
-"Ne zamandan beri," dedi ama devamını getiremedi. Babası ona doğru yaklaşıp elini uzattı dokunmak için, var gücüyle geri çekti kendini. Eli dış kapının koluna gitti, hızla kapıyı açıp kendini dışarı attı.
-
-
-Evde duramamıştı, içindeki öfkeyi, üzüntüyü sığdıramamıştı oraya. Koşmaya devam etti, herkes ona bakıyordu sanki. Babasının arkadan seslenişlerini duydu, durup dönmedi ve tüm gücüyle koşmaya devam etti.
-
-
-Rüzgâr suratına çarpıyordu, terli vücuduna soğuk soğuk değerken tüylerini diken diken ediyordu. Uzun uzun koştu, neyden kaçtığını bilmiyordu ama bacakları ağrıyordu artık. Soluğunun son demlerini içiyordu sanki, ciğeri yanıyordu ama durmadı. Arabalar çarpacak gibi oluyor, kornaya asılıyordu ancak gücü yettiğince koşuyordu Erdem. Bacakları tutmaz raddeye gelmişti, hızını ve gücünü yitirdi, babasının sesini de duymuyordu zaten artık. Sokağın ortasında yere çöktü istemsizce, bacakları işlevini kaybetmişcesine yere bırakmışlardı onu.
-
-
-Nefesini ciğerleri acıyana kadar çekti içine, tüketene kadarsa geri verdi hızlıca ve defalarca. Ölecek gibi hissediyor, yüzü ve gözleri yanıyordu, ellerini yüzüne ve sonra gözlerine götürdü. Gözlerini kapatıp soğuk ellerini sürdü, öylesine titriyorlardı ki zorlanmıştı gözlerinin üstüne koyarken. Nefes alışverişini toparlayamamıştı hâlâ, gözünden süzülen yaşlara dokundu elleriyle. Hayır, ağlamamalıydı. Annesi ağlayacaktı zaten, Aybüke de ağlayacaktı bol bol. Koca adamdı artık, haksızlığa uğrayınca oturup ağlayacak değildi. Güçsüz hissetmeyi yediremiyordu kendine, hiçbir şey yapamayıp sadece sessiz sessiz ağlamak gururuna dokunuyordu.
-
-
-Kuş gibi titreyen yüreğini hissetti nefesini içine çekerken, yerinden çıkacak gibiydi. Yutkundu, ellerinden destek alarak ayağa kalkmaya çalıştı. İnsanlar başına toplanmışlardı, ne olduğunu soruyorlardı ancak Erdem o soruların hiçbirini duymamıştı bile. Düşüncelerinin arasında dışardan gelen sesler boğuklaşmıştı, gözlerini silip kafasını kaldırarak etrafına baktı. Hiçbirine cevap vermek, hiç kimseyle konuşmak istemiyordu. Buradan yok olmak istiyordu hemen, kaçmak ve bir daha hiç gelmemek istiyordu. Annesi bunu öğrense mi daha kötü, öğrenmese mi daha kötü bilmiyordu; o yüzden yalan söylemekle doğruyu haykırmak arasında kalmaktansa yok olmayı diliyordu içinden. Yanında cebindeki 25 kuruştan başka hiçbir şey yoktu, bu yüzden evden kaçıp gitme fikri anında kaybolmuştu aklından.
-
-
-İnsanlar Erdem kendini geriye çektikçe yaklaşıyorlardı ona, kolundan tutup bağırarak soru soruyorlardı. "Bir şey yok, düştüm canım acıdı-" diye bağırsa da ısrarla sormaya devam ediyorlardı. Nasıl diyecekti ki "Babam bizi yarı yolda bıraktı?" diye? Nasıl söyleyecekti annesinin karınları doysun diye dizleri aşınana kadar temizlik yaparak kazandığı parayı babasının başkalarına yedirdiğini? Babam demeyi canı istiyor muydu? Hiç istemiyordu. Hiçbir şey konuşmak, düşünmek istemiyordu esasen ama insan böyle kötü zamanlarda normalde olduğundan on kat hızlı ve çok düşünürdü. Etrafındaki insanlara bir şey diyemiyordu, ağzını açsa ağlayacaktı biliyordu. Kalabalığın içinde bir el koluna yapıştı, çekti çıkardı onu oradan. "Yahu çocuk korkmuş zaten, ne bağırıp ürkütüyorsunuz daha?" diye bağırdı etrafındakilere ancak meraklı gözlerle ona bakıyorlardı hâlâ. "Hadi dağılın, oğlum bu benim. Kaybetti beni ondan korktu." diye yalancı bir açıklamayla dağıttı milleti. Dağılan kalabalığın içinden yaşlı bir kadın çocuğun omzuna dokunarak sordu: "Oğlum baban mı bu senin, doğru mu söylüyor?" Erdem bir yanındaki yabancı adama bir kadına baktı, ne olacağını bilmiyordu ancak ne olacaksa olsundu zaten, başını aşağı yukarı sallayıp gözlerini kırparak "Evet." dedi. Adamın yüzüne hafif bir tebessüm oturdu, kadın da nazikçe gülümseyerek uzaklaştı yanlarından.
-
-
-Erdem kadın yanlarından iyice uzaklaşınca bu yabancı adamın suratına baktı, adam ona bakmıyordu ama elini omzuna sahiplenici bir şekilde atmış onu bir yere sürüklüyordu. Hiç sorgulamadı genç adam, sürüklediği yere gitti onunla. Yürürken de hiç konuşmadılar, Erdem nefesini toparlamaya çalışıyordu hâlâ. Adam "N'oldu, hayırdır bu hâlin?" diye bile sormamıştı, sadece sırtını sıvazlıyordu çocuğun. Nihâyet bir kahvehaneye soktu onu, en köşedeki sandalyeye oturttu çocuğu, kendisi de karşısına geçti. Çay kaşığı şıngırtıları Erdem'in kulaklarını dolduruyor, sigara kokusu burnuna doluyordu. Karşısındaki adam çay ve tost söyledi, Erdem başını eğmiş mahcubiyetle elleriyle oynuyordu sadece. Soyulmuştu elleri, biraz da kanamıştı ve kirlenmişti. Utanıyordu hâlinden, karşısındaki adamın onu böyle görmesini istemiyordu.
-
-
-Adamı da tanıyor gibiydi aslında, yüzü tanıdıktı ancak çıkaramamıştı adını. Adam kafasındaki bu soruları sezmiş gibi kollarını birleştirip dirseklerini masaya koyarak Erdem'e döndü.
-
-
-– Tanıdın mı bakayım sen beni?
-
-
-Erdem "Hayır." anlamında kafasını iki yana salladı.
-
-
-– Ulan görüyor musun, zaman nasıl da değiştiriyor her şeyi? Neredeyse elime doğdun, sen doğarken baban gece vardiyasındaydı hanımla anneni hastaneye götürmüştük. Münevver Hanım o kadar minnettar oldu ki o zaman bir ismini benim koymamı istedi, Yağız ismini ben koydum sana. Adın gibi erdemli, yağız bir delikanlı olasın diye.
-
-
-Erdem dinledikleri karşısında şaşırmıştı, kafasını yavaşça kaldırıp adama baktı.
-
-
-– Ben niye sizi tanımıyorum o zaman?
-
-
-– Sen küçükken taşındık biz, hatırlamaman normal. Ben de seni tanıyamadım başta ama babana o kadar benziyorsun ki tanımamak elde değil.
-
-
-– Kalsın, benzemeyeyim o aşağılık herife, diye mırıldandı Erdem. Adam duymuştu bu dediğini ancak garip şekilde şaşırmamıştı, normal karşılaşmıştı. Biliyor muydu yoksa? Belli ki babasıyla da tanışıyordu çoktan.
-
-
-Adam iç çekti sadece, cebinden bir sigara çıkarıp dudaklarına götürdü. Dudaklarıyla sigarayı tutarken ceplerinde çakmak aradı, genç çocuk cebinden çakmağını çıkarıp uzattı. Adam çakmağı fark etse de duraksadı bir an: "Sen sigara mı içiyorsun?" dedi, ne azarlar tonda ne de yumuşak bir dille demişti bunu.
-
-
-– Yok, bazen eve geç gidiyorum, mahalledeki köpekleri kaçırmak için kullanıyorum çakmağı, dedi sakince delikanlı.
-
-
-Adam genç adamı süzerken aldı çakmağı, sigarasını yakıp geri verdi ona. Çocuğun bu olgun tavırları dikkatini çekmişti, 15 yaşında olmasına rağmen karşısında bir yetişkin konuşuyordu sanki. Sigarasından bir nefesi iyice içine çektikten sonra burnundan üfleyerek konuştu:
-
-
-– N'apmış baban, niye öyle konuştun hakkında?
-
-
-Erdem iğrenerek aklından geçirdi önce, iç çekerek oturuşunu düzeltti ve anlatmaya başladı.
-
-
-"Başka bir kadın varmış. Aldatıyormuş annemi, aşağılık herif."
-
-
-Karşısındaki adam iç çekti sadece, ne diyeceğini bilememişti. Sigarasından bir nefes daha aldı. Ağzındaki dumanı aheste aheste üfledikten sonra sordu:
-
-
-– Diyecek misin annene?
-
-
-Erdem karşısındaki adama yaklaştı elini ve dirseğini masaya koyarak.
-
-
-– Ağabey sen kimsin? Adın sanın ne, işin gücün ne senin? Saygısızlık algılama ama sen beni tanıyorsun, ben senin adını bile bilmiyorum.
-
-
-Adam sigarasından bi nefes daha üfledi, elinde kalanı da küllüğe bastırdı. Acele değil, aksine oldukça rahat ve yavaştı.
-
-
-– Adım Ertuğrul, emniyette çalışıyorum.
-
-
-– Hangi birimde?
-
-
-Adam yarım ağız güldü çocuğun bu sorusuyla.
-
-
-– N'apacaksın hangi birimde olduğumu?
-
-
-– Merak.
-
-
-– Etme merak, konumuz o değil.
-
-
-Erdem istediği cevabı alamayınca kollarını bağlayıp arkasına yaslandı.
-
-
-– Demeyeceğim anneme.
-
-
-– Niye? Bilmek onun da hakkı.
-
-
-– Boşanmaz çünkü, biliyorum. Bari bilmesin.
-
-
-Ertuğrul arkasına yaslanıp dirseğini sandalyenin üstüne dayarken iç çekerek konuştu.
-
-
-– O biliyordur zaten.
-
-
-Erdem sesini çıkarmamıştı ama gözüyle Ertuğrul'u takip ederken sormuştu adeta "Nasıl?" diye.
-
-
-– Kadınlar hisseder, hissetmiştir ondan gizli iş çevirdiğini.
-
-
-Katılmıştı Erdem bu dediğine, fakat içinden onayladı sadece. Cevap vermeyince bir sessizlik oldu, sessizliği Ertuğrul'un tok sesi bozdu.
-
-
-– Sana uzun uzun nasihat ve fikir vermeyeceğim, için nasıl rahat ediyorsa öyle yap. Yalnız sana vereceğim tek öğüt şu: Bu dertle kendin başa çıkmaya çalışma. Kendini büyük adam zannetme. Sen hâlâ veledin tekisin, her şeyi tek başına sırtlanmak zorunda değilsin. Annen de senin fedakarlığına muhtaç değil, koca kadın o.
-
-
-Erdem sinirlenmişti, kendini büyük adam zannetmiyordu ama küçük çocuk da değildi en nihâyetinde. Sesini çıkarmadı, sinirle dişlerini gıcırdattı sadece. Genç bir çocuk elinde tuttuğu tepsideki tostu ve çayları önlerine bırakıp gitti, Ertuğrul bir sigara daha çıkarıp dudakları arasına aldı ve Erdem'in önündeki çakmağı alıp yine yaktı sigarasını. Sigarasından bir nefes çektikten sonra çayından bir yudum aldı, bardağı masaya koyarken hâlâ şaşkın bir şekilde önündeki tostu gözleyen gence baktı.
-
-
-– Hadi ye tostunu, seni evine bırakayım sonra.
-
-
-
-
-✦
-
-
-
-
-
-24 Şubat 1998 Pazartesi
-
-
-Güliz, akşam vakti Beşiktaş'ın kalabalık sokaklarında Kenan'ın adını verdiği barı arıyordu. Maç saati yaklaştığı için sokaklar gürültülüydü; korna sesleri, tezahüratlar, barlardan yükselen müzik sesleri birbirine karışıyordu. Ara sokaklarda birkaç tur attıktan sonra nihayet barı buldu. Gözüyle içeride arkadaşlarını aradı, aramasına dahi gerek kalmamıştı çünkü cam kenarında oturmuş ona el sallıyorlardı, İçeriye girdiği an dışarının soğuğu kaybolmuştu, Güliz kabanını çıkarıp sandalyesinin üstüne asarken:
-
-
-"N'aber," diye sordu.
-
-
-"İyidir, yine en son sen geldin. Rekorunu kimseye kaptırmıyorsun maşallah," dedi Tuana gülerek.
-
-
-"Bu sefer benim suçum yok, maç varmış. Trafikten gelemedim," dedi Güliz dağılmış saçlarını toplarken.
-
-
-Kenan'ın yanındaki boş sandalyeye oturdu, masada sessizlik olunca etrafa göz gezdirdi. Duvarlardaki sararmış posterlere baktı, barın loş ışığının gözlerini ağrıtmasıyla indirdi bakışlarını. Kenan elini Güliz'in sandalyesine koydu.
-
-
-"Ne içersin?"
-
-
-"Yarın okul var, içmeye gelmedim. Israr ettiniz diye geldim, konuşmuştuk bunu," dedi Güliz.
-
-
-Bunu söylemesiyle hepsi bir ağızdan "Aaaa!" diye sitem ettiler, Tuana sözcüleriymiş gibi konuştu:
-
-
-"Bara gelip de hiçbir şey içmeden gidilir mi, bari bir kadeh iç. Sanki sarhoş mu olacaksın bir kadehle?"
-
-
-"Tuana hayır dediysem hayır."
-
-
-Kenan sandalyedeki kolunu çekmemişti, yaklaşarak yüzünü Güliz'e çevirdi.
-
-
-"Benim hatırıma, içmeyeceksen niye geldin hem?"
-
-
-"Senin hatırına geldim, başka bir şey için değil."
-
-
-"Yine benim hatırıma, bir bardak iç."
-
-
-"Olmaz dedim, ben hemen sarhoş olurum."
-
-
-"N'olacak? Biz de oluyoruz."
-
-
-"Tabii senin yarın boş günün, ondan bu kadar rahatsın."
-
-
-"Boş günlerimi de biliyorsun," dedi Kenan munzurca gülümseyerek.
-
-
-"Ben müdür yardımcısıyım ya Kenan, ondan olabilir mi?"
-
-
-"Her öğretmenin ders programını ezbere bildiğini sanmıyorum."
-
-
-"Biliyorum, istersen sayayım?"
-
-
-"Yok tamam, inandım sayma."
-
-
-Kenan arkasını dönüp garsona seslendi, iki içecek sipariş etti. Güliz şüphelenip Kenan'a ters bir bakış attı, sonra sordu:
-
-
-"Niye iki tane?"
-
-
-"Güliz bir bardak, ben ısmarlıyorum hadi!"
-
-
-Güliz gözlerini devirdi, kararsız kalmıştı. Oyunbozanlık yapmak istemiyordu ama hayatında hiç içmemişti, ne kadar babasından farklı bir hayat felsefesi olduğunu iddia etse de babasının hassasiyetlerini taşıdığını düşündü tam o an.
-
-Derin bir nefes verdi sinirle ama "Tamam, yalnızca bir bardak ama." diyerek kabul etti. Bunu dedikten hemen sonra önüne bir kadeh şarabın konulmasıyla kadehe baktı, tereddüt etti önce. Kenan'ın baktığını görünce kadehi parmakları arasına aldı, yavaşça içti. Gözler üstünden çekilsin diye içişini hızlandırdı, kurtulmuş hissiyle kadehi masaya bıraktı ve burnundan derin bir nefes verdi.
-
-
-İçinden geçen düşünce bir anlığına durdu, dünya yarım saniyeliğine yavaşlamıştı sanki. Omuzları gevşedi ama tehlike hissetmemişti, masadaki sohbete kulak verdi. Gülüşüyorlardı, muhabbete dahil olmak için "N'oldu ya?" diye sordu. Kenan gülümserken Güliz'e dönerek:
-
-
-"Şuradaki kızı görüyor musun," diye başka bir masadaki kızı gösterdi parmağıyla.
-
-
-"Gösterme parmağınla fark edecek şimdi, gördüm evet n'olmuş ona," dedi Güliz çocuk azarlar gibi.
-
-
-"Mahir her gelmesinde o kızı tavlamaya çalışıyor, her yanına gittiğinde suratına içkisini çarpıp gönderiyor kız. Biz de iddiaya girdik."
-
-
-"'Bu sefer ret yiyecek mi?' diye mi? "
-
-
-"Yok canım o Allah'ın emri zaten, bu sefer suratına ne çarpacak diye."
-
-
-Güliz bu saçma şakaya olması gerekenden fazla güldü, Kenan'la göz teması uzun sürünce gözlerini çekti hemen.
-
-
-Mahir hiç gecikmeden yine garsona el etti, Güliz'in önüne bir kadeh daha gelmişti.
-
-
-"Daha yok demiştim ama..."
-
-
-"Az önce Kenan ısmarladı, şimdi de ben ısmarlıyorum, beni kıracak değilsin herhalde?"
-
-
-"Ama böyle olmaz!"
-
-
-"Oldu bile, içmezsen darılırım bak," dedi Mahir çocuk gibi.
-
-
-Güliz "Zaten çok etki etmedi, idare ederim" diye düşündü ve yine önüne sürülen kadehi dudaklarına götürdü, Kenan'ın ona baktığını hissediyordu şarap boğazından akarken. Kadehi masaya koyarken gözlerini ona çevirdi, hisleri onu yanıltmamıştı. Yan gözle süzüyordu Kenan, rahatsız olmasın diye gülümsedi ve gözlerini Mahir ve Tuana'ya çevirerek aralarındaki muhabbete dahil oldu.
-
-
-Güliz yüzünün sıcakladığını hissetmeye başlamıştı, düşünceleri dağılıyordu. Kenan okuldaki kavgayı anlatıyordu o sırada, ona kulak verdi.
-
-
-"Oğlum geçen gün derste bi baktık iki öğrenci birbirine girmiş, yumruk yumruğa dövüşüyorlar. Ne cesaret anlamadım, Mehmet deccali de bunlara kızarken bir kızardı, nefessiz kalana kadar bağırdı pezevenk! Liseli gençler işte, sanki adam öldürmüşler, dalaşmışlar çok mu?"
-
-
-Güliz gülümsedi ama yorum yapmadı, zaten konuşacak olsa da cümleyi kuramıyordu, hiç denemedi o yüzden. Tuana Güliz'e dönerek:
-
-
-"O gün gelen genç veli kimmiş öğrenebildin mi," dedi gevşemiş hâlde gülümseyerek.
-
-
-"Biz onunla akraba çıktık, görücü usülü evlenmezsek ayarlarım söz," dedi Güliz ve uzunca güldü, Tuana da aynı şekilde karşılık verdi. Kenan kaşlarını çatıp Güliz'e döndü.
-
-
-"Ne akrabası, görücü usülüsü?"
-
-
-"Şaka yaptım şaka! Aile şeyimizmiş işte..."
-
-
-"Aile neyinizmiş?"
-
-
-Tuana araya girdi.
-
-
-"Aile hekiminiz mi?"
-
-
-Güliz bu soruyu duymasıyla kahkaha attı, gözünden yaş gelene kadar güldü.
-
-
-"Yok yok hekim değil, mühendis o," dedi kahkahasını durdurduktan sonra.
-
-
-"Ne mühendisiymiş?"
-
-
-– Nereden hatırlayayım yaa, diye uzatarak konuştu, başına vuran ağrıyla elini başına götürdü. Işık gözüne vuruyor ve rahatsız ediyordu bu yüzden gözlerini kıstı istemsizce.
-
-
-O baş ağrısıyla ilgilenirken önüne bir kadeh daha uzatılmıştı, bu sefer Tuana'ydı uzatan.
-
-
-"Bu sefer de benden, daha yok söz!"
-
-
-Güliz artık itiraz etse de fayda etmeyeceğini anlamıştı, zaten sarhoş olmuştu bir kere. Birden gaza geldi, karşısındaki kız yalvarmayı kessin diye önündeki kadehi kafasına dikti ve önündeki peçeteyle ağzını silip arkasına yaslandı. Makina mühendisiydi, şimdi aklına gelmişti. Bir de bir yerden yeni dönmüştü, neredendi? Almanya... Almanya'dan dönmüştü. Ali'yle Nihat'ın arası düzelmiş miydi acaba? Ali nerede kalıyordu ki, çalışıyor muydu yoksa? El kadar çocuk, hem illegal değil miydi 18 yaşından önce? Adı neydi ki acaba o mühendis çocuğun, E'yle başlıyordu sanki... Eren, Ertuğrul... Yok, o babasının adıydı. Erdem miydi? Evet, Erdem'di sanki. Baba demişken, babası onu bu hâlde görse ne derdi acaba? "Dövse de hatırlamam, sarhoşum sonuçta." diye geçirdi içinden, sonra kendi kendine güldü.
-
-
-Kafasında o kadar çok düşünceye zıplamıştı ki diğer konuşmalar kulaklarında boğuklaşmıştı. Birden aydınlanmış gibi ani bir kararla ayaklanmak istedi ama kalkamadı. Ayakta duramayıp masadan tutundu ve Kenan'ın zorlamasıyla sandalyeye geri oturdu.
-
-
-"Saçmalama, ben bırakırım seni. Bu hâlde nasıl gideceksin?"
-
-
-"Yürüyerek."
-
-
-"Yürüyebileceğini mi sanıyorsun," dedi Kenan gülerek.
-
-
-"Yürüyemezsem sürünürüm," dedi Güliz ve uzunca güldü yine. Kenan onun bu hâline sadece gülümsedi, yüzünü inceledi yine uzun uzun.
-
-
-"Yok yok, otur oturduğun yerde."
-
-
-"Geç oldu ama!"
-
-
-"Tamam tamam, gideceğiz şimdi," dedi Kenan çocuğa anlatır gibi. O esnada Mahir ayaklandı, deri kahverengi ceketini giyerken açıklama yaptı.
-
-
-"Biz de artık gidelim, ben bunu evine bırakayım bu salak bulamaz yine yolunu," dedi Tuana'dan bahsederek.
-
-
-Kenan gülümseyerek kafasını salladı ve "Görüşürüz." dedi, Güliz'le baş başa kalmışlardı.
-
-
-"Maç başladı mı?"
-
-
-Kenan elini karşısındaki kızın sandalyesine koydu, yüzünü incelerken gülümseyerek sordu:
-
-
-"N'apacaksın sen maçı?"
-
-
-"Maç başladıktan sonra gidelim, hem daha sakin olur."
-
-
-"Peki, seni evine mi bırakayım?"
-
-Güliz'in bu soruyla başından aşağı kaynar sular dökülmüştü. Evine bırakamazdı, annesiyle babası onu böyle görürlerse konuşmazlardı onunla, hem de üstüne güzel bir azar işitirdi. Ama başka nerede kalacaktı ki? Kenan Güliz'in telaşını da sebebini de fark etmişti, gözlerini kırpıştırıyor ve tırnağını dişleri arasına almış düşünüyordu.
-
-
-"İstersen benim evime gideriz, sabah erken kalkar evine gidersin."
-
-
-"Olmaz," diye kesin bir dille reddetti Güliz.
-
-
-"O zaman seni bir otele bırakayım?"
-
-
-Güliz'in aniden başına ağrı vurmuştu yine, elini şakaklarına koyup dirseğini masaya yasladı. Kenan kafasını ona doğru eğmiş, cevabını bekliyordu. En iyisi eve gitmekti. Kenan da sarhoştu hem, ona da güvenemezdi.
-
-
-"Yok tamam, eve bırak beni."
-
-
-"Hay hay," dedi Kenan, ceketini giydi. Güliz'in çantasını ve kabanını eline aldı ve ayağa kalktı, çok sarhoş olmasa da adımları karışıyordu. Güliz'i kolundan tutarak kalkmasına yardım etti, bardan dışarıya çıktılar.
-
-
-Kapıdan dışarı çıkınca soğuk hava kızarmış suratlarına çarptı, Kenan Güliz'in kabanını uzatıp "Giy," dedi. Güliz kabanı eline aldı, tek eliyle Kenan'ın omzundan tutunuyordu. Kabanı üstüne geçirmedi, daha doğrusu geçiremedi, zaten giymesi oldukça zor olan bu ağır kabanı sarhoşken giymek neredeyse imkansızdı ama bunu yanındaki adama söylemedi. Neyi beklediklerini de anlamamıştı, galiba Kenan arabayı park ettiği yeri arıyordu.
-
-
-"Kenan sen araba kullanma bu hâlde."
-
-
-"Ben sarhoş değilim, araba kullanabilecek durumdayım."
-
-
-"Kenan sarhoşsun, o zaman bırak ben taksiyle gideyim."
-
-
-"Yahu olur mu canım? Ben şimdi seni nasıl taksiciye emanet edeyim?"
-
-
-"Sen kimsin de beni emanet ediyorsun ya? Taksiye binip gideceğim işte, bebek miyim ben?"
-
-
-"Bebek değilsin ama sarhoşsun."
-
-
-"Sen de sarhoşsun."
-
-
-"Ben senin kadar değilim. Bırak bunu şimdi, sen emin misin eve gideceğine?"
-
-
-"Kenan tabii ki evime gideceğim," dedi Güliz, sesi oldukça yüksek çıkmıştı.
-
-
-"Başına iş açılmasın diye soruyorum."
-
-
-"Evde başıma nasıl iş... Ne iş açılacak?"
-
-
-Gözleri kapanıyordu baş ağrısından, ayakta durmakta da zorlanıyordu git gide.
-
-
-"Kızım baban sıkıntı çıkarmasın şimdi, kendimi kötü hissederim bak."
-
-
-"Çıkaracak tabii, eve gitmezsem ağzıma bile sıçar! O yüzden sen beni eve bırak."
-
-
-"Gecenin bir yarısı Beşiktaş'tan Fatih'e, oradan da Arnavutköy'e mi gideyim?"
-
-
-"Her gün mahalleye kadar gelip gidiyosun ya!"
-
-
-Kenan uzun uzun güldü bu cevaba, Güliz de gülümsedi ama başına bir ağrı vurmuştu yine. Elini başına götürdü. Kenan'ın eli sol omzuna sarılmıştı, hissedince sağ eliyle ittirdi hemen, teması sevmezdi. Kenan hiçbir şey demedi ama fark etmişti, yine de genç kadının vücuduna çok yakın tuttuğu vücudunu hiç uzaklaştırmadı, hâlâ omuzları neredeyse bitişikti. Güliz ayakta duramadığı için dayanmıştı, kendini çekmek istese de kötü bir fikir olduğu için yapmıyordu.
-
-
-Birden adının seslenildiğini duyar gibi oldu, yanlış duydu sandı. Tekrar duydu aynı sesi, arkasını döndü belli ki Kenan da duymuştu ve o da dönmüştü. Gözleri kararmıştı ve bulanık görüyordu biraz, karşısındakini tanıyamadı bir an.
-
-
-"Senin ne işin var burada?"
-
-
-Güliz görüşü netleşince karşısındaki kişiyi tanıdı, Erdem'di bu. Adını da hatırlamıştı şimdi.
-
-
-"Aa, sen şey... Erdem? Asıl sen... ne işin var burada?"
-
-
-"Maça geldim, seni görünce..."
-
-
-"Hıı?"
-
-
-Kenan aralarında geçen diyaloğu meraklı gözlerle takip etti, bir Güliz'e bir Erdem'e bakıyordu. Erdem kızın sarhoş olduğunu fark etmişti, ne yapacağını bilememişti. Gözleri bir Kenan'a bir Güliz'e gitti. Güliz Kenan'ın yine omzuna koyduğu elini aynı şekilde sağ eliyle ittiriyordu, Kenan bu sefer daha sıkı tutmuştu genç kadının omzunu.
-
-
-Erdem çekip gitmeyi düşündü önce, sonra Güliz'in alnına koyduğu eline, açamadığı gözlerine, kızarmış yanaklarına ve dik durmakta zorlanan vücuduna baktı. Böyle bırakamazdı, görmüştü bir kere. Kenan'ı süzdü, "Pek tekin bir tip değil sanki," dedi içinden. Etrafa bakındı, sokaklar kalabalıklaşmaya başlamıştı. Güliz'e doğru bir adım attı.
-
-
-"Gel hadi eve gidelim," diyerek sağ üst koluna sardı elini.
-
-
-Kenan Güliz'in bileğini sıkıca tutarak Güliz'i arkasına doğru itti ve Erdem'in önüne geçti.
-
-
-"Sen dert etme, bırakacağım ben evine onu. Sen belli ki maça gelmişsin, işine bak."
-
-
-"Sen sarhoşsun, önce kendine mukayyet ol. Ben bırakırım."
-
-
-"Ben sarhoş falan değilim, sen de bu kızı götüremezsin böyle çünkü ben seni tanımıyorum!" diye sesini yükseltti Kenan.
-
-
-"Seni bırakmayacağım zaten Güliz'i bırakacağım, tanımana gerek yok," dedi, Güliz'e yaklaşıp kolundan tuttu, Güliz de kaçmak ister gibi savsaklayarak Erdem'e doğru birkaç adım attı. Bileğini kurtarmaya çalıştı, Kenan da zorlamamıştı, açtı avcunu yavaşça.
-
-
-Güliz Erdem'in kolundan tutarak duruşunu düzeltmeye çalıştı, başını gövdesinin üzerinde zor tutuyordu sanki. Erdem Kenan'ı umursamadan Güliz'in çantasını aldı elinden.
-
-
-"Güliz bu adam kim, tanıyor musun sen bunu," diye ısrarla karşı çıktı Kenan.
-
-
-Güliz dudağını büzerek "Bilmiyorum" dedi önce, sonra Kenan kaşlarını çatıp Erdem'e dönünce ortamı yumuşatmak ister gibi "Tanıyorum tanıyorum, şey o...." dedi ama devamını getiremedi, unutmuştu yine kim olduğunu. Neydi ya, aile hekimi miydi? Yok yok, onu Tuana demişti, başka bir şeydi sanki. Pilot muydu acaba? Yanındaki adamı baştan aşağı inceledi, üstündeki siyah beyazlı formaya baktı. Futbolcu muydu acaba? Yok canım, futbolcu maça şimdi mi giderdi? Ayrıca futbolcu olsa altında pantolon değil, şort olurdu.
-
-
-Güliz şaşkın bir suratla Erdem'e bakarken o daha fazla bu saçmalıklarla uğraşmak istemiyormuşçasına bir elini Güliz'in sırtına koydu, öbürüyleyse omzundan tutarak dışarıya doğru yürüttü. Kenan peşlerinden yürüdü ve bağırdı: "Kızı bıraksana, alo kime diyorum! Oğlum sen kimsin neyin nesisin?"
-
-
-Erdem son kez iç çekerek genç adama döndü Güliz'i bırakmadan: "Sen bu kızın evinin adresini biliyor musun?"
-
-
-"Bilmiyorum, bilsem de sana söylemem!"
-
-"Heh, ben biliyorum işte, ondan ben götürüyorum. Sen de şuradan taksi çevir, ceza yemeyesin. Haydi selametle."
-
-
-Kenan itiraz edecek gibi oldu ama olduğu yerde kaldı, Erdem biraz uzaklaştıktan sonra durdu. Güliz'i durdurup elindeki kabanı kızın sırtına attı, bir an duraksadı. Üşüdüğünü fark edip boynundaki siyah-beyazlı taraftar atkısını çıkardı, kızın boynuna doladı, ağzının ucuyla söyleniyordu: "Akşam akşam, uğraştığım şeye bak!"
-
-
-Güliz ses tonunu ayarlayamadan konuştu:
-
-
-"Sanki biz mi dedik uğraş? Uğraş diye yani..."
-
-
-Erdem burnundan nefes vererek güldü, atkıyı iyice genç kadının boynuna sardıktan sonra yine kolundan ve ensesinden tutup yürümesine yardım etti. Caddeye kadar yürüdüler, Güliz dalgalar çizerek gidiyordu ve zaman zaman omzu Erdem'e çarpıyor yahut yürürken dengesini kaybedip kolunu tutuyordu istemsizce. Konuşamayacağını bildiği için hiç konuşmuyor, sadece Erdem'e bakıyordu arada bir. Önlerinde bir taksi durdu, Erdem Güliz'i bindirdikten sonra yanına oturdu, adresi söyleyip arkasına yaslandı. Gözü bir an Güliz'in üzerinde durdu, başını koltuğa yaslamıştı. Göz kapakları ağırlaşmış, kirpikleri her kırpışında adeta titriyordu. Dudakları hafif aralanmış, dağılan saçları yüzüne dökülmüştü. Erdem bakışlarını kaçırmak yerine kısa bir an daha tuttu, sanki bu hâlini çözmek ister gibi. Sonra fark edilmemesi için yavaşça başını çevirdi.
-
-
-Güliz elini yine acıyla başına götürdü, bu acı onu dalgınlığından uyandırmış gibi Erdem'e dönüp "Nereye gidiyoruz?" diye sordu. Erdem kısaca "Eve." diye cevap verdi, Güliz bir çığlık koparır gibi "Olmaz!" dedi.
-
-
-"Niye?"
-
-
-"Babam bana çok kızar."
-
-
-"Orası beni ilgilendirmiyor, evine sağ salim git yeter."
-
-
-Güliz yalvarır gibi Erdem'in koluna yapıştı, başını küçük bir çocuk gibi eğerek: "Ya n'olur, başka her yer olur ama ev olmaz," dedi.
-
-
-"Ben nereye götüreyim seni bu saatte?"
-
-
-"Bilmiyorum, otele falan!"
-
-
-"Nereden bulayım oteli şimdi sana? Hem annenin babanın aklı kalır, git evine açıklarsın bir şekilde!"
-
-
-"Bu hâlde neyi açıklayayım, konuşamıyorum bile!"
-
-
-Taksici dikiz aynasından kavgalarını takip ettikten sonra suskunluğu fırsat bilip araya girdi: "Ağabey aynı adrese mi gideyim?"
-
-
-"Evet ağabey sen değiştirme yolu."
-
-
-Güliz iç çekerek kollarını bağladı önce, sonra aniden duygusallaştı, gözyaşlarını silmeye başladı. Erdem göz ucuyla ona baktı, sarhoşluğun etkisinde olduğunu biliyordu bu yüzden çok üstüne düşmedi. Ceketinin cebinden bir mendil paketi çıkardı, içinden bir peçete çıkarıp Güliz'e uzattı.
-
-
-Araba Güliz'in evinin önünde durdu, Erdem önce inip Güliz'in kapısını açtı ancak Güliz başını öbür yana çevirdi ve kalkmadı.
-
-
-"İnsene, geldik."
-
-
-"Ev olmaz demiştim."
-
-
-"Saçmalama, gecenin köründe nereye bırakayım seni? Hadi in adamı da meşgul etme," deyip Güliz'in kolunu tuttu Erdem. Sanki avuçlarının içinde yumurta varmış gibi nazikçe tuttu kolunu, çekiştirmiyor ama inmesi için uğraşıyordu.
-
-
-"Ya olmaz dedim!"
-
-
-"Tamam in, seni nereye bırakacağımıza bakalım, hadi!"
-
-
-"Yemin et."
-
-
-"Yemin ederim ki eve götürmeyeceğim, hadi in."
-
-
-Güliz ikna olmuş şekilde arabadan bir ayağını attı, dengeyi kurmakta zorlanıyordu. Erdem arabanın içinde unuttuğu çantasını da aldıktan sonra genç kadının yine kolundan tuttu, arka cebinden cüzdanını çıkarıp tek eliyle zorlanarak parasını ödedi. "Kolay gelsin" dedikten sonra Güliz'i kaldırıma yürüttü, evinin kapısının önüne getirdi.
-
-
-"Yemin etmiştin!"
-
-
-"Yahu sen manyak mısın, gecenin bi yarısı nereye götüreyim şimdi seni?"
-
-
-"Vallahi bu merdivende sabahlarım ama yine de girmem eve," dedikten sonra merdivene oturdu Güliz eylem yapar gibi.
-
-
-Erdem "Hasbinallah" diye mırıldandı, ellerini beline koyup Güliz'e baktı; dirseklerini dizlerine koymuş, yanaklarını avuçlarını içine almış şekilde merdivende oturuyordu. Parmaklarını saç diplerine götürdü, başı ağrıyordu anlaşılan. Erdem ne yapacağını düşündü, etrafa bakınıp uzun bir of çekti. Eve çıkmıyordu, otele de götüremezdi. Beraber görünmeleri bile çok tehlikeliydi bir kere, hele beraber otele girerken görünmeleri... Direkt mimlenirlerdi, asla olmazdı. Turgut'un, yani teyzesinin evine bıraksa? Yok, yine "Niye sen bıraktın?" diye sorarlardı, zaten Turgut yanlış anlamaya çok müsaitti.
-
-
-"Hadi kalk gir evine, uğraştırma beni," diye ikna etmeye çalıştı bir umut.
-
-
-"Sen git evine, ben sabah olunca çıkarım yukarı."
-
-
-"Sabaha kadar böyle oturacak mısın soğukta?"
-
-
-"Sana ne be? Yaptın insanlık görevini defol git."
-
-
-"Giderim bak!"
-
-
-"Git diyorum ya!"
-
-
-Erdem ellerini beline koydu, derin bir nefes aldı önce, sonra yanaklarını şişirerek uzun bir of çekti. Bir anda aklına gelen fikirle Güliz'i kolundan tutarak yerinden kaldırdı: "Kalk tamam derneğe gidiyoruz, hadi."
-
-
-"Derneğe mi?
-
-
-"Derneğe evet, hadi kalk."
-
-
-Güliz ayağa kalktı ama ne demek istediğini anlamamıştı. Dernek neresiydi ki? Sadece Erdem'e ayak uydurdu, başka bir seçeneği de yoktu zaten.
-
-
-Dernek iki sokak ötedeydi, Erdem cebinden bir sigara çıkarıp yaktı yürüdükleri esnada. Güliz sessizliği fırsat bilerek Erdem'in üstünü incelemişti, üstündeki Beşiktaş formasına baktı, sanki daha önce fark etmemiş, ilk defa görüyormuş gibi ilgisini çekmişti. "Maça mı gidiyordun sen?" dedi süt dökmüş kedi gibi.
-
-
-"Maça gidiyordum evet, senin yüzünden gidemedim." diye cevapladı Erdem gaddar bir şekilde, mahcup olduğunu fark etmişti ve üstüne gidiyordu inatla.
-
-
-"Tamam beni burada bırak git o zaman sen." dedi Güliz, olduğu yerde durdu.
-
-
-"Şimdi maça gitsem sonuna ancak yetişirim. Dernekte televizyon var, oradan izleriz."
-
-
-"Ben izlemem, ben Trabzonsporluyum."
-
-
-Erdem bıyık altından gülmüştü bu cevabına.
-
-
-"Ceza sana, bundan sonra Beşiktaşlısın."
-
-
-Güliz yolun ortasında durdu yine. "Olmaz, ben Trabzonluyum Trabzonspor'u tutarım!" kafayı iyice bulmuştu, saçmalıyordu. Erdem bu hâlini fırsat bilip uğraşmaya devam etti: "E boynunda niye Beşiktaş atkısı var o zaman?"
-
-
-Güliz kaşlarını çatarak boynundaki atkıya bakmaya çalıştı, boştaki eliyle atkının ucunu kaldırıp üzerindeki logoya baktı. Sonra atkıyı bıraktı, suskunlaştı bir süre.
-
-
-Erdem yine bir of çekerek sessizliği bozdu: "Ertuğrul Ağabey'i biraz tanıyorsam sana da bana da çok fena kızacak." Genç kızdan ses gelmemişti, yürümeye devam ettiler.
-
-
-Nihayet derneğin kapısının önüne geldiler, Erdem ceketinin ceplerinde anahtarı aradı ve hemen buldu. Kapıyı açtı, kafasını yanındaki kıza çevirdi, yine ağlıyordu.
-
-
-"Niye ağlıyorsun yine?" dedi, sesi bu sefer biraz yüksek çıkmıştı bıkkınlıkla.
-
-
-"Babam bana çok kızacak."
-
-
-"Tamam geç içeri, orasını sonra düşünürüz." deyip genç kadını kolundan tutarak içeri girmesine yardım etti.
-
-
-Kendi ceketini çıkardıktan sonra kabanını genç kadının omuzlarından alıp askıya astı. Güliz dalgındı, gözyaşlarını sildi. Eğilip suratına baktı, Güliz Erdem'le göz göze geldi önce, sonra gözlerini halıya çevirdi.
-
-
-"Miden mi bulanıyor?"
-
-
-Güliz çocuk gibi masum bir şekilde kafasını iki yana salladı.
-
-
-"Benim Kenan'la gitmeme izin vermedin yabancı diye ama sen ondan daha yabancısın," dedi aniden.
-
-
-Erdem ne cevap vereceğini bilememişti, haklıydı. Sessiz kaldı.
-
-
-"Ben sana kahve yapayım, ayıldıktan sonra doğru eve," diye lafı değiştirdi.
-
-
-Mutfağa gitti, çekmeceden Türk kahvesini ve cezveyi çıkardı. Bir fincana su doldurup cezveye döktü ve bir kaşık Türk kahvesi ekledi, karıştırıp ocağa koyduktan sonra kafasını eğip Güliz'i kontrol etti. Koltukta öylece oturuyordu, arada bir vuran ağrıyla başına dokunuyordu.
-
-
-Kahveyi ocağın başında hızlı hızlı karıştırırken ne yapacağını düşündü, bu hâlde eve tek başına gidemezdi. Eşlik etse, mahalleden biri görür yanlış anlardı. Zaten buraya gelirken birinin görmüş olma ihtimali de yeterince tedirgin ediyordu.
-
-
-Kahve pişince fincana koyup tepsiyle götürdü, masaya bıraktı. Güliz dirseğini masaya dayamıştı, tek eliyle başını ovalıyordu hâlâ.
-
-
-"Ee, burada televizyon yok. Nasıl izleyeceksin maçı?" dedi başını kaldırmadan.
-
-
-"Yukarıda, benim odamda televizyon. Kahveni iç, izleriz."
-
-
-Güliz gözlerini Erdem'e çevirdi, kaşları üzüntüyle kıvrıldı, birden yine ağlamaya başladı.
-
-
-"N'oldu yine?"
-
-
-"Babam bana aşırı kızacak."
-
-
-Erdem içinden "Ya Sabır" dedi, ellerini dizlerine koyup Güliz'e doğru eğildi ve teselli etmeye çalıştı: "Tamam ağlama, baban sarhoşken başına bir iş gelir diye korktuğundan kızıyordur, bak şimdi burada güvendes-"
-
-
-"Babam Beşiktaş'ı tuttuğumu öğrenince benimle bir daha hiç konuşmayacak yaa!" diye yükseldi Güliz ve hüngür hüngür ağlamaya başladı.
-
-
-Erdem bu sefer gülüşünü gizleyememişti, dudaklarını sıkıp gülmemeye çalıştı ama istemsizce dudaklarından kaçtı kahkahası. Alt dudağını dişleri arasına aldı gülüşünü durdurmak için, karşısındaki genç kadına baktı uzun uzun. Hâlâ hüngür hüngür ağlamaya devam ediyordu, teselli etmek için karşısındaki koltuğa oturdu ama bu hâli karşısında kendini onunla uğraşmaktan alıkoyamıyordu: "Tamam ağlama, babana söylemezsen öğrenmez, kızmaz sana."
-
-
-Sanki küçük bir çocukla alay ediyor gibiydi, hem şefkat duyuyor hem de bu hâlini komik buluyordu.
-
-
-"Ben babama hiç yalan söyleyemem ki!"
-
-
-Erdem güldü.
-
-
-"Yalan söyleme, gizli tut yeter."
-
-
-Güliz başını kaldırdı, dağılan saçlarını kulağının arkasına atıp gözyaşlarını avuç içleriyle sildi ve "Tamam" dedi.
-
-
-Erdem sakinleştiğini farz ederek Güliz'in yanındaki koltuğa oturdu, tepsiyi Güliz'in önüne doğru ittirdi.
-
-
-"Hadi iç."
-
-
-Güliz fincanı almak için elini uzattı, bir türlü denk getiremedi elini. Sonra tabağını tutmaya çalıştı, yine başaramadı. Erdem bir süre öylece izledikten sonra dayanamayıp müdahale etti, Güliz'in bileğini tuttu, kahve fincanını da diğer eliyle tutarak kulbunu parmaklarının arasına getirdi ve tutmasını sağladı.
-
-
-Güliz parmaklarıyla kulbu sıkıca tuttu, fincanı ağzına taşımak istedi ama elinin titremesini durduramayıp üstüne damlattı kahveyi. Erdem sabırsızlanmaya başlamıştı, Güliz'in oturduğu koltuğu kendine doğru çekti ve fincanı elinden aldı. Dudaklarına götürüp içirdi yavaşça.
-
-
-"Mıy mıy içme şunu, dik kafaya. Ayıl diye yaptım keyfini çıkar diye değil."
-
-
-Güliz acıyla fincanı ittirdi eliyle.
-
-
-"Ağzım yandı dur!"
-
-
-"Abartma, buz oldu kahve zaten sen içene kadar!"
-
-
-Güliz'in konuşmasına izin vermeden kahveyi yine dudaklarına götürdü. Güliz ağzına telve gelince fincanı ittirdi, yutkundu ve dudaklarını yaladı.
-
-
-"Şekeri az olmuş."
-
-
-"Şeker koymadım çünkü."
-
-
-"Niye?"
-
-
-"Ne bileyim kaç şekerli içtiğini?"
-
-
-"Sorsaydın o zaman!"
-
-
-Erdem sinirle gözlerini büyüterek of çekti.
-
-
-"Ben yukarı çıkıyorum, sen otur burada."
-
-
-"Niye?"
-
-
-"Ne niye?"
-
-
-"Niye ben burada sen orada?"
-
-
-"Maç mı izleyeceksin oturup?"
-
-
-"Beşiktaşlısın dedin ya."
-
-
-"Beşiktaşlısın diye her maçı izlemene gerek yok."
-
-
-"Sen de izleme o zaman."
-
-
-"Ya Rabbi ya Rasulullah, tamam çık izle çıkabiliyorsan!"
-
-
-Güliz itiraz etmeyip Erdem'in önünden hızla yukarı çıktı. Erdem merdivenin başında gelmesini bekleyerek Güliz'i önüne aldı, merdiven çıkarken zorlanacağını biliyordu. Adım adım, sanki yürümeyi yeni öğrenmiş bir çocuk gibi merdivenleri tırmanıyordu Güliz.
-
-
-Duraksadı, tırabzandan sıkıca tutunarak arkasına baktı. Erdem, dengesini kaybederse düşmesini engellemek için hemen arkasında bekliyordu.
-
-
-"Çıksana," dedi Erdem sabırsızlıkla.
-
-
-Güliz karşılık vermeden aynı hızla merdivenleri çıkmaya devam etti. Bir şekilde sonunu getirmeyi başardı ve korkuluğa tutunup dengesini sağlamaya çalıştı.
-
-
-"Ben buradan geri nasıl ineceğim?"
-
-
-"İteceğim seni, iki saniyede aşağıda olacaksın."
-
-
-Güliz'in gözleri büyüdü.
-
-
-"Şaka yaptım, odaya geç hadi," dedi Erdem gülerek.
-
-
-Oda çok aydınlık değildi, içeriyi aydınlatan tek şey köşedeki abajur lambaydı ve sarı loş bir ışık sağlıyordu odaya. Abajur lambanın hemen önünde bir kanepe vardı, üzerinde dağınık hâlde bir battaniye duruyordu. Ortada küçük bir sehpa, altında bir kilim, sehpanın diğer yanındaysa bir çalışma masası ve yanında kitaplık vardı. En ortadaysa küçük siyah bir tüplü televizyon vardı, altında sadece iki çekmecesi olan minik bir ünite vardı.
-
-
-Güliz odada iyice göz gezdirdikten sonra kanepeye oturdu, baş ağrısına mide bulantısı da eklenmişti şimdi. Erdem aşağıya, mutfağa inmişti. En azından televizyonu açayım diye düşündü, sehpanın üzerindeki kumandaya uzandı, bir türlü alamadı. Gözlerini ovuşturdu, tekrar denedi, yine alamadı. Görünüşte alması gerekiyordu ama eli her defasında boş kalıyordu.
-
-
-"Oof!" diye bağırdı sinirle, o esnada odaya giren Erdem Güliz'i bu hâlde görünce yine dudakları kıvrıldı ancak bu kez gülmedi. Elinde bir tepsi, üstünde bir kâse çekirdek, bir bardak su ve ilaç vardı.
-
-
-"Başın ağrırsa içersin diye getirdim."
-
-
-"İçmem ilaç falan!"
-
-
-Erdem alayla burnundan nefes vererek güldü.
-
-
-"Sana bir şey yapmak istesem ilaç içirmeye ne hacet? Yeterince sarhoşsun zaten. Ayrıca buraya kadar geldin, ilaçtan mı korkuyorsun?" dedi elindekileri sehpaya koyarken.
-
-
-Bu dedikleri Güliz'i düşündürmüştü, bir an ayaklanmak istedi ama sendeledi yine. Zorlanarak ayakta durmayı başardı yine de, ayık gibi davranmaya çalışarak: "Tamam, ben daha iyiyim ayıldım, eve gideyim artık" dedi.
-
-
-Genç adam ağzında çekirdek çıtlatırken kumandayı aldı ve televizyonu açtı. "Git madem, güle güle." diye alay etti yine.
-
-
-Güliz odadan çıktı, artık o kadar da kötü değildi gerçekten de. Merdivene yöneldi, korkuluğa tutunarak inebileceğini düşünmüştü ama cesaret edemedi yine de. Erdem'in elini silkeleyerek arkasından geldiğini fark etti, arkasını döndü: "Ben giderim kendim, sen maçını izle."
-
-
-Erdem kapının pervazına yaslanmış, kollarını bağlamış hâlde onu izlemeye devam etti.
-
-
-"Git, ben bırakayım demedim zaten."
-
-
-Bir an duraksadı Güliz, derin nefes almaya başladı. Aniden gelen mide bulantısıyla elini ağzına götürdü ve yüzünü buruşturdu, Erdem bu anı önceden tahmin etmiş gibi aceleyle hemen karşısındaki tuvaletin kapısını açtı ve Güliz'in omuzlarından tutarak tuvalete sürükledi.
-
-
-Genç kadının saçlarını yardımcı olmak için eliyle topladı, nasıl topuz yapılır bilmiyordu ama bir iki kez çevirip eliyle tuttu. "İyi misin?" diye sordu kafasını eğip, Güliz kafasını kaldırıp onaylar biçimde aşağı yukarı salladı başını.
-
-
-Kalkmasına yardım ettikten sonra lavaboda ıslattığı elini yüzüne sürdü, ıslanan bebek saçları yüzüne yapıştı. Lavabodan çıkarken "Bir daha içersem Allah da benim belamı versin!" diye isyan etti mırıldanarak, Erdem cevap vermeden omuzlarından tutup odaya götürdü ve koltuğa oturttu.
-
-
-Elini beline koymuş, tereddütle bir Güliz'e bir de çalışma masasının üstündeki telefona bakıyordu.
-
-
-"Turgut'u arayayım gelsin alsın seni, böyle olmaz." dedi en son ağzındaki baklayı çıkararak.
-
-
-Güliz Erdem'e baktı önce, aklından bir sürü soru geçirdi, emin olamadı ama nihayet kendini ikna etti ve gözlerini kırparak onayladı. Eve illaki gidecek ve o soru yağmuruna tutulacaktı sonuçta.
-
-
-Erdem masadaki telefona yöneldi, numarayı tuşladı, dakikalarca bekledi ama dönen olmadı. Tekrar tuşladı, tekrar bekledi, bu sefer açılmıştı telefon: "Buyrun?"
-
-
-"Aa, Havva Abla iyi akşamlar, benim Erdem. Turgut oradaysa ona verebilir misin telefonu?"
-
-
-"İyi akşamlar canım, Turgut evde değil. Ben söylerim ama gelince aradığını."
-
-
-"Yok abla sağ ol, ben sonra görüşürüm onunla."
-
-
-"Peki o zaman, annene selam söyle."
-
-
-"Aleyküm selam."
-
-
-Erdem Güliz'e döndü, her şeyi duymuştu ama duymamış gibi özetledi yine de.
-
-
-"Turgut evde yokmuş."
-
-
-Güliz bir şey söylemedi, dizlerini birleştirmiş, ellerini de üstünde birleştirmiş şekilde "hanım hanımcık" oturuyordu koltukta. Erdem yanına oturdu, ne yapacağını bilememişti o da. Çekirdek kasesini uzattı: "Çekirdek yer misin, tuzlu ya mide bulantını giderir belki."
-
-
-Güliz önce sadece Erdem'e ve elindeki çekirdeğe baktı garip garip, sonra gülümsedi: "Sen ayıklayacaksan olur."
-
-
-Erdem güldü, niye öyle dediğini anlamamıştı, belli ki o da bilmiyordu niye dediğini.
-
-
-"Ben ayıklarsam tuzu mu kalır?"
-
-
-"O zaman yemeyeyim."
-
-
-"Sen bilirsin," dedikten sonra bir avuç çekirdek alıp çitlemeye başladı Erdem. Maç devam ediyordu, neredeyse yarım saat vardı daha bitmesine, ona odaklanmıştı.
-
-
-"İyi ki Kenan'la gitmemişim."
-
-
-"Hı?"
-
-
-"İyi ki Kenan'ın beni evine götürmesine izin vermedin. Yoksa kesin üstüne kusar rezil olurdum ona."
-
-
-Erdem duraksadı, dudakları yukarı kıvrıldı yavaşça ama gülmedi.
-
-
-"Benim üstüme kusmadıysan onun üstüne de kusmazdın."
-
-
-"O senin kadar hızlı değil."
-
-
-Erdem cevap vermedi bir süre, iç çekerek kafasını yine maça döndü.
-
-
-"En iyi ihtimal üstüne kusman olurdu."
-
-
-"Niye?"
-
-
-"Erkeklere güven olmaz çünkü."
-
-
-"Sana güvendim ama."
-
-
-"Bana da güvenme zaten."
-
-
-"Niye?"
-
-
-Erdem lafına devam etmek için nefes aldı, fakat söze girmeden durdu ve yanında sarhoş hâlde oturup başını ovalayarak ona bakan kıza baktı. Bu hâlde ona laf anlatmanın anlamı yoktu, televizyona döndü hiçbir şey demeden.
-
-
-Güliz kafasını eğdi, halının şekillerini inceliyordu, bir yandan da başında dayanılmaz bir ağrı vardı. Şu an tek istediği uyumaktı, göz kapakları ağırlaşıyordu. Yanındaki genç adama döndü ve çocuk gibi sordu. "Ne zaman eve gideceğiz?"
-
-
-"Sen demedin mi eve gitmeyelim diye?"
-
-
-"Uyumak istiyorum."
-
-
-Bu isteği Erdem'i düşündürmüştü. "Yat uyu" dese, burada böyle yalnız olmazdı, geceyi burada geçiremezdi. Bir süre kaçtı bu düşünceden, maça daldı. Güliz'in söylediklerini duymazlıktan geldi, bir süre sonra susmuştu o da.
-
-
-Son düdük çalınca televizyonun kapatma düğmesine bastı, yanına döndü. Güliz dizlerini karnına çekmiş, başını koltuğun başına koyup uyuyakalmıştı. Erdem bu manzaraya baktı bir süre, artık uyandırıp "evine git" diyemezdi. Kızın ayağındaki ayakkabıları uyandırmadan, nazikçe çıkardı. Biraz uzun sürmüştü ama çıkarmıştı nihayet.
-
-
-Oturduğu yerden kalktı, ayaklarını uzatmasını sağladı. Başının altına yumuşak bir yastık aradı. Ayağının ucundaki yastığı aldı, genç kadının kafasını ensesinden yavaşça tutarak kaldırdı ve yastığı başının altına koydu. Koltuğun tepesindeki battaniyeye uzandı rahatsızlık vermemeye çalışarak, açıp üstüne serdi. Olduğu kadarıyla bırakıp rahat yattığından emin olduktan sonra odanın kapısını yavaşça çekip çıktı.`,
-            3: `<p>3. Bölüm metniniz buraya gelecek...</p>`,
-            // 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
-            14: `
-                <p class="font-bold text-center mb-6">BÖLÜM 14 (Örnek Metin Alanı)</p>
-                <p>Buraya son yazdığınız bölümü yapıştırabilirsiniz. Sitenin koduna girip bu "chaptersData" kısmını bularak metinlerinizi güncelleyebilirsiniz.</p>
-            `
-        };
-
-        // Modal Logic
+        // Okuma Modalı
         const modal = document.getElementById('reader-modal');
-        const modalContent = document.getElementById('reader-content');
         const modalTitle = document.getElementById('modal-chapter-title');
         const readerText = document.getElementById('reader-text');
-        const body = document.body;
-
-        // Okuma ekranını açan fonksiyon
-        function openReader(chapterNumber, chapterTitleOverride = null) {
-            window.currentOpenChapterId = chapterNumber; // Bölüm ID'sini Firebase için kaydet
-            modalTitle.textContent = chapterTitleOverride || `Bölüm ${chapterNumber}`;
+        
+        function openReader(title, content) {
+            modalTitle.textContent = title;
+            // Paragrafları düzgün göstermek için satır atlamalarını HTML'e çeviriyoruz
+            let formattedContent = content.replace(/\n/g, '<br><br>');
+            // İlk harfi romanlardaki gibi büyük yapmak için minik bir kod:
+            formattedContent = `<span class="first-letter:text-5xl first-letter:font-bold first-letter:text-brand-900 first-letter:mr-1 first-letter:float-left first-letter:font-serif">${formattedContent}</span>`;
             
-            // Eğer verilerde bölüm metni varsa onu koy, yoksa uyarı ver
-            if(chaptersData[chapterNumber]) {
-                readerText.innerHTML = chaptersData[chapterNumber];
-            } else {
-                readerText.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-center py-20"><p class="mb-4 font-sans text-xl">Bu bölümün metni henüz siteye eklenmemiş.</p><p class="text-gray-500 font-sans">Yazar metni eklediğinde burada görünecek.</p></div>`;
-            }
-
+            readerText.innerHTML = formattedContent;
+            
             modal.classList.remove('hidden');
-            body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
-            
-            // Okuma metni alanını en üste kaydır
+            document.body.style.overflow = 'hidden';
             document.getElementById('reader-scroll-area').scrollTop = 0;
-
-            // Bölüme ait yorumları göster
-            if (typeof window.renderComments === 'function') {
-                window.renderComments();
-            }
-
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
+            
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
         }
 
         function closeReader() {
             modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            
             setTimeout(() => {
                 modal.classList.add('hidden');
-                body.style.overflow = 'auto';
+                document.body.style.overflow = 'auto';
             }, 300);
         }
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeReader();
-        });
-
-        // Yazı tipi büyütme/küçültme
-        let currentFontSize = 1.125; // text-lg varsayılanı (rem cinsinden)
+        let currentFontSize = 1.125; 
         function changeFontSize(direction) {
             currentFontSize += direction * 0.125;
-            // Limit the size between roughly 14px and 24px
             if(currentFontSize < 0.875) currentFontSize = 0.875;
             if(currentFontSize > 1.5) currentFontSize = 1.5;
-            
             readerText.style.fontSize = `${currentFontSize}rem`;
-            // Ayrıca line-height'i orantılı ayarlayalım
             readerText.style.lineHeight = `${currentFontSize * 1.8}rem`;
+        }
+
+        // Yazar Giriş Modalı
+        function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
+        function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
+
+        // Bölüm Ekleme Modalı
+        function openAddChapterModal(id = '', number = '', title = '', content = '') {
+            document.getElementById('edit-chapter-id').value = id;
+            document.getElementById('chapter-number').value = number;
+            document.getElementById('chapter-title').value = title;
+            document.getElementById('chapter-content').value = content;
+            
+            document.getElementById('editor-title').innerText = id ? "Bölümü Düzenle" : "Yeni Bölüm Ekle";
+            document.getElementById('save-btn').innerText = id ? "Güncelle" : "Yayınla!";
+            
+            document.getElementById('add-chapter-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAddChapterModal() { 
+            document.getElementById('add-chapter-modal').classList.add('hidden'); 
+            document.body.style.overflow = 'auto';
         }
     </script>
 
-    <!-- Yorumlar için Firebase Altyapısı -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-doksan-sekiz-app';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        // ==============================================================================
+        // DİKKAT: AŞAĞIDAKİ "firebaseConfig" KISMININ İÇİNİ, REHBERDEN ALDIĞIN 
+        // KENDİ ŞİFRELERİNLE DEĞİŞTİRECEKSİN. SADECE SÜSLÜ PARANTEZ İÇİNİ DEĞİŞTİR!
+        // ==============================================================================
+        const firebaseConfig = {
+           apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
+  authDomain: "rowenaiswriting-ecd85.firebaseapp.com",
+  projectId: "rowenaiswriting-ecd85",
+  storageBucket: "rowenaiswriting-ecd85.firebasestorage.app",
+  messagingSenderId: "52303022926",
+  appId: "1:52303022926:web:3d90e742d8d7a90360ac1f",
+  measurementId: "G-RXHL4KLHZG"
+        };
+        // ==============================================================================
+
+        // Firebase Başlatma
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
         
-        let app, db, auth, currentUser;
-        let allComments = [];
+        // Güvenlik Kuralı Gereği Sabit Yol Kullanımı
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'rowenaswriting-app';
+        const chaptersRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapters');
 
-        if (firebaseConfig && Object.keys(firebaseConfig).length > 0) {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
+        let isAdmin = false;
+        let allChapters = [];
 
-            const initAuth = async () => {
-                try {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                    currentUser = auth.currentUser;
-                    loadComments();
-                } catch (error) {
-                    console.error("Firebase auth hatası:", error);
-                }
-            };
-            initAuth();
-        } else {
-            console.warn("Firebase yapılandırması bulunamadı. Yorumlar devre dışı.");
-            document.getElementById('comment-list').innerHTML = '<p class="text-sm text-gray-500 italic font-sans text-center">Yorum sistemi şu an kullanılamıyor.</p>';
-        }
-
-        function loadComments() {
-            if (!currentUser) return;
-            const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapter_comments');
-            
-            onSnapshot(commentsRef, (snapshot) => {
-                allComments = [];
-                snapshot.forEach(doc => {
-                    allComments.push({ id: doc.id, ...doc.data() });
-                });
-                
-                // Eğer ekranda açık bir bölüm varsa yorumları anında güncelle
-                if (window.currentOpenChapterId) {
-                    window.renderComments();
-                }
-            }, (error) => {
-                console.error("Yorumları çekerken hata oluştu:", error);
-            });
-        }
-
-        window.submitComment = async function() {
-            if (!currentUser || !db) return; 
-            
-            const nameInput = document.getElementById('comment-name').value.trim() || 'İsimsiz Okur';
-            const textInput = document.getElementById('comment-text').value.trim();
-            const errorDiv = document.getElementById('comment-error');
-            const submitBtn = document.getElementById('submit-comment-btn');
-            
-            if (!textInput) {
-                errorDiv.classList.remove('hidden');
-                return;
+        // Auth Durumunu Dinle
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email) {
+                // Giriş yapıldıysa admin butonlarını göster
+                isAdmin = true;
+                document.getElementById('admin-add-btn-container').classList.remove('hidden');
+                closeLoginModal();
+                renderChapters(); // Listeyi butonlarla yenile
+            } else {
+                isAdmin = false;
+                document.getElementById('admin-add-btn-container').classList.add('hidden');
             }
-            errorDiv.classList.add('hidden');
+        });
+
+        // Yazar Giriş Fonksiyonu
+        window.loginAdmin = async () => {
+            const email = document.getElementById('admin-email').value;
+            const pass = document.getElementById('admin-password').value;
+            const errorEl = document.getElementById('login-error');
+            const btn = document.getElementById('login-btn');
             
-            const chapterId = window.currentOpenChapterId;
-            if (!chapterId) return;
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Gönderiliyor...";
-            submitBtn.classList.add('opacity-70');
-
+            btn.innerText = "Giriş Yapılıyor...";
+            errorEl.classList.add('hidden');
+            
             try {
-                const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapter_comments');
-                await addDoc(commentsRef, {
-                    chapterId: chapterId,
-                    name: nameInput,
-                    text: textInput,
-                    timestamp: Date.now(),
-                    userId: currentUser.uid
-                });
-                
-                document.getElementById('comment-text').value = ''; // Mesaj kutusunu temizle
+                await signInWithEmailAndPassword(auth, email, pass);
             } catch (error) {
-                console.error("Yorum eklenirken hata: ", error);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Gönder";
-                submitBtn.classList.remove('opacity-70');
+                errorEl.classList.remove('hidden');
+                btn.innerText = "Giriş Yap";
             }
         };
 
-        window.renderComments = function() {
-            const listEl = document.getElementById('comment-list');
-            if (!listEl) return;
+        // Bölümleri Çek ve Ekrana Yazdır
+        onSnapshot(chaptersRef, (snapshot) => {
+            allChapters = [];
+            snapshot.forEach(doc => {
+                allChapters.push({ id: doc.id, ...doc.data() });
+            });
             
-            const chapterId = window.currentOpenChapterId;
-            
-            // İlgili bölümün yorumlarını filtrele ve yeniden eskiye sırala
-            const chapterComments = allComments
-                .filter(c => c.chapterId === chapterId)
-                .sort((a, b) => b.timestamp - a.timestamp);
+            // Bölümleri numara sırasına göre büyükten küçüğe sırala (En yeni en üstte)
+            allChapters.sort((a, b) => Number(b.chapterNumber) - Number(a.chapterNumber));
+            renderChapters();
+        }, (error) => {
+            console.log("Bağlantı hatası (Şifrelerini girmeden önce bu hata normaldir):", error);
+            document.getElementById('chapter-list').innerHTML = `<p class="text-center text-red-500 py-4">Veritabanı şifreleri henüz girilmemiş. Lütfen rehberi takip edin.</p>`;
+        });
 
-            if (chapterComments.length === 0) {
-                listEl.innerHTML = '<p class="text-sm text-gray-500 italic font-sans text-center bg-white/50 p-6 rounded border border-brand-100 border-dashed">Bu bölüme henüz yorum yapılmamış. İlk yorumu sen yap!</p>';
+        window.renderChapters = () => {
+            const listEl = document.getElementById('chapter-list');
+            const countEl = document.getElementById('chapter-count-text');
+            
+            countEl.innerText = `Şu ana kadar yayınlanmış ${allChapters.length} bölüm.`;
+            
+            if (allChapters.length === 0) {
+                listEl.innerHTML = `<p class="text-center text-gray-500 py-4">Henüz yayınlanmış bir bölüm yok.</p>`;
                 return;
             }
 
-            listEl.innerHTML = chapterComments.map(c => {
-                const date = new Date(c.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute:'2-digit' });
-                return `
-                    <div class="bg-white p-4 rounded shadow-sm border border-brand-100 fade-in relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-1 h-full bg-brand-accent/50 group-hover:bg-brand-accent transition-colors"></div>
-                        <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-1">
-                            <span class="font-bold text-brand-900 font-sans text-sm">${escapeHTML(c.name)}</span>
-                            <span class="text-xs text-gray-400 font-typewriter">${date}</span>
+            let html = '';
+            allChapters.forEach((chapter, index) => {
+                const isNew = index === 0; // En baştakine Yeni yaz
+                
+                // Admin için sil ve düzenle butonları
+                const adminButtons = isAdmin ? `
+                    <div class="flex gap-2 ml-4">
+                        <button onclick="event.stopPropagation(); openAddChapterModal('${chapter.id}', '${chapter.chapterNumber}', '${chapter.title.replace(/'/g, "\\'")}', \`${chapter.content.replace(/`/g, "\\`")}\`)" class="text-blue-500 hover:text-blue-700 p-2"><i class="fas fa-edit"></i></button>
+                        <button onclick="event.stopPropagation(); deleteChapter('${chapter.id}')" class="text-red-500 hover:text-red-700 p-2"><i class="fas fa-trash"></i></button>
+                    </div>
+                ` : '';
+
+                html += `
+                    <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer bg-white" onclick='openReader("${chapter.title.replace(/"/g, '&quot;')}", \`${chapter.content.replace(/`/g, "\\`")}\`)'>
+                        <div class="flex items-center gap-3">
+                            <h4 class="font-bold text-brand-900 text-lg">Bölüm ${chapter.chapterNumber} ${chapter.title ? '- ' + chapter.title : ''}</h4>
+                            ${isNew ? '<span class="text-[10px] font-sans bg-[#8b5a50] text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider animate-pulse">Yeni</span>' : ''}
                         </div>
-                        <p class="text-gray-700 font-sans text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(c.text)}</p>
+                        <div class="flex items-center">
+                            <button class="text-brand-500 hover:text-brand-900 transition mr-2"><i class="fas fa-book-open"></i> Oku</button>
+                            ${adminButtons}
+                        </div>
                     </div>
                 `;
-            }).join('');
+            });
+            listEl.innerHTML = html;
         };
 
-        function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    "'": '&#39;',
-                    '"': '&quot;'
-                }[tag])
-            );
-        }
+        // Bölüm Kaydetme (Ekleme / Güncelleme)
+        window.saveChapter = async () => {
+            const id = document.getElementById('edit-chapter-id').value;
+            const number = document.getElementById('chapter-number').value;
+            const title = document.getElementById('chapter-title').value;
+            const content = document.getElementById('chapter-content').value;
+            const errorEl = document.getElementById('save-error');
+            const btn = document.getElementById('save-btn');
+
+            if (!number || !content) {
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            
+            errorEl.classList.add('hidden');
+            btn.disabled = true;
+            btn.innerText = "Kaydediliyor...";
+
+            try {
+                if (id) {
+                    // Güncelleme
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', id);
+                    await updateDoc(docRef, {
+                        chapterNumber: Number(number),
+                        title: title,
+                        content: content
+                    });
+                } else {
+                    // Yeni Ekleme
+                    await addDoc(chaptersRef, {
+                        chapterNumber: Number(number),
+                        title: title,
+                        content: content,
+                        createdAt: Date.now()
+                    });
+                }
+                closeAddChapterModal();
+            } catch (error) {
+                console.error("Kaydetme hatası:", error);
+                alert("Bir hata oluştu, lütfen konsolu kontrol edin.");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Yayınla!";
+            }
+        };
+
+        // Bölüm Silme
+        window.deleteChapter = async (id) => {
+            if (confirm("Bu bölümü kalıcı olarak silmek istediğine emin misin?")) {
+                try {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'chapters', id));
+                } catch (error) {
+                    console.error("Silme hatası:", error);
+                }
+            }
+        };
+
     </script>
 </body>
 </html>
