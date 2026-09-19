@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rowenaswriting | Doksan Sekiz</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for headings, Inter for body, Special Elite for typewriter effect -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        typewriter: ['Special Elite', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f4f1ea', // Eski kağıt rengi
+                            100: '#e8e2d5',
+                            500: '#5a6b7c', // Mavi/Gri boğaz tonu
+                            800: '#2c353e',
+                            900: '#1a1f24', // Koyu mürekkep
+                            accent: '#8b5a50' // Solmuş çiçek kızılı
+                        }
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('https://www.transparenttextures.com/patterns/old-wall.png')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar matching theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f4f1ea;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5a6b7c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2c353e;
+        }
+        
+        body {
+            background-color: #f4f1ea;
+            background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
+        }
+
+        /* Smooth fade-in animation for elements */
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Book cover style */
+        .book-cover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+        .book-cover:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Chapter item hover effect */
+        .chapter-item {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+        .chapter-item:hover {
+            background-color: #e8e2d5;
+            border-left: 3px solid #5a6b7c;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 bg-brand-50/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-brand-100" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo / Author Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-typewriter text-2xl font-bold text-brand-900 tracking-widest lowercase">
+                        rowenaswriting
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Ana Sayfa</a>
+                    <a href="#book" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Doksan Sekiz</a>
+                    <a href="#chapters" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Bölümler</a>
+                    <a href="#about" class="text-gray-600 hover:text-brand-800 font-medium transition duration-150 font-typewriter">Hakkımda</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-900 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-50 border-t border-brand-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg font-typewriter">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Ana Sayfa</a>
+                <a href="#book" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Doksan Sekiz</a>
+                <a href="#chapters" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Bölümler</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-900 hover:bg-brand-100 rounded-md">Hakkımda</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 lg:pt-48 lg:pb-24 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col items-center text-center fade-in">
+                <span class="font-typewriter text-brand-500 tracking-widest uppercase text-sm mb-4 block">Yeni Bölümler Yayında</span>
+                <h1 class="font-serif text-5xl md:text-7xl font-bold text-brand-900 leading-tight mb-4 tracking-wider uppercase">
+                    DOKSAN SEKİZ
+                </h1>
+                
+                <!-- 
+                ==================================================================
+                KİTAP KAPAĞI FOTOĞRAFI DEĞİŞTİRME ALANI
+                Aşağıdaki <img> etiketinde yer alan src="image_2.png" kısmını 
+                kendi fotoğrafınızın adıyla veya bir resim linkiyle (URL) değiştirebilirsiniz. 
+                ================================================================== 
+                -->
+                <div class="my-8 mx-auto w-56 md:w-72 book-cover rounded overflow-hidden shadow-2xl relative z-20 border-2 border-brand-800/10">
+                    <img src="image_2.png" alt="Doksan Sekiz Kitap Kapağı" class="w-full h-auto object-cover rounded block">
+                </div>
+                <!-- ================================================================== -->
+
+                <p class="font-typewriter text-xl text-gray-600 mb-8 max-w-2xl mx-auto italic">
+                    "Sadece ana çift odaklı, çabuk gerçekleşen bir aşk hikâyesi okumak istiyorsanız maalesef yanlış yerdesiniz..."
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#book" class="bg-brand-800 hover:bg-brand-900 text-brand-50 font-typewriter py-3 px-8 rounded text-center transition duration-300 shadow-lg uppercase tracking-wider text-sm border border-brand-900">
+                        Kitabı İncele
+                    </a>
+                    <a href="#chapters" class="bg-transparent border border-brand-800 hover:bg-brand-800 hover:text-brand-50 text-brand-900 font-typewriter py-3 px-8 rounded text-center transition duration-300 uppercase tracking-wider text-sm">
+                        Bölümleri Oku
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative subtle background element -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20rem] font-serif font-bold text-brand-900 opacity-5 select-none pointer-events-none z-0">
+            98
+        </div>
+    </section>
+
+    <!-- Book Details Section -->
+    <section id="book" class="py-20 border-t border-brand-100 bg-brand-50/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center fade-in">
+                
+                <!-- Book Synopsis & Stats -->
+                <div class="w-full text-center">
+                    <div class="flex justify-center items-center gap-4 mb-8 text-sm font-typewriter text-brand-500">
+                        <span class="bg-brand-100 px-3 py-1 rounded border border-brand-200">Devam Ediyor</span>
+                        <span><i class="fas fa-eye"></i> 3.3K+ Okunma</span>
+                        <span><i class="fas fa-star"></i> 291 Oy</span>
+                    </div>
+                    
+                    <h2 class="font-serif text-3xl font-bold text-brand-900 mb-6">Önsöz & Yazarın Notu</h2>
+                    
+                    <div class="prose prose-brand text-gray-700 font-sans leading-relaxed space-y-4 text-left max-w-2xl mx-auto">
+                        <p>
+                            Öncelikle bu benim ilk kitabım olduğu için acemiliklerim olabilir, yazdıkça öğreniyorum. Daha önce kitap yazdığım oldu ama bu tamamlamaya karar verdiğim ve yayınladığım ilk kitap.
+                        </p>
+                        <p class="border-l-2 border-brand-accent pl-4 italic">
+                            Baştan şunun uyarısını yapmak istiyorum, kitabımdaki karakterlerin hata yapmayacağının ve kusursuz insanlar olduğunun garantisini vermiyorum. Karakterlerimi muhteşem yazmaktan ziyade insani olmalarını sağlamak benim için önemli.
+                        </p>
+                        <p>
+                            Karakterlerimin yaptıkları yanlışların da güzellemesini asla yapmam‼️
+                        </p>
+                        <p>
+                            İkinci olarak, kitabım biraz yavaş ilerliyor. Karakter sayısı fazla, hepsinin hikâyesinden bahsetmek istiyorum. Hem yazar hem de okur olarak "yabancı ama âşık" erasını; minik kıskançlıklar, ani yakınlaşmalar ve gerilim sahneleri yazmayı seviyorum.
+                        </p>
+                        <p class="text-sm text-brand-500 font-typewriter mt-4">
+                            * Bu kurgu benim 2023'ten beri yazdığım, çok kez değiştirdiğim ve en sonunda sabit bir senaryo kurup yazmakta olduğum bir kurgudur.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="https://www.wattpad.com/story/409064475-doksan-seki%CC%87z" target="_blank" class="inline-flex items-center gap-2 bg-[#ff500a] hover:bg-[#e64809] text-white font-bold py-2 px-6 rounded transition duration-300">
+                            <i class="fas fa-book"></i> Wattpad'de İncele
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters Section -->
+    <section id="chapters" class="py-20 border-t border-brand-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="font-serif text-3xl font-bold text-brand-900 mb-2">Bölüm Listesi</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mb-4"></div>
+                <p class="font-typewriter text-gray-600">Şu ana kadar yayınlanmış 14 bölüm.</p>
+            </div>
+
+            <!-- Chapters Container - easy to copy/paste new ones -->
+            <div class="bg-white/50 rounded shadow-sm border border-brand-100 p-2 sm:p-4 fade-in font-serif" id="chapter-list">
+                <!-- 
+                =================================================
+                BÖLÜM EKLEME ALANI
+                Yeni bir bölüm eklemek için aşağıdaki bir bloğu kopyalayıp
+                en üste yapıştırın ve adını/numarasını değiştirin.
+                onclick="openReader(Bölüm Numarası)" kısmına dikkat edin.
+                =================================================
+                -->
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(14, 'Ondördüncü Bölüm')">
+                    <div>
+                        <h4 class="font-bold text-brand-900 text-lg">Bölüm 14</h4>
+                        <span class="text-xs font-typewriter text-gray-500">Son Güncelleme</span>
+                    </div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(13, 'Onüçüncü Bölüm')">
+                    <div>
+                        <h4 class="font-bold text-brand-900 text-lg">Bölüm 13</h4>
+                    </div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+                
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(12, 'Onikinci Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 12</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(11, 'Onbirinci Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 11</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(10, 'Onuncu Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 10</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(9, 'Dokuzuncu Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 9</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(8, 'Sekizinci Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 8</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(7, 'Yedinci Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 7</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(6, 'Altıncı Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 6</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(5, 'Beşinci Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 5</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(4, 'Dördüncü Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 4</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(3, 'Üçüncü Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 3</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer" onclick="openReader(2, 'İkinci Bölüm')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 2</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <div class="chapter-item flex justify-between items-center p-4 cursor-pointer" onclick="openReader(1, 'Giriş / BİRİNCİ BÖLÜM • VELİ')">
+                    <div><h4 class="font-bold text-brand-900 text-lg">Bölüm 1 • Veli</h4></div>
+                    <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> Oku</button>
+                </div>
+
+                <!-- ================= BİTİŞ ================= -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Author Section -->
+    <section id="about" class="py-20 border-t border-brand-100 bg-brand-800 text-brand-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-typewriter text-2xl font-bold mb-4 tracking-widest lowercase">rowenaswriting</h2>
+            <div class="w-12 h-[2px] bg-brand-accent mx-auto mb-8"></div>
+            
+            <p class="font-serif text-lg leading-relaxed max-w-2xl mx-auto mb-8 text-brand-100">
+                Karakterlerimi muhteşem yazmaktan ziyade insani olmalarını sağlamak benim için önemli. 
+                Doksan Sekiz, hatalarıyla yüzleşenlerin, ani yakınlaşmaların ve gerilimin hikayesi.
+            </p>
+
+            <div class="flex justify-center gap-6">
+                <a href="https://www.wattpad.com/user/rowenaswriting" target="_blank" class="text-brand-100 hover:text-white transition duration-300 text-2xl" title="Wattpad">
+                    <i class="fas fa-book"></i>
+                </a>
+                <a href="https://www.tiktok.com/@rowenastt" target="_blank" class="text-brand-100 hover:text-white transition duration-300 text-2xl" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Modal (Simulates reading a chapter) -->
+    <div id="reader-modal" class="fixed inset-0 z-[100] bg-brand-900/80 backdrop-blur-sm hidden flex items-center justify-center opacity-0 transition-opacity duration-300 p-2 sm:p-6">
+        <div class="bg-[#f4f1ea] w-full max-w-3xl h-[95vh] sm:h-[90vh] rounded shadow-2xl flex flex-col transform scale-95 transition-transform duration-300" id="reader-content">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b border-brand-200/50 bg-white/30">
+                <div>
+                    <h3 id="modal-chapter-title" class="font-serif text-xl sm:text-2xl font-bold text-brand-900">Bölüm Adı</h3>
+                    <p class="text-xs text-brand-500 font-typewriter tracking-widest">DOKSAN SEKİZ</p>
+                </div>
+                <div class="flex gap-2">
+                    <!-- Text Size Controls -->
+                    <button onclick="changeFontSize(-1)" class="p-2 text-brand-500 hover:text-brand-900 transition" title="Yazı tipini küçült"><i class="fas fa-font text-sm"></i></button>
+                    <button onclick="changeFontSize(1)" class="p-2 text-brand-500 hover:text-brand-900 transition" title="Yazı tipini büyüt"><i class="fas fa-font text-lg"></i></button>
+                    <!-- Close button -->
+                    <button onclick="closeReader()" class="ml-2 p-2 text-brand-800 hover:text-brand-accent transition rounded">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Modal Body (The Text Content & Comments) -->
+            <div class="overflow-y-auto flex-1 custom-scrollbar p-6 sm:p-8" id="reader-scroll-area">
+                <!-- BÖLÜM METİNLERİ BURAYA YÜKLENECEK -->
+                <div id="reader-text" class="text-brand-900 font-serif text-lg leading-loose min-h-[50vh]">
+                    <!-- Javascript will inject chapter content here -->
+                </div>
+                
+                <!-- Divider for Comments -->
+                <div class="w-24 h-[1px] bg-brand-200 mx-auto my-12"></div>
+                
+                <!-- Comments Section -->
+                <div id="comments-container" class="max-w-2xl mx-auto pb-8">
+                    <h4 class="font-serif text-2xl font-bold text-brand-900 mb-6">Okur Yorumları</h4>
+                    
+                    <!-- Comment Input -->
+                    <div class="bg-brand-50/80 p-4 sm:p-6 rounded-lg border border-brand-100 mb-8 shadow-sm">
+                        <input type="text" id="comment-name" placeholder="İsminiz (İsteğe bağlı)" class="w-full mb-3 p-3 border border-brand-200 rounded font-sans text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 bg-white transition">
+                        <textarea id="comment-text" rows="3" placeholder="Bu bölüm hakkında ne düşünüyorsunuz?" class="w-full mb-3 p-3 border border-brand-200 rounded font-sans text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 bg-white transition resize-none"></textarea>
+                        <div class="flex justify-between items-center">
+                            <span id="comment-error" class="text-[#8b5a50] text-xs font-typewriter hidden">Lütfen bir yorum yazın.</span>
+                            <button id="submit-comment-btn" onclick="submitComment()" class="bg-brand-800 hover:bg-brand-900 text-brand-50 px-6 py-2 rounded text-sm font-typewriter transition ml-auto shadow-sm">Gönder</button>
+                        </div>
+                    </div>
+
+                    <!-- Comments List -->
+                    <div id="comment-list" class="space-y-4">
+                        <p class="text-sm text-gray-500 italic font-sans text-center">Yorumlar yükleniyor...</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Set current year
+        document.getElementById('modal-year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.add('hidden'));
+        });
+
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ==========================================
+        // BÖLÜM İÇERİKLERİ (KOPYALA YAPIŞTIR ALANI)
+        // ==========================================
+        // Burası sizin metinlerinizi yapıştıracağınız alan.
+        // Her bölüm için chaptersData objesine bir numara ekleyin.
+        // Yazılarınızı <p> etiketleri içine veya `<br><br>` ile ayırarak yazabilirsiniz.
+        
+        const chaptersData = {
+            1: `
+                <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-brand-900 first-letter:mr-1 first-letter:float-left first-letter:font-serif">
+                Buraya 1. Bölüm metninizi yapıştırabilirsiniz... Örneğin Wattpad'den kopyalayıp doğrudan buraya alabilirsiniz.
+                </p>
+                <p>Metin paragraflarını bu şekilde p etiketleri içine alarak kopyalayabilirsiniz.</p>
+                <br>
+                <p class="text-center italic text-brand-500">Bölüm sonu.</p>
+            `,
+            2: `<p>2. Bölüm metniniz buraya gelecek...</p>`,
+            3: `<p>3. Bölüm metniniz buraya gelecek...</p>`,
+            // 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+            14: `
+                <p class="font-bold text-center mb-6">BÖLÜM 14 (Örnek Metin Alanı)</p>
+                <p>Buraya son yazdığınız bölümü yapıştırabilirsiniz. Sitenin koduna girip bu "chaptersData" kısmını bularak metinlerinizi güncelleyebilirsiniz.</p>
+            `
+        };
+
+        // Modal Logic
+        const modal = document.getElementById('reader-modal');
+        const modalContent = document.getElementById('reader-content');
+        const modalTitle = document.getElementById('modal-chapter-title');
+        const readerText = document.getElementById('reader-text');
+        const body = document.body;
+
+        // Okuma ekranını açan fonksiyon
+        function openReader(chapterNumber, chapterTitleOverride = null) {
+            window.currentOpenChapterId = chapterNumber; // Bölüm ID'sini Firebase için kaydet
+            modalTitle.textContent = chapterTitleOverride || `Bölüm ${chapterNumber}`;
+            
+            // Eğer verilerde bölüm metni varsa onu koy, yoksa uyarı ver
+            if(chaptersData[chapterNumber]) {
+                readerText.innerHTML = chaptersData[chapterNumber];
+            } else {
+                readerText.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-center py-20"><p class="mb-4 font-sans text-xl">Bu bölümün metni henüz siteye eklenmemiş.</p><p class="text-gray-500 font-sans">Yazar metni eklediğinde burada görünecek.</p></div>`;
+            }
+
+            modal.classList.remove('hidden');
+            body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
+            
+            // Okuma metni alanını en üste kaydır
+            document.getElementById('reader-scroll-area').scrollTop = 0;
+
+            // Bölüme ait yorumları göster
+            if (typeof window.renderComments === 'function') {
+                window.renderComments();
+            }
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeReader() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeReader();
+        });
+
+        // Yazı tipi büyütme/küçültme
+        let currentFontSize = 1.125; // text-lg varsayılanı (rem cinsinden)
+        function changeFontSize(direction) {
+            currentFontSize += direction * 0.125;
+            // Limit the size between roughly 14px and 24px
+            if(currentFontSize < 0.875) currentFontSize = 0.875;
+            if(currentFontSize > 1.5) currentFontSize = 1.5;
+            
+            readerText.style.fontSize = `${currentFontSize}rem`;
+            // Ayrıca line-height'i orantılı ayarlayalım
+            readerText.style.lineHeight = `${currentFontSize * 1.8}rem`;
+        }
+    </script>
+
+    <!-- Yorumlar için Firebase Altyapısı -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-doksan-sekiz-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        
+        let app, db, auth, currentUser;
+        let allComments = [];
+
+        if (firebaseConfig && Object.keys(firebaseConfig).length > 0) {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    currentUser = auth.currentUser;
+                    loadComments();
+                } catch (error) {
+                    console.error("Firebase auth hatası:", error);
+                }
+            };
+            initAuth();
+        } else {
+            console.warn("Firebase yapılandırması bulunamadı. Yorumlar devre dışı.");
+            document.getElementById('comment-list').innerHTML = '<p class="text-sm text-gray-500 italic font-sans text-center">Yorum sistemi şu an kullanılamıyor.</p>';
+        }
+
+        function loadComments() {
+            if (!currentUser) return;
+            const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapter_comments');
+            
+            onSnapshot(commentsRef, (snapshot) => {
+                allComments = [];
+                snapshot.forEach(doc => {
+                    allComments.push({ id: doc.id, ...doc.data() });
+                });
+                
+                // Eğer ekranda açık bir bölüm varsa yorumları anında güncelle
+                if (window.currentOpenChapterId) {
+                    window.renderComments();
+                }
+            }, (error) => {
+                console.error("Yorumları çekerken hata oluştu:", error);
+            });
+        }
+
+        window.submitComment = async function() {
+            if (!currentUser || !db) return; 
+            
+            const nameInput = document.getElementById('comment-name').value.trim() || 'İsimsiz Okur';
+            const textInput = document.getElementById('comment-text').value.trim();
+            const errorDiv = document.getElementById('comment-error');
+            const submitBtn = document.getElementById('submit-comment-btn');
+            
+            if (!textInput) {
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+            errorDiv.classList.add('hidden');
+            
+            const chapterId = window.currentOpenChapterId;
+            if (!chapterId) return;
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Gönderiliyor...";
+            submitBtn.classList.add('opacity-70');
+
+            try {
+                const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapter_comments');
+                await addDoc(commentsRef, {
+                    chapterId: chapterId,
+                    name: nameInput,
+                    text: textInput,
+                    timestamp: Date.now(),
+                    userId: currentUser.uid
+                });
+                
+                document.getElementById('comment-text').value = ''; // Mesaj kutusunu temizle
+            } catch (error) {
+                console.error("Yorum eklenirken hata: ", error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Gönder";
+                submitBtn.classList.remove('opacity-70');
+            }
+        };
+
+        window.renderComments = function() {
+            const listEl = document.getElementById('comment-list');
+            if (!listEl) return;
+            
+            const chapterId = window.currentOpenChapterId;
+            
+            // İlgili bölümün yorumlarını filtrele ve yeniden eskiye sırala
+            const chapterComments = allComments
+                .filter(c => c.chapterId === chapterId)
+                .sort((a, b) => b.timestamp - a.timestamp);
+
+            if (chapterComments.length === 0) {
+                listEl.innerHTML = '<p class="text-sm text-gray-500 italic font-sans text-center bg-white/50 p-6 rounded border border-brand-100 border-dashed">Bu bölüme henüz yorum yapılmamış. İlk yorumu sen yap!</p>';
+                return;
+            }
+
+            listEl.innerHTML = chapterComments.map(c => {
+                const date = new Date(c.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute:'2-digit' });
+                return `
+                    <div class="bg-white p-4 rounded shadow-sm border border-brand-100 fade-in relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-brand-accent/50 group-hover:bg-brand-accent transition-colors"></div>
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-1">
+                            <span class="font-bold text-brand-900 font-sans text-sm">${escapeHTML(c.name)}</span>
+                            <span class="text-xs text-gray-400 font-typewriter">${date}</span>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(c.text)}</p>
+                    </div>
+                `;
+            }).join('');
+        };
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag])
+            );
+        }
+    </script>
+</body>
+</html>
