@@ -284,9 +284,13 @@
             
             <input type="hidden" id="edit-chapter-id" value="">
             
-            <div class="flex gap-4 mb-4">
-                <input type="number" id="chapter-number" placeholder="Bölüm No (Örn: 15)" class="w-1/3 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
-                <input type="text" id="chapter-title" placeholder="Bölüm Adı (Örn: Onbeşinci Bölüm)" class="w-2/3 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+            <div class="flex flex-wrap sm:flex-nowrap gap-4 mb-4">
+                <input type="number" id="chapter-number" placeholder="Bölüm No (Örn: 15)" class="w-full sm:w-1/4 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+                <input type="text" id="chapter-title" placeholder="Bölüm Adı (Örn: Onbeşinci Bölüm)" class="w-full sm:flex-1 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500">
+                <select id="chapter-status" class="w-full sm:w-1/4 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500 bg-white">
+                    <option value="published">Hemen Yayınla</option>
+                    <option value="draft">Taslak Olarak Kaydet</option>
+                </select>
             </div>
             
             <!-- Yazı Editörü Alanı -->
@@ -368,14 +372,15 @@
         function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
 
         // Bölüm Ekleme Modalı
-        function openAddChapterModal(id = '', number = '', title = '', content = '') {
+        function openAddChapterModal(id = '', number = '', title = '', content = '', status = 'published') {
             document.getElementById('edit-chapter-id').value = id;
             document.getElementById('chapter-number').value = number;
             document.getElementById('chapter-title').value = title;
             document.getElementById('chapter-content').value = content;
+            document.getElementById('chapter-status').value = status;
             
             document.getElementById('editor-title').innerText = id ? "Bölümü Düzenle" : "Yeni Bölüm Ekle";
-            document.getElementById('save-btn').innerText = id ? "Güncelle" : "Yayınla!";
+            document.getElementById('save-btn').innerText = id ? "Güncelle" : "Kaydet!";
             
             document.getElementById('add-chapter-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -396,7 +401,7 @@
         // KENDİ ŞİFRELERİNLE DEĞİŞTİRECEKSİN. SADECE SÜSLÜ PARANTEZ İÇİNİ DEĞİŞTİR!
         // ==============================================================================
         const firebaseConfig = {
-         apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
+          apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
   authDomain: "rowenaiswriting-ecd85.firebaseapp.com",
   projectId: "rowenaiswriting-ecd85",
   storageBucket: "rowenaiswriting-ecd85.firebasestorage.app",
@@ -469,33 +474,42 @@
             const listEl = document.getElementById('chapter-list');
             const countEl = document.getElementById('chapter-count-text');
             
-            countEl.innerText = `Şu ana kadar yayınlanmış ${allChapters.length} bölüm.`;
+            // Okuyucular sadece 'published' olanları görür, Admin hepsini. (Eskiden kalanların status'ü yoktur, onlara da izin verilir)
+            const visibleChapters = isAdmin ? allChapters : allChapters.filter(c => c.status !== 'draft');
             
-            if (allChapters.length === 0) {
+            countEl.innerText = `Şu ana kadar yayınlanmış ${visibleChapters.filter(c => c.status !== 'draft').length} bölüm.`;
+            
+            if (visibleChapters.length === 0) {
                 listEl.innerHTML = `<p class="text-center text-gray-500 py-4">Henüz yayınlanmış bir bölüm yok.</p>`;
                 return;
             }
 
             let html = '';
-            allChapters.forEach((chapter, index) => {
-                const isNew = index === 0; // En baştakine Yeni yaz
+            visibleChapters.forEach((chapter, index) => {
+                const isNew = index === 0 && chapter.status !== 'draft'; // En baştakine Yeni yaz, taslak değilse
+                const isDraft = chapter.status === 'draft';
                 
                 // Admin için sil ve düzenle butonları
                 const adminButtons = isAdmin ? `
                     <div class="flex gap-2 ml-4">
-                        <button onclick="event.stopPropagation(); openAddChapterModal('${chapter.id}', '${chapter.chapterNumber}', '${chapter.title.replace(/'/g, "\\'")}', \`${chapter.content.replace(/`/g, "\\`")}\`)" class="text-blue-500 hover:text-blue-700 p-2"><i class="fas fa-edit"></i></button>
-                        <button onclick="event.stopPropagation(); deleteChapter('${chapter.id}')" class="text-red-500 hover:text-red-700 p-2"><i class="fas fa-trash"></i></button>
+                        <button onclick="event.stopPropagation(); openAddChapterModal('${chapter.id}', '${chapter.chapterNumber}', '${(chapter.title || '').replace(/'/g, "\\'")}', \`${(chapter.content || '').replace(/`/g, "\\`")}\`, '${chapter.status || 'published'}')" class="text-blue-500 hover:text-blue-700 p-2" title="Düzenle"><i class="fas fa-edit"></i></button>
+                        <button onclick="event.stopPropagation(); deleteChapter('${chapter.id}')" class="text-red-500 hover:text-red-700 p-2" title="Sil"><i class="fas fa-trash"></i></button>
                     </div>
                 ` : '';
 
+                const draftBadge = isDraft ? '<span class="text-[10px] font-sans bg-gray-500 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 shadow-sm">TASLAK</span>' : '';
+                const newBadge = isNew ? '<span class="text-[10px] font-sans bg-[#8b5a50] text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider animate-pulse ml-2 shadow-sm">YENİ</span>' : '';
+                const itemBg = isDraft ? 'bg-gray-100/60 border-dashed border-2' : 'bg-white';
+
                 html += `
-                    <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer bg-white" onclick='openReader("${chapter.title.replace(/"/g, '&quot;')}", \`${chapter.content.replace(/`/g, "\\`")}\`)'>
-                        <div class="flex items-center gap-3">
+                    <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer ${itemBg}" onclick='openReader("${(chapter.title || '').replace(/"/g, '&quot;')}", \`${(chapter.content || '').replace(/`/g, "\\`")}\`)'>
+                        <div class="flex items-center flex-wrap gap-2">
                             <h4 class="font-bold text-brand-900 text-lg">Bölüm ${chapter.chapterNumber} ${chapter.title ? '- ' + chapter.title : ''}</h4>
-                            ${isNew ? '<span class="text-[10px] font-sans bg-[#8b5a50] text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider animate-pulse">Yeni</span>' : ''}
+                            ${draftBadge}
+                            ${newBadge}
                         </div>
                         <div class="flex items-center">
-                            <button class="text-brand-500 hover:text-brand-900 transition mr-2"><i class="fas fa-book-open"></i> Oku</button>
+                            <button class="text-brand-500 hover:text-brand-900 transition mr-2"><i class="fas fa-book-open"></i> ${isDraft ? 'Önizle' : 'Oku'}</button>
                             ${adminButtons}
                         </div>
                     </div>
@@ -510,6 +524,7 @@
             const number = document.getElementById('chapter-number').value;
             const title = document.getElementById('chapter-title').value;
             const content = document.getElementById('chapter-content').value;
+            const status = document.getElementById('chapter-status').value;
             const errorEl = document.getElementById('save-error');
             const btn = document.getElementById('save-btn');
 
@@ -529,7 +544,8 @@
                     await updateDoc(docRef, {
                         chapterNumber: Number(number),
                         title: title,
-                        content: content
+                        content: content,
+                        status: status
                     });
                 } else {
                     // Yeni Ekleme
@@ -537,6 +553,7 @@
                         chapterNumber: Number(number),
                         title: title,
                         content: content,
+                        status: status,
                         createdAt: Date.now()
                     });
                 }
@@ -546,7 +563,7 @@
                 alert("Bir hata oluştu, lütfen konsolu kontrol edin.");
             } finally {
                 btn.disabled = false;
-                btn.innerText = "Yayınla!";
+                btn.innerText = "Kaydet!";
             }
         };
 
