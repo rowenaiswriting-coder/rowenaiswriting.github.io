@@ -258,6 +258,31 @@
                 <div id="reader-text" class="text-brand-900 font-serif text-lg leading-loose min-h-[50vh] whitespace-pre-wrap">
                     <!-- Metin buraya gelecek -->
                 </div>
+                
+                <!-- YENİ EKLENEN: OY VE YORUM ALANI -->
+                <div id="engagement-section" class="mt-16 pt-8 border-t border-brand-200">
+                    <div class="flex items-center justify-between mb-8">
+                        <button id="vote-btn" onclick="voteCurrentChapter()" class="flex items-center gap-2 text-brand-500 hover:text-brand-accent transition px-6 py-3 rounded-full border-2 border-brand-200 hover:bg-brand-50 shadow-sm">
+                            <i class="far fa-star text-xl" id="vote-icon"></i>
+                            <span class="font-sans font-medium"><span id="vote-count" class="font-bold text-lg">0</span> Oy</span>
+                        </button>
+                    </div>
+                    
+                    <div id="comments-section">
+                        <h4 class="font-serif text-2xl font-bold text-brand-900 mb-6">Yorumlar (<span id="comment-count">0</span>)</h4>
+                        
+                        <div class="flex flex-col gap-3 mb-8 bg-brand-50/50 p-4 sm:p-6 rounded-lg border border-brand-100 shadow-sm">
+                            <input type="text" id="comment-name" placeholder="İsmin (İsteğe bağlı)" class="w-full sm:w-1/2 p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500 bg-white">
+                            <textarea id="comment-text" placeholder="Bu bölüm hakkında ne düşünüyorsun? Düşüncelerini yazarla paylaş..." class="w-full p-3 border border-brand-200 rounded font-sans focus:outline-none focus:border-brand-500 resize-none h-24 custom-scrollbar bg-white"></textarea>
+                            <button onclick="addComment()" class="self-end bg-[#8b5a50] hover:bg-[#6c453d] text-white px-8 py-2.5 rounded font-bold transition shadow-md">Yorum Yap</button>
+                        </div>
+
+                        <div id="comments-list" class="flex flex-col gap-4">
+                            <!-- Yorumlar buraya otomatik dizilecek -->
+                        </div>
+                    </div>
+                </div>
+                <!-- OY VE YORUM ALANI BİTİŞ -->
             </div>
         </div>
     </div>
@@ -334,14 +359,23 @@
         const modalTitle = document.getElementById('modal-chapter-title');
         const readerText = document.getElementById('reader-text');
         
-        function openReader(title, content) {
-            modalTitle.textContent = title;
+        let currentOpenChapterId = null; // Hangi bölümün açık olduğunu takip etmek için
+        
+        window.openReader = (id) => {
+            currentOpenChapterId = id;
+            const chapter = allChapters.find(c => c.id === id);
+            if(!chapter) return;
+
+            modalTitle.textContent = chapter.title || `Bölüm ${chapter.chapterNumber}`;
+            
             // Paragrafları düzgün göstermek için satır atlamalarını HTML'e çeviriyoruz
-            let formattedContent = content.replace(/\n/g, '<br><br>');
+            let formattedContent = (chapter.content || '').replace(/\n/g, '<br><br>');
             // İlk harfi romanlardaki gibi büyük yapmak için minik bir kod:
             formattedContent = `<span class="first-letter:text-5xl first-letter:font-bold first-letter:text-brand-900 first-letter:mr-1 first-letter:float-left first-letter:font-serif">${formattedContent}</span>`;
             
             readerText.innerHTML = formattedContent;
+            
+            updateReaderEngagement(id); // Oyları ve Yorumları Yükle
             
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -350,11 +384,59 @@
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
         }
 
-        function closeReader() {
+        window.updateReaderEngagement = (id) => {
+            const chapter = allChapters.find(c => c.id === id);
+            if(!chapter) return;
+            
+            // Oyları Güncelle
+            const votes = chapter.votes || 0;
+            document.getElementById('vote-count').innerText = votes;
+            
+            const hasVoted = localStorage.getItem(`voted_${id}`);
+            const voteIcon = document.getElementById('vote-icon');
+            const voteBtn = document.getElementById('vote-btn');
+            
+            if (hasVoted) {
+                voteIcon.classList.remove('far');
+                voteIcon.classList.add('fas', 'text-brand-accent');
+                voteBtn.classList.add('border-brand-accent', 'bg-brand-100');
+            } else {
+                voteIcon.classList.remove('fas', 'text-brand-accent');
+                voteIcon.classList.add('far');
+                voteBtn.classList.remove('border-brand-accent', 'bg-brand-100');
+            }
+            
+            // Yorumları Güncelle
+            const comments = chapter.comments || [];
+            document.getElementById('comment-count').innerText = comments.length;
+            
+            const listEl = document.getElementById('comments-list');
+            if (comments.length === 0) {
+                listEl.innerHTML = '<p class="text-gray-500 text-sm italic">İlk yorumu sen yap!</p>';
+            } else {
+                let html = '';
+                comments.forEach(c => {
+                    const date = new Date(c.date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute:'2-digit' });
+                    html += `
+                        <div class="bg-white p-4 rounded shadow-sm border border-brand-100">
+                            <div class="flex justify-between items-center mb-2 border-b border-brand-50 pb-2">
+                                <span class="font-bold text-brand-900 text-sm">${c.name || 'Anonim Okur'}</span>
+                                <span class="text-xs text-gray-500 font-typewriter">${date}</span>
+                            </div>
+                            <p class="text-sm text-gray-700 font-sans break-words whitespace-pre-wrap">${c.text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                        </div>
+                    `;
+                });
+                listEl.innerHTML = html;
+            }
+        }
+
+        window.closeReader = () => {
             modal.classList.add('opacity-0');
             setTimeout(() => {
                 modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
+                currentOpenChapterId = null;
             }, 300);
         }
 
@@ -401,7 +483,7 @@
         // KENDİ ŞİFRELERİNLE DEĞİŞTİRECEKSİN. SADECE SÜSLÜ PARANTEZ İÇİNİ DEĞİŞTİR!
         // ==============================================================================
         const firebaseConfig = {
-          apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
+           apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
   authDomain: "rowenaiswriting-ecd85.firebaseapp.com",
   projectId: "rowenaiswriting-ecd85",
   storageBucket: "rowenaiswriting-ecd85.firebasestorage.app",
@@ -465,6 +547,13 @@
             // Bölümleri numara sırasına göre büyükten küçüğe sırala (En yeni en üstte)
             allChapters.sort((a, b) => Number(b.chapterNumber) - Number(a.chapterNumber));
             renderChapters();
+            
+            // Eğer bir okuyucu o anda bölümü okuyorsa ve arkada yeni yorum/oy geldiyse canlı olarak güncellensin
+            if (typeof currentOpenChapterId !== 'undefined' && currentOpenChapterId) {
+                if (typeof updateReaderEngagement === 'function') {
+                    updateReaderEngagement(currentOpenChapterId);
+                }
+            }
         }, (error) => {
             console.log("Bağlantı hatası (Şifrelerini girmeden önce bu hata normaldir):", error);
             document.getElementById('chapter-list').innerHTML = `<p class="text-center text-red-500 py-4">Veritabanı şifreleri henüz girilmemiş. Lütfen rehberi takip edin.</p>`;
@@ -500,22 +589,93 @@
                 const draftBadge = isDraft ? '<span class="text-[10px] font-sans bg-gray-500 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 shadow-sm">TASLAK</span>' : '';
                 const newBadge = isNew ? '<span class="text-[10px] font-sans bg-[#8b5a50] text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider animate-pulse ml-2 shadow-sm">YENİ</span>' : '';
                 const itemBg = isDraft ? 'bg-gray-100/60 border-dashed border-2' : 'bg-white';
+                
+                // Oy ve Yorum sayılarını menüde göstermek için
+                const chapterVotes = chapter.votes || 0;
+                const chapterComments = (chapter.comments || []).length;
 
                 html += `
-                    <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer ${itemBg}" onclick='openReader("${(chapter.title || '').replace(/"/g, '&quot;')}", \`${(chapter.content || '').replace(/`/g, "\\`")}\`)'>
+                    <div class="chapter-item flex justify-between items-center p-4 border-b border-brand-100/50 cursor-pointer ${itemBg}" onclick="openReader('${chapter.id}')">
                         <div class="flex items-center flex-wrap gap-2">
                             <h4 class="font-bold text-brand-900 text-lg">Bölüm ${chapter.chapterNumber} ${chapter.title ? '- ' + chapter.title : ''}</h4>
                             ${draftBadge}
                             ${newBadge}
                         </div>
-                        <div class="flex items-center">
-                            <button class="text-brand-500 hover:text-brand-900 transition mr-2"><i class="fas fa-book-open"></i> ${isDraft ? 'Önizle' : 'Oku'}</button>
+                        <div class="flex items-center gap-3 sm:gap-6">
+                            <div class="hidden sm:flex items-center gap-3 text-xs text-brand-500 font-sans">
+                                <span title="Oylar"><i class="fas fa-star text-brand-accent"></i> ${chapterVotes}</span>
+                                <span title="Yorumlar"><i class="fas fa-comment text-brand-500"></i> ${chapterComments}</span>
+                            </div>
+                            <button class="text-brand-500 hover:text-brand-900 transition"><i class="fas fa-book-open"></i> ${isDraft ? 'Önizle' : 'Oku'}</button>
                             ${adminButtons}
                         </div>
                     </div>
                 `;
             });
             listEl.innerHTML = html;
+        };
+
+        // YENİ: OKUR ETKİLEŞİMİ (OY VE YORUM) FONKSİYONLARI
+        window.voteCurrentChapter = async () => {
+            if(!currentOpenChapterId) return;
+            if(localStorage.getItem(`voted_${currentOpenChapterId}`)) return; // Zaten oy vermişse işlemi durdur
+            
+            const chapter = allChapters.find(c => c.id === currentOpenChapterId);
+            if(!chapter) return;
+            
+            const newVotes = (chapter.votes || 0) + 1;
+            
+            // Tekrar oy atamaması için tarayıcı hafızasına kaydet
+            localStorage.setItem(`voted_${currentOpenChapterId}`, 'true');
+            
+            // Siteyi bekletmeden Yıldızı hemen turuncuya boya (İyimser Güncelleme)
+            document.getElementById('vote-count').innerText = newVotes;
+            document.getElementById('vote-icon').classList.remove('far');
+            document.getElementById('vote-icon').classList.add('fas', 'text-brand-accent');
+            document.getElementById('vote-btn').classList.add('border-brand-accent', 'bg-brand-100');
+            
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', currentOpenChapterId);
+                await updateDoc(docRef, { votes: newVotes });
+            } catch(e) {
+                console.error("Oy verme hatası:", e);
+            }
+        };
+        
+        window.addComment = async () => {
+            if(!currentOpenChapterId) return;
+            
+            const nameInput = document.getElementById('comment-name');
+            const textInput = document.getElementById('comment-text');
+            
+            const text = textInput.value.trim();
+            if(!text) {
+                alert("Lütfen boş yorum göndermeyin.");
+                return;
+            }
+            
+            const name = nameInput.value.trim() || 'Anonim Okur';
+            const chapter = allChapters.find(c => c.id === currentOpenChapterId);
+            if(!chapter) return;
+            
+            const newComment = {
+                name: name,
+                text: text,
+                date: Date.now()
+            };
+            
+            // Eski yorumların üzerine yenisini ekle
+            const updatedComments = [...(chapter.comments || []), newComment];
+            
+            textInput.value = ''; // Kutuyu temizle
+            
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', currentOpenChapterId);
+                await updateDoc(docRef, { comments: updatedComments });
+            } catch(e) {
+                console.error("Yorum ekleme hatası:", e);
+                alert("Yorum eklenirken hata oluştu.");
+            }
         };
 
         // Bölüm Kaydetme (Ekleme / Güncelleme)
