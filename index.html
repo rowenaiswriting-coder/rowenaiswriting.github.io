@@ -72,6 +72,16 @@
 
         #reader-text p:first-of-type { text-indent: 0; }
         
+        /* Büyük Harf (Drop Cap) İptali - Veritabanından gelse bile ezer */
+        #reader-text p::first-letter, #reader-text p:first-letter, .first-letter\:text-5xl::first-letter {
+            font-size: inherit !important;
+            float: none !important;
+            margin: 0 !important;
+            font-weight: inherit !important;
+            font-family: inherit !important;
+            color: inherit !important;
+        }
+        
         .hyphens-auto { hyphens: auto; -webkit-hyphens: auto; }
     </style>
 </head>
@@ -206,7 +216,7 @@
                 </a>
                 
                 <!-- GÜNCELLENMİŞ VE KESİN ÇALIŞAN GİZLİ YAZAR GİRİŞ BUTONU -->
-                <button type="button" onclick="openLoginModal()" class="text-brand-100 hover:text-white transition-all duration-300 text-3xl cursor-pointer p-4 opacity-50 hover:opacity-100 active:opacity-100" style="-webkit-tap-highlight-color: transparent;" title="Yazar Paneli">
+                <button type="button" onclick="openLoginModal()" class="text-brand-100 hover:text-white transition-all duration-300 text-3xl cursor-pointer p-4 opacity-50 hover:opacity-100 active:opacity-100 touch-manipulation z-50 relative" style="-webkit-tap-highlight-color: transparent;" title="Yazar Paneli">
                     <i class="fas fa-key pointer-events-none"></i>
                 </button>
             </div>
@@ -288,7 +298,7 @@
         </div>
     </div>
 
-    <!-- YAZAR GİRİŞ MODALI (Z-index artırıldı) -->
+    <!-- YAZAR GİRİŞ MODALI (Z-index çok yüksek yapıldı) -->
     <div id="login-modal" class="fixed inset-0 z-[200] bg-brand-900/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-brand-50 p-8 rounded-lg shadow-2xl max-w-md w-full border-2 border-brand-100 relative">
             <div class="flex justify-between items-center mb-6">
@@ -321,6 +331,7 @@
                 </select>
             </div>
             
+            <!-- KALIN / İTALİK BUTONLARI -->
             <div class="flex gap-2 mb-2 shrink-0">
                 <button type="button" onmousedown="event.preventDefault(); insertFormatting('b')" class="px-5 py-2 bg-white hover:bg-[#5a6b7c] hover:text-white rounded font-bold font-sans transition border border-brand-200 shadow-sm cursor-pointer touch-manipulation">B</button>
                 <button type="button" onmousedown="event.preventDefault(); insertFormatting('i')" class="px-5 py-2 bg-white hover:bg-[#5a6b7c] hover:text-white rounded italic font-sans transition border border-brand-200 shadow-sm cursor-pointer touch-manipulation">I</button>
@@ -386,15 +397,30 @@
             setTimeout(() => document.getElementById('inline-sidebar-backdrop').classList.add('hidden'), 300);
         };
 
-        window.openAddChapterModal = (id = '', number = '', title = '', content = '', status = 'published') => {
-            document.getElementById('edit-chapter-id').value = id;
-            document.getElementById('chapter-number').value = number;
-            document.getElementById('chapter-title').value = title;
-            document.getElementById('chapter-content').value = content;
-            document.getElementById('chapter-status').value = status;
-            
-            document.getElementById('editor-title').innerText = id ? "Bölümü Düzenle" : "Yeni Bölüm Ekle";
-            document.getElementById('save-btn').innerText = id ? "Güncelle" : "Kaydet!";
+        // YENİLENMİŞ EDİTÖR AÇMA FONKSİYONU: Hatalı HTML kırılmalarını önler!
+        window.openAddChapterModal = (id = null) => {
+            if (id && typeof id === 'string') { // Düzenleme Modu
+                const chapter = window.allChapters.find(c => c.id === id);
+                if(chapter) {
+                    document.getElementById('edit-chapter-id').value = chapter.id;
+                    document.getElementById('chapter-number').value = chapter.chapterNumber;
+                    document.getElementById('chapter-title').value = chapter.title || '';
+                    document.getElementById('chapter-content').value = chapter.content || '';
+                    document.getElementById('chapter-status').value = chapter.status || 'published';
+                    
+                    document.getElementById('editor-title').innerText = "Bölümü Düzenle";
+                    document.getElementById('save-btn').innerText = "Güncelle";
+                }
+            } else { // Yeni Bölüm Modu
+                document.getElementById('edit-chapter-id').value = '';
+                document.getElementById('chapter-number').value = '';
+                document.getElementById('chapter-title').value = '';
+                document.getElementById('chapter-content').value = '';
+                document.getElementById('chapter-status').value = 'published';
+                
+                document.getElementById('editor-title').innerText = "Yeni Bölüm Ekle";
+                document.getElementById('save-btn').innerText = "Kaydet!";
+            }
             
             document.getElementById('add-chapter-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -431,6 +457,7 @@
         import { getAuth, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // GÜNCELLENMİŞ VE KESİN DOĞRU ŞİFRELER
         const firebaseConfig = {
             apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
             authDomain: "rowenaiswriting-ecd85.firebaseapp.com",
@@ -506,10 +533,11 @@
                 const isNew = index === 0 && chapter.status !== 'draft';
                 const isDraft = chapter.status === 'draft';
                 
+                // GÜNCELLENMİŞ BUTON - Sadece ID gönderiyor, hatayı önlüyor!
                 const adminButtons = window.isAdmin ? `
                     <div class="flex gap-1 sm:gap-2 ml-2 sm:ml-4 border-l border-brand-200 pl-2 sm:pl-4">
-                        <button onclick="event.stopPropagation(); window.openAddChapterModal('${chapter.id}', '${chapter.chapterNumber}', '${(chapter.title || '').replace(/'/g, "\\'")}', \`${(chapter.content || '').replace(/`/g, "\\`")}\`, '${chapter.status || 'published'}')" class="text-blue-500 hover:text-blue-700 p-2 bg-blue-50 rounded-full w-8 h-8 flex items-center justify-center touch-manipulation"><i class="fas fa-edit text-sm"></i></button>
-                        <button onclick="event.stopPropagation(); deleteChapter('${chapter.id}')" class="text-red-500 hover:text-red-700 p-2 bg-red-50 rounded-full w-8 h-8 flex items-center justify-center touch-manipulation"><i class="fas fa-trash text-sm"></i></button>
+                        <button onclick="event.stopPropagation(); window.openAddChapterModal('${chapter.id}')" class="text-blue-500 hover:text-blue-700 p-2 bg-blue-50 rounded-full w-8 h-8 flex items-center justify-center touch-manipulation"><i class="fas fa-edit text-sm"></i></button>
+                        <button onclick="event.stopPropagation(); window.deleteChapter('${chapter.id}')" class="text-red-500 hover:text-red-700 p-2 bg-red-50 rounded-full w-8 h-8 flex items-center justify-center touch-manipulation"><i class="fas fa-trash text-sm"></i></button>
                     </div>
                 ` : '';
 
@@ -546,6 +574,7 @@
         window.openReader = (id) => {
             window.currentOpenChapterId = id;
             const chapter = window.allChapters.find(c => c.id === id);
+            if(!chapter) return;
             
             document.getElementById('modal-chapter-title').textContent = chapter.title ? `Bölüm ${chapter.chapterNumber} - ${chapter.title}` : `Bölüm ${chapter.chapterNumber}`;
             
