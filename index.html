@@ -379,64 +379,84 @@
         // KENDİ ŞİFRELERİNLE DEĞİŞTİRECEKSİN. SADECE SÜSLÜ PARANTEZ İÇİNİ DEĞİŞTİR!
         // ==============================================================================
         const firebaseConfig = {
-           "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
-  apiKey: uthDomain: "rowenaiswriting-ecd85.firebaseapp.com",
-  projectId: "rowenaiswriting-ecd85",
-  storageBucket: "rowenaiswriting-ecd85.firebasestorage.app",
-  messagingSenderId: "52303022926",
-  appId: "1:52303022926:web:3d90e742d8d7a90360ac1f",
-  measurementId: "G-RXHL4KLHZG"
+            apiKey: "AIzaSyDX4EU6OIREUZ1gN4T8vrDFintvq2OC_VM",
+            authDomain: "rowenaiswriting-ecd85.firebaseapp.com",
+            projectId: "rowenaiswriting-ecd85",
+            storageBucket: "rowenaiswriting-ecd85.firebasestorage.app",
+            messagingSenderId: "52303022926",
+            appId: "1:52303022926:web:3d90e742d8d7a90360ac1f",
+            measurementId: "G-RXHL4KLHZG"
         };
         // ==============================================================================
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        
+        // Şifrelerin girilip girilmediğini kontrol et
+        const isFirebaseConfigured = firebaseConfig.apiKey !== "SENİN_API_KEY_BURAYA" && firebaseConfig.apiKey.length > 5;
+
+        let app, auth, db, chaptersRef;
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'rowenaswriting-app';
-        const chaptersRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapters');
 
         let isAdmin = false;
-        window.allChapters = []; // Global'e taşıdık ki openReader her yerden erişebilsin
+        window.allChapters = []; 
         let currentOpenChapterId = null;
 
-        onAuthStateChanged(auth, (user) => {
-            if (user && user.email) {
-                // Admin (Yazar) Girişi
-                isAdmin = true;
-                document.getElementById('admin-controls-container').classList.remove('hidden');
-                closeLoginModal();
-            } else if (!user) {
-                // Anonim (Okur) Girişi
-                isAdmin = false;
-                document.getElementById('admin-controls-container').classList.add('hidden');
-                signInAnonymously(auth).catch((error) => {
-                    console.error("Anonim giriş hatası:", error);
-                });
-            } else {
-                 // Sadece anonim user varsa (okur modu)
-                isAdmin = false;
-                document.getElementById('admin-controls-container').classList.add('hidden');
-            }
-            renderChapters();
-        });
+        if (isFirebaseConfigured) {
+            try {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                chaptersRef = collection(db, 'artifacts', appId, 'public', 'data', 'chapters');
 
-        onSnapshot(chaptersRef, (snapshot) => {
-            window.allChapters = [];
-            snapshot.forEach(doc => {
-                window.allChapters.push({ id: doc.id, ...doc.data() });
-            });
-            
-            window.allChapters.sort((a, b) => Number(b.chapterNumber) - Number(a.chapterNumber));
-            renderChapters();
-            
-            if (currentOpenChapterId) {
-                updateReaderEngagement(currentOpenChapterId);
+                onAuthStateChanged(auth, (user) => {
+                    if (user && user.email) {
+                        isAdmin = true;
+                        document.getElementById('admin-controls-container').classList.remove('hidden');
+                        closeLoginModal();
+                    } else if (!user) {
+                        isAdmin = false;
+                        document.getElementById('admin-controls-container').classList.add('hidden');
+                        signInAnonymously(auth).catch((error) => {
+                            console.warn("Anonim giriş yapılamadı (Bu hata sahte şifrelerden kaynaklıdır):", error);
+                        });
+                    } else {
+                        isAdmin = false;
+                        document.getElementById('admin-controls-container').classList.add('hidden');
+                    }
+                    renderChapters();
+                });
+
+                onSnapshot(chaptersRef, (snapshot) => {
+                    window.allChapters = [];
+                    snapshot.forEach(doc => {
+                        window.allChapters.push({ id: doc.id, ...doc.data() });
+                    });
+                    
+                    window.allChapters.sort((a, b) => Number(b.chapterNumber) - Number(a.chapterNumber));
+                    renderChapters();
+                    
+                    if (currentOpenChapterId) {
+                        updateReaderEngagement(currentOpenChapterId);
+                    }
+                }, (error) => {
+                    console.warn("Veritabanına bağlanılamadı. Şifreler hatalı olabilir.");
+                });
+            } catch(e) {
+                console.warn("Firebase başlatılamadı:", e);
             }
-        }, (error) => {
-            console.log("Bağlantı hatası:", error);
-            document.getElementById('chapter-list').innerHTML = `<p class="text-center text-red-500 py-4 font-sans">Sisteme bağlanılamadı. Lütfen Firebase şifrelerinin doğru girildiğinden emin olun.</p>`;
-        });
+        } else {
+            // Şifreler henüz girilmemişse, hata vermesin diye sahte bölüm gösteriyoruz
+            window.allChapters = [
+                { 
+                    id: 'uyari-1', 
+                    chapterNumber: 0, 
+                    title: 'Veritabanı Bekleniyor...', 
+                    content: 'Firebase şifrelerinizi henüz kodun en altındaki alana girmediniz. Lütfen "Firebase Kurulum Rehberi"ni okuyarak şifrelerinizi girin, ardından Yazar Paneli çalışmaya başlayacaktır.', 
+                    status: 'published', 
+                    votes: 0, 
+                    comments: [] 
+                }
+            ];
+            setTimeout(renderChapters, 500);
+        }
 
         window.renderChapters = () => {
             const listEl = document.getElementById('chapter-list');
@@ -602,17 +622,18 @@
             const newVotes = (chapter.votes || 0) + 1;
             localStorage.setItem(`voted_${currentOpenChapterId}`, 'true');
             
-            // UI'ı anında güncelle (hızlı hissettirsin diye)
             document.getElementById('vote-count').innerText = newVotes;
             document.getElementById('vote-icon').classList.remove('far');
             document.getElementById('vote-icon').classList.add('fas', 'text-brand-accent');
             document.getElementById('vote-btn').classList.add('border-brand-accent', 'bg-brand-100');
             
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', currentOpenChapterId);
-                await updateDoc(docRef, { votes: newVotes });
-            } catch(e) {
-                console.error("Oy verme hatası:", e);
+            if (isFirebaseConfigured) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', currentOpenChapterId);
+                    await updateDoc(docRef, { votes: newVotes });
+                } catch(e) {
+                    console.warn("Oy verme hatası:", e);
+                }
             }
         };
         
@@ -636,11 +657,17 @@
             const updatedComments = [...(chapter.comments || []), newComment];
             textInput.value = '';
             
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', currentOpenChapterId);
-                await updateDoc(docRef, { comments: updatedComments });
-            } catch(e) {
-                console.error("Yorum ekleme hatası:", e);
+            // Kullanıcı anında görebilsin diye manuel güncelliyoruz
+            chapter.comments = updatedComments;
+            updateReaderEngagement(currentOpenChapterId);
+            
+            if (isFirebaseConfigured) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'chapters', currentOpenChapterId);
+                    await updateDoc(docRef, { comments: updatedComments });
+                } catch(e) {
+                    console.warn("Yorum ekleme hatası:", e);
+                }
             }
         };
 
@@ -648,6 +675,10 @@
         window.closeLoginModal = () => document.getElementById('login-modal').classList.add('hidden');
 
         window.loginAdmin = async () => {
+            if (!isFirebaseConfigured) {
+                alert("Henüz Firebase şifrelerinizi koda girmediniz! Lütfen önce veritabanı kurulumunuzu yapıp kodun en altındaki şifreleri güncelleyin.");
+                return;
+            }
             const email = document.getElementById('admin-email').value;
             const pass = document.getElementById('admin-password').value;
             const errorEl = document.getElementById('login-error');
@@ -665,6 +696,7 @@
         };
 
         window.logoutAdmin = async () => {
+            if (!isFirebaseConfigured) return;
             try {
                 await signOut(auth);
                 alert("Yazar modundan çıkıldı. Şu an siteyi okur gözüyle görüyorsunuz.");
@@ -693,6 +725,7 @@
         }
 
         window.saveChapter = async () => {
+            if (!isFirebaseConfigured) return;
             const id = document.getElementById('edit-chapter-id').value;
             const number = document.getElementById('chapter-number').value;
             const title = document.getElementById('chapter-title').value;
@@ -741,6 +774,7 @@
         };
 
         window.deleteChapter = async (id) => {
+            if (!isFirebaseConfigured) return;
             if (confirm("Bu bölümü kalıcı olarak silmek istediğine emin misin? (Geri alınamaz!)")) {
                 try {
                     await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'chapters', id));
